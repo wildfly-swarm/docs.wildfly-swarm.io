@@ -646,421 +646,268 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_reference">Reference</a>
 <ul class="sectlevel1">
-<li><a href="#_archaius">5. Archaius</a></li>
-<li><a href="#_asciidoctorj">6. AsciidoctorJ</a></li>
-<li><a href="#_batch_jberet">7. Batch (JBeret)</a>
+<li><a href="#_general">5. General</a>
 <ul class="sectlevel2">
-<li><a href="#_configuration">7.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_bean_validation">8. Bean Validation</a></li>
-<li><a href="#_camel_core">9. Camel Core</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_2">9.1. Configuration</a></li>
-<li><a href="#_camel_component_activemq">9.2. Camel Component :: Activemq</a></li>
-<li><a href="#_camel_component_ahc">9.3. Camel Component :: Ahc</a>
+<li><a href="#_configuration_of_a_wildfly_swarm_application">5.1. Configuration of a WildFly Swarm Application</a>
 <ul class="sectlevel3">
-<li><a href="#_camel_component_ahc_ws">9.3.1. Camel Component :: Ahc-ws</a></li>
+<li><a href="#_using_properties">5.1.1. Using Properties</a></li>
+<li><a href="#_using_yaml">5.1.2. Using YAML</a></li>
 </ul>
 </li>
-<li><a href="#_camel_component_amqp">9.4. Camel Component :: Amqp</a></li>
-<li><a href="#_camel_component_atom">9.5. Camel Component :: Atom</a></li>
-<li><a href="#_camel_component_avro">9.6. Camel Component :: Avro</a></li>
-<li><a href="#_camel_component_aws">9.7. Camel Component :: Aws</a></li>
-<li><a href="#_camel_component_barcode">9.8. Camel Component :: Barcode</a></li>
-<li><a href="#_camel_component_base64">9.9. Camel Component :: Base64</a></li>
-<li><a href="#_camel_component_bean_validator">9.10. Camel Component :: Bean-validator</a></li>
-<li><a href="#_camel_component_beanio">9.11. Camel Component :: Beanio</a></li>
-<li><a href="#_camel_component_bindy">9.12. Camel Component :: Bindy</a></li>
-<li><a href="#_camel_component_box">9.13. Camel Component :: Box</a></li>
-<li><a href="#_camel_component_braintree">9.14. Camel Component :: Braintree</a></li>
-<li><a href="#_camel_component_cassandraql">9.15. Camel Component :: Cassandraql</a></li>
-<li><a href="#_camel_component_castor">9.16. Camel Component :: Castor</a></li>
-<li><a href="#_camel_component_cdi">9.17. Camel Component :: Cdi</a></li>
-<li><a href="#_camel_component_coap">9.18. Camel Component :: Coap</a></li>
-<li><a href="#_camel_component_context">9.19. Camel Component :: Context</a></li>
-<li><a href="#_camel_component_couchdb">9.20. Camel Component :: Couchdb</a></li>
-<li><a href="#_camel_component_crypto">9.21. Camel Component :: Crypto</a></li>
-<li><a href="#_camel_component_csv">9.22. Camel Component :: Csv</a></li>
-<li><a href="#_camel_component_cxf">9.23. Camel Component :: Cxf</a></li>
-<li><a href="#_camel_component_dns">9.24. Camel Component :: Dns</a></li>
-<li><a href="#_camel_component_dozer">9.25. Camel Component :: Dozer</a></li>
-<li><a href="#_camel_component_dropbox">9.26. Camel Component :: Dropbox</a></li>
-<li><a href="#_camel_component_ejb">9.27. Camel Component :: Ejb</a></li>
-<li><a href="#_camel_component_elasticsearch">9.28. Camel Component :: Elasticsearch</a></li>
-<li><a href="#_camel_component_elsql">9.29. Camel Component :: Elsql</a></li>
-<li><a href="#_camel_component_exec">9.30. Camel Component :: Exec</a></li>
-<li><a href="#_camel_component_facebook">9.31. Camel Component :: Facebook</a></li>
-<li><a href="#_camel_component_flatpack">9.32. Camel Component :: Flatpack</a></li>
-<li><a href="#_camel_component_freemarker">9.33. Camel Component :: Freemarker</a></li>
-<li><a href="#_camel_component_ftp">9.34. Camel Component :: Ftp</a></li>
-<li><a href="#_camel_component_git">9.35. Camel Component :: Git</a></li>
-<li><a href="#_camel_component_github">9.36. Camel Component :: Github</a></li>
-<li><a href="#_camel_component_groovy">9.37. Camel Component :: Groovy</a></li>
-<li><a href="#_camel_component_gson">9.38. Camel Component :: Gson</a></li>
-<li><a href="#_camel_component_hl7">9.39. Camel Component :: Hl7</a></li>
-<li><a href="#_camel_component_http4">9.40. Camel Component :: Http4</a></li>
-<li><a href="#_camel_component_hystrix">9.41. Camel Component :: Hystrix</a></li>
-<li><a href="#_camel_component_infinispan">9.42. Camel Component :: Infinispan</a></li>
-<li><a href="#_camel_component_influxdb">9.43. Camel Component :: Influxdb</a></li>
-<li><a href="#_camel_component_irc">9.44. Camel Component :: Irc</a></li>
-<li><a href="#_camel_component_jackson">9.45. Camel Component :: Jackson</a></li>
-<li><a href="#_camel_component_jacksonxml">9.46. Camel Component :: Jacksonxml</a></li>
-<li><a href="#_camel_component_jasypt">9.47. Camel Component :: Jasypt</a></li>
-<li><a href="#_camel_component_jaxb">9.48. Camel Component :: Jaxb</a></li>
-<li><a href="#_camel_component_jbpm">9.49. Camel Component :: Jbpm</a></li>
-<li><a href="#_camel_component_jcache">9.50. Camel Component :: Jcache</a></li>
-<li><a href="#_camel_component_jdbc">9.51. Camel Component :: Jdbc</a></li>
-<li><a href="#_camel_component_jgroups">9.52. Camel Component :: Jgroups</a></li>
-<li><a href="#_camel_component_jms">9.53. Camel Component :: Jms</a></li>
-<li><a href="#_camel_component_jmx">9.54. Camel Component :: Jmx</a></li>
-<li><a href="#_camel_component_jpa">9.55. Camel Component :: Jpa</a></li>
-<li><a href="#_camel_component_jsch">9.56. Camel Component :: Jsch</a></li>
-<li><a href="#_camel_component_jsonpath">9.57. Camel Component :: Jsonpath</a></li>
-<li><a href="#_camel_component_kafka">9.58. Camel Component :: Kafka</a></li>
-<li><a href="#_camel_component_kubernetes">9.59. Camel Component :: Kubernetes</a></li>
-<li><a href="#_camel_component_ldap">9.60. Camel Component :: Ldap</a></li>
-<li><a href="#_camel_component_linkedin">9.61. Camel Component :: Linkedin</a></li>
-<li><a href="#_camel_component_lucene">9.62. Camel Component :: Lucene</a></li>
-<li><a href="#_camel_component_mail">9.63. Camel Component :: Mail</a></li>
-<li><a href="#_camel_component_metrics">9.64. Camel Component :: Metrics</a></li>
-<li><a href="#_camel_component_mina2">9.65. Camel Component :: Mina2</a></li>
-<li><a href="#_camel_component_mllp">9.66. Camel Component :: Mllp</a></li>
-<li><a href="#_camel_component_mongodb">9.67. Camel Component :: Mongodb</a></li>
-<li><a href="#_camel_component_mqtt">9.68. Camel Component :: Mqtt</a></li>
-<li><a href="#_camel_component_mvel">9.69. Camel Component :: Mvel</a></li>
-<li><a href="#_camel_component_mybatis">9.70. Camel Component :: Mybatis</a></li>
-<li><a href="#_camel_component_nats">9.71. Camel Component :: Nats</a></li>
-<li><a href="#_camel_component_netty4">9.72. Camel Component :: Netty4</a></li>
-<li><a href="#_camel_component_ognl">9.73. Camel Component :: Ognl</a></li>
-<li><a href="#_camel_component_olingo2">9.74. Camel Component :: Olingo2</a></li>
-<li><a href="#_camel_component_optaplanner">9.75. Camel Component :: Optaplanner</a></li>
-<li><a href="#_camel_component_paho">9.76. Camel Component :: Paho</a></li>
-<li><a href="#_camel_component_pdf">9.77. Camel Component :: Pdf</a></li>
-<li><a href="#_camel_component_protobuf">9.78. Camel Component :: Protobuf</a></li>
-<li><a href="#_camel_component_quartz2">9.79. Camel Component :: Quartz2</a></li>
-<li><a href="#_camel_component_rabbitmq">9.80. Camel Component :: Rabbitmq</a></li>
-<li><a href="#_camel_component_reactive_streams">9.81. Camel Component :: Reactive-streams</a></li>
-<li><a href="#_camel_component_rest_swagger">9.82. Camel Component :: Rest-swagger</a></li>
-<li><a href="#_camel_component_rss">9.83. Camel Component :: Rss</a></li>
-<li><a href="#_camel_component_salesforce">9.84. Camel Component :: Salesforce</a></li>
-<li><a href="#_camel_component_sap_netweaver">9.85. Camel Component :: Sap-netweaver</a></li>
-<li><a href="#_camel_component_saxon">9.86. Camel Component :: Saxon</a></li>
-<li><a href="#_camel_component_schematron">9.87. Camel Component :: Schematron</a></li>
-<li><a href="#_camel_component_script">9.88. Camel Component :: Script</a></li>
-<li><a href="#_camel_component_servicenow">9.89. Camel Component :: Servicenow</a></li>
-<li><a href="#_camel_component_servlet">9.90. Camel Component :: Servlet</a></li>
-<li><a href="#_camel_component_sjms">9.91. Camel Component :: Sjms</a></li>
-<li><a href="#_camel_component_sjms2">9.92. Camel Component :: Sjms2</a></li>
-<li><a href="#_camel_component_smpp">9.93. Camel Component :: Smpp</a></li>
-<li><a href="#_camel_component_snakeyaml">9.94. Camel Component :: Snakeyaml</a></li>
-<li><a href="#_camel_component_snmp">9.95. Camel Component :: Snmp</a></li>
-<li><a href="#_camel_component_soap">9.96. Camel Component :: Soap</a></li>
-<li><a href="#_camel_component_splunk">9.97. Camel Component :: Splunk</a></li>
-<li><a href="#_camel_component_spring_batch">9.98. Camel Component :: Spring-batch</a></li>
-<li><a href="#_camel_component_spring_integration">9.99. Camel Component :: Spring-integration</a></li>
-<li><a href="#_camel_component_spring_ldap">9.100. Camel Component :: Spring-ldap</a></li>
-<li><a href="#_camel_component_spring_redis">9.101. Camel Component :: Spring-redis</a></li>
-<li><a href="#_camel_component_spring_security">9.102. Camel Component :: Spring-security</a></li>
-<li><a href="#_camel_component_sql">9.103. Camel Component :: Sql</a></li>
-<li><a href="#_camel_component_ssh">9.104. Camel Component :: Ssh</a></li>
-<li><a href="#_camel_component_stax">9.105. Camel Component :: Stax</a></li>
-<li><a href="#_camel_component_stream">9.106. Camel Component :: Stream</a></li>
-<li><a href="#_camel_component_swagger">9.107. Camel Component :: Swagger</a></li>
-<li><a href="#_camel_component_syslog">9.108. Camel Component :: Syslog</a></li>
-<li><a href="#_camel_component_tagsoup">9.109. Camel Component :: Tagsoup</a></li>
-<li><a href="#_camel_component_tarfile">9.110. Camel Component :: Tarfile</a></li>
-<li><a href="#_camel_component_twitter">9.111. Camel Component :: Twitter</a></li>
-<li><a href="#_camel_component_undertow">9.112. Camel Component :: Undertow</a></li>
-<li><a href="#_camel_component_velocity">9.113. Camel Component :: Velocity</a></li>
-<li><a href="#_camel_component_vertx">9.114. Camel Component :: Vertx</a></li>
-<li><a href="#_camel_component_weather">9.115. Camel Component :: Weather</a></li>
-<li><a href="#_camel_component_xmlbeans">9.116. Camel Component :: Xmlbeans</a></li>
-<li><a href="#_camel_component_xmlsecurity">9.117. Camel Component :: Xmlsecurity</a></li>
-<li><a href="#_camel_component_xstream">9.118. Camel Component :: Xstream</a></li>
-<li><a href="#_camel_component_zipfile">9.119. Camel Component :: Zipfile</a></li>
-<li><a href="#_camel_component_zipkin">9.120. Camel Component :: Zipkin</a></li>
-<li><a href="#_camel_component_zookeeper">9.121. Camel Component :: Zookeeper</a></li>
-</ul>
-</li>
-<li><a href="#_cassandra">10. Cassandra</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_3">10.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_cdi">11. CDI</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_4">11.1. Configuration</a></li>
-<li><a href="#_cdi_configuration">11.2. CDI Configuration</a></li>
-<li><a href="#_cdi_jax_rs_api_enhancements">11.3. CDI JAX-RS API Enhancements</a></li>
-</ul>
-</li>
-<li><a href="#_jboss_cli">12. JBoss CLI</a></li>
-<li><a href="#_connector">13. Connector</a></li>
-<li><a href="#_container">14. Container</a></li>
-<li><a href="#_datasources_fraction">15. Datasources Fraction</a>
-<ul class="sectlevel2">
-<li><a href="#_autodetectable_drivers">15.1. Autodetectable drivers</a></li>
-<li><a href="#_configuration_5">15.2. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_drools_server">16. Drools Server</a></li>
-<li><a href="#_ee">17. EE</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_6">17.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_ejb">18. EJB</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_7">18.1. Configuration</a></li>
-<li><a href="#_ejb_remote">18.2. EJB Remote</a></li>
-</ul>
-</li>
-<li><a href="#_fluentd">19. Fluentd</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_8">19.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_flyway">20. Flyway</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_9">20.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_hibernate_search">21. Hibernate Search</a></li>
-<li><a href="#_hibernate_validator">22. Hibernate Validator</a></li>
-<li><a href="#_hystrix">23. Hystrix</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_10">23.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_infinispan">24. Infinispan</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_11">24.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_io">25. IO</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_12">25.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_jaeger">26. Jaeger</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_13">26.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_javafx">27. JavaFX</a></li>
-<li><a href="#_jax_rs">28. JAX-RS</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_14">28.1. Configuration</a></li>
-<li><a href="#_jax_rs_cdi">28.2. JAX-RS + CDI</a></li>
-<li><a href="#_jax_rs_jaxb">28.3. JAX-RS + JAXB</a></li>
-<li><a href="#_jax_rs_json_p">28.4. JAX-RS + JSON-P</a></li>
-<li><a href="#_jax_rs_multipart">28.5. JAX-RS + Multipart</a></li>
-<li><a href="#_jax_rs_validator">28.6. JAX-RS + Validator</a></li>
-</ul>
-</li>
-<li><a href="#_jca">29. JCA</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_15">29.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_jboss_diagnostic_reporting">30. JBoss Diagnostic Reporting</a></li>
-<li><a href="#_jgroups">31. JGroups</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_16">31.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_jmx">32. JMX</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_17">32.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_jolokia">33. Jolokia</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_18">33.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_jpa">34. JPA</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_19">34.1. Configuration</a></li>
-<li><a href="#_jpa_eclipselink">34.2. JPA EclipseLink</a></li>
-<li><a href="#_jpa_spatial_extensions">34.3. JPA Spatial Extensions</a></li>
-</ul>
-</li>
-<li><a href="#_jsf">35. JSF</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_20">35.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_json_p">36. JSON-P</a></li>
-<li><a href="#_keycloak">37. Keycloak</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_21">37.1. Configuration</a></li>
-<li><a href="#_keycloak_server">37.2. Keycloak Server</a>
+<li><a href="#_network">5.2. Network</a>
 <ul class="sectlevel3">
-<li><a href="#_configuration_22">37.2.1. Configuration</a></li>
+<li><a href="#_interfaces">5.2.1. Interfaces</a></li>
+<li><a href="#_sockets">5.2.2. Sockets</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#_logging_2">38. Logging</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_23">38.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_logstash">39. Logstash</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_24">39.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_mail">40. Mail</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_25">40.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_management">41. Management</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_26">41.1. Configuration</a></li>
-<li><a href="#_management_console">41.2. Management Console</a>
+<li><a href="#__code_usage_txt_code">5.3. <code>usage.txt</code></a>
 <ul class="sectlevel3">
-<li><a href="#_configuration_27">41.2.1. Configuration</a></li>
+<li><a href="#_variable_substitution">5.3.1. Variable substitution</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_messaging">42. Messaging</a>
+<li><a href="#_fractions">6. Fractions</a>
 <ul class="sectlevel2">
-<li><a href="#_configuration_28">42.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_microprofile">43. MicroProfile</a></li>
-<li><a href="#_modcluster">44. Modcluster</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_29">44.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_mongodb">45. MongoDB</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_30">45.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_monitor">46. Monitor</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_31">46.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_msc">47. MSC</a></li>
-<li><a href="#_naming">48. Naming</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_32">48.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_neo4j">49. Neo4j</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_33">49.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_guava">50. Guava</a></li>
-<li><a href="#_rx_java">51. RX-Java</a></li>
-<li><a href="#_rx_netty">52. RX-Netty</a></li>
-<li><a href="#_opentracing">53. OpenTracing</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_34">53.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_orientdb">54. OrientDB</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_35">54.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_remoting">55. Remoting</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_36">55.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_request_controller">56. Request Controller</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_37">56.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_resource_adapters">57. Resource Adapters</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_38">57.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_ribbon">58. Ribbon</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_39">58.1. Configuration</a></li>
-<li><a href="#_ribbon_secured">58.2. Ribbon Secured</a>
+<li><a href="#_archaius">6.1. Archaius</a></li>
+<li><a href="#_asciidoctorj">6.2. AsciidoctorJ</a></li>
+<li><a href="#_batch_jberet">6.3. Batch (JBeret)</a></li>
+<li><a href="#_bean_validation">6.4. Bean Validation</a></li>
+<li><a href="#_camel_core">6.5. Camel Core</a>
 <ul class="sectlevel3">
-<li><a href="#_ribbon_secured_client">58.2.1. Ribbon Secured Client</a></li>
+<li><a href="#_camel_component_activemq">6.5.1. Camel Component :: Activemq</a></li>
+<li><a href="#_camel_component_ahc">6.5.2. Camel Component :: Ahc</a></li>
+<li><a href="#_camel_component_amqp">6.5.3. Camel Component :: Amqp</a></li>
+<li><a href="#_camel_component_atom">6.5.4. Camel Component :: Atom</a></li>
+<li><a href="#_camel_component_avro">6.5.5. Camel Component :: Avro</a></li>
+<li><a href="#_camel_component_aws">6.5.6. Camel Component :: Aws</a></li>
+<li><a href="#_camel_component_barcode">6.5.7. Camel Component :: Barcode</a></li>
+<li><a href="#_camel_component_base64">6.5.8. Camel Component :: Base64</a></li>
+<li><a href="#_camel_component_bean_validator">6.5.9. Camel Component :: Bean-validator</a></li>
+<li><a href="#_camel_component_beanio">6.5.10. Camel Component :: Beanio</a></li>
+<li><a href="#_camel_component_bindy">6.5.11. Camel Component :: Bindy</a></li>
+<li><a href="#_camel_component_box">6.5.12. Camel Component :: Box</a></li>
+<li><a href="#_camel_component_braintree">6.5.13. Camel Component :: Braintree</a></li>
+<li><a href="#_camel_component_cassandraql">6.5.14. Camel Component :: Cassandraql</a></li>
+<li><a href="#_camel_component_castor">6.5.15. Camel Component :: Castor</a></li>
+<li><a href="#_camel_component_cdi">6.5.16. Camel Component :: Cdi</a></li>
+<li><a href="#_camel_component_coap">6.5.17. Camel Component :: Coap</a></li>
+<li><a href="#_camel_component_context">6.5.18. Camel Component :: Context</a></li>
+<li><a href="#_camel_component_couchdb">6.5.19. Camel Component :: Couchdb</a></li>
+<li><a href="#_camel_component_crypto">6.5.20. Camel Component :: Crypto</a></li>
+<li><a href="#_camel_component_csv">6.5.21. Camel Component :: Csv</a></li>
+<li><a href="#_camel_component_cxf">6.5.22. Camel Component :: Cxf</a></li>
+<li><a href="#_camel_component_dns">6.5.23. Camel Component :: Dns</a></li>
+<li><a href="#_camel_component_dozer">6.5.24. Camel Component :: Dozer</a></li>
+<li><a href="#_camel_component_dropbox">6.5.25. Camel Component :: Dropbox</a></li>
+<li><a href="#_camel_component_ejb">6.5.26. Camel Component :: Ejb</a></li>
+<li><a href="#_camel_component_elasticsearch">6.5.27. Camel Component :: Elasticsearch</a></li>
+<li><a href="#_camel_component_elsql">6.5.28. Camel Component :: Elsql</a></li>
+<li><a href="#_camel_component_exec">6.5.29. Camel Component :: Exec</a></li>
+<li><a href="#_camel_component_facebook">6.5.30. Camel Component :: Facebook</a></li>
+<li><a href="#_camel_component_flatpack">6.5.31. Camel Component :: Flatpack</a></li>
+<li><a href="#_camel_component_freemarker">6.5.32. Camel Component :: Freemarker</a></li>
+<li><a href="#_camel_component_ftp">6.5.33. Camel Component :: Ftp</a></li>
+<li><a href="#_camel_component_git">6.5.34. Camel Component :: Git</a></li>
+<li><a href="#_camel_component_github">6.5.35. Camel Component :: Github</a></li>
+<li><a href="#_camel_component_groovy">6.5.36. Camel Component :: Groovy</a></li>
+<li><a href="#_camel_component_gson">6.5.37. Camel Component :: Gson</a></li>
+<li><a href="#_camel_component_hl7">6.5.38. Camel Component :: Hl7</a></li>
+<li><a href="#_camel_component_http4">6.5.39. Camel Component :: Http4</a></li>
+<li><a href="#_camel_component_hystrix">6.5.40. Camel Component :: Hystrix</a></li>
+<li><a href="#_camel_component_infinispan">6.5.41. Camel Component :: Infinispan</a></li>
+<li><a href="#_camel_component_influxdb">6.5.42. Camel Component :: Influxdb</a></li>
+<li><a href="#_camel_component_irc">6.5.43. Camel Component :: Irc</a></li>
+<li><a href="#_camel_component_jackson">6.5.44. Camel Component :: Jackson</a></li>
+<li><a href="#_camel_component_jacksonxml">6.5.45. Camel Component :: Jacksonxml</a></li>
+<li><a href="#_camel_component_jasypt">6.5.46. Camel Component :: Jasypt</a></li>
+<li><a href="#_camel_component_jaxb">6.5.47. Camel Component :: Jaxb</a></li>
+<li><a href="#_camel_component_jbpm">6.5.48. Camel Component :: Jbpm</a></li>
+<li><a href="#_camel_component_jcache">6.5.49. Camel Component :: Jcache</a></li>
+<li><a href="#_camel_component_jdbc">6.5.50. Camel Component :: Jdbc</a></li>
+<li><a href="#_camel_component_jgroups">6.5.51. Camel Component :: Jgroups</a></li>
+<li><a href="#_camel_component_jms">6.5.52. Camel Component :: Jms</a></li>
+<li><a href="#_camel_component_jmx">6.5.53. Camel Component :: Jmx</a></li>
+<li><a href="#_camel_component_jpa">6.5.54. Camel Component :: Jpa</a></li>
+<li><a href="#_camel_component_jsch">6.5.55. Camel Component :: Jsch</a></li>
+<li><a href="#_camel_component_jsonpath">6.5.56. Camel Component :: Jsonpath</a></li>
+<li><a href="#_camel_component_kafka">6.5.57. Camel Component :: Kafka</a></li>
+<li><a href="#_camel_component_kubernetes">6.5.58. Camel Component :: Kubernetes</a></li>
+<li><a href="#_camel_component_ldap">6.5.59. Camel Component :: Ldap</a></li>
+<li><a href="#_camel_component_linkedin">6.5.60. Camel Component :: Linkedin</a></li>
+<li><a href="#_camel_component_lucene">6.5.61. Camel Component :: Lucene</a></li>
+<li><a href="#_camel_component_mail">6.5.62. Camel Component :: Mail</a></li>
+<li><a href="#_camel_component_metrics">6.5.63. Camel Component :: Metrics</a></li>
+<li><a href="#_camel_component_mina2">6.5.64. Camel Component :: Mina2</a></li>
+<li><a href="#_camel_component_mllp">6.5.65. Camel Component :: Mllp</a></li>
+<li><a href="#_camel_component_mongodb">6.5.66. Camel Component :: Mongodb</a></li>
+<li><a href="#_camel_component_mqtt">6.5.67. Camel Component :: Mqtt</a></li>
+<li><a href="#_camel_component_mvel">6.5.68. Camel Component :: Mvel</a></li>
+<li><a href="#_camel_component_mybatis">6.5.69. Camel Component :: Mybatis</a></li>
+<li><a href="#_camel_component_nats">6.5.70. Camel Component :: Nats</a></li>
+<li><a href="#_camel_component_netty4">6.5.71. Camel Component :: Netty4</a></li>
+<li><a href="#_camel_component_ognl">6.5.72. Camel Component :: Ognl</a></li>
+<li><a href="#_camel_component_olingo2">6.5.73. Camel Component :: Olingo2</a></li>
+<li><a href="#_camel_component_optaplanner">6.5.74. Camel Component :: Optaplanner</a></li>
+<li><a href="#_camel_component_paho">6.5.75. Camel Component :: Paho</a></li>
+<li><a href="#_camel_component_pdf">6.5.76. Camel Component :: Pdf</a></li>
+<li><a href="#_camel_component_protobuf">6.5.77. Camel Component :: Protobuf</a></li>
+<li><a href="#_camel_component_quartz2">6.5.78. Camel Component :: Quartz2</a></li>
+<li><a href="#_camel_component_rabbitmq">6.5.79. Camel Component :: Rabbitmq</a></li>
+<li><a href="#_camel_component_reactive_streams">6.5.80. Camel Component :: Reactive-streams</a></li>
+<li><a href="#_camel_component_rest_swagger">6.5.81. Camel Component :: Rest-swagger</a></li>
+<li><a href="#_camel_component_rss">6.5.82. Camel Component :: Rss</a></li>
+<li><a href="#_camel_component_salesforce">6.5.83. Camel Component :: Salesforce</a></li>
+<li><a href="#_camel_component_sap_netweaver">6.5.84. Camel Component :: Sap-netweaver</a></li>
+<li><a href="#_camel_component_saxon">6.5.85. Camel Component :: Saxon</a></li>
+<li><a href="#_camel_component_schematron">6.5.86. Camel Component :: Schematron</a></li>
+<li><a href="#_camel_component_script">6.5.87. Camel Component :: Script</a></li>
+<li><a href="#_camel_component_servicenow">6.5.88. Camel Component :: Servicenow</a></li>
+<li><a href="#_camel_component_servlet">6.5.89. Camel Component :: Servlet</a></li>
+<li><a href="#_camel_component_sjms">6.5.90. Camel Component :: Sjms</a></li>
+<li><a href="#_camel_component_sjms2">6.5.91. Camel Component :: Sjms2</a></li>
+<li><a href="#_camel_component_smpp">6.5.92. Camel Component :: Smpp</a></li>
+<li><a href="#_camel_component_snakeyaml">6.5.93. Camel Component :: Snakeyaml</a></li>
+<li><a href="#_camel_component_snmp">6.5.94. Camel Component :: Snmp</a></li>
+<li><a href="#_camel_component_soap">6.5.95. Camel Component :: Soap</a></li>
+<li><a href="#_camel_component_splunk">6.5.96. Camel Component :: Splunk</a></li>
+<li><a href="#_camel_component_spring_batch">6.5.97. Camel Component :: Spring-batch</a></li>
+<li><a href="#_camel_component_spring_integration">6.5.98. Camel Component :: Spring-integration</a></li>
+<li><a href="#_camel_component_spring_ldap">6.5.99. Camel Component :: Spring-ldap</a></li>
+<li><a href="#_camel_component_spring_redis">6.5.100. Camel Component :: Spring-redis</a></li>
+<li><a href="#_camel_component_spring_security">6.5.101. Camel Component :: Spring-security</a></li>
+<li><a href="#_camel_component_sql">6.5.102. Camel Component :: Sql</a></li>
+<li><a href="#_camel_component_ssh">6.5.103. Camel Component :: Ssh</a></li>
+<li><a href="#_camel_component_stax">6.5.104. Camel Component :: Stax</a></li>
+<li><a href="#_camel_component_stream">6.5.105. Camel Component :: Stream</a></li>
+<li><a href="#_camel_component_swagger">6.5.106. Camel Component :: Swagger</a></li>
+<li><a href="#_camel_component_syslog">6.5.107. Camel Component :: Syslog</a></li>
+<li><a href="#_camel_component_tagsoup">6.5.108. Camel Component :: Tagsoup</a></li>
+<li><a href="#_camel_component_tarfile">6.5.109. Camel Component :: Tarfile</a></li>
+<li><a href="#_camel_component_twitter">6.5.110. Camel Component :: Twitter</a></li>
+<li><a href="#_camel_component_undertow">6.5.111. Camel Component :: Undertow</a></li>
+<li><a href="#_camel_component_velocity">6.5.112. Camel Component :: Velocity</a></li>
+<li><a href="#_camel_component_vertx">6.5.113. Camel Component :: Vertx</a></li>
+<li><a href="#_camel_component_weather">6.5.114. Camel Component :: Weather</a></li>
+<li><a href="#_camel_component_xmlbeans">6.5.115. Camel Component :: Xmlbeans</a></li>
+<li><a href="#_camel_component_xmlsecurity">6.5.116. Camel Component :: Xmlsecurity</a></li>
+<li><a href="#_camel_component_xstream">6.5.117. Camel Component :: Xstream</a></li>
+<li><a href="#_camel_component_zipfile">6.5.118. Camel Component :: Zipfile</a></li>
+<li><a href="#_camel_component_zipkin">6.5.119. Camel Component :: Zipkin</a></li>
+<li><a href="#_camel_component_zookeeper">6.5.120. Camel Component :: Zookeeper</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#_deployment_scanner">59. Deployment Scanner</a></li>
-<li><a href="#_security">60. Security</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_40">60.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_servo">61. Servo</a></li>
-<li><a href="#_spring_webmvc">62. Spring WebMVC</a></li>
-<li><a href="#_swagger">63. Swagger</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_41">63.1. Configuration</a></li>
-<li><a href="#_swagger_webapp">63.2. Swagger Webapp</a>
+<li><a href="#_cassandra">6.6. Cassandra</a></li>
+<li><a href="#_cdi">6.7. CDI</a>
 <ul class="sectlevel3">
-<li><a href="#_configuration_42">63.2.1. Configuration</a></li>
+<li><a href="#_cdi_configuration">6.7.1. CDI Configuration</a></li>
+<li><a href="#_cdi_jax_rs_api_enhancements">6.7.2. CDI JAX-RS API Enhancements</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#_teiid">64. Teiid</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_43">64.1. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#_topology">65. Topology</a>
-<ul class="sectlevel2">
-<li><a href="#_hashicorp_consul">65.1. Hashicorp Consul</a>
+<li><a href="#_jboss_cli">6.8. JBoss CLI</a></li>
+<li><a href="#_connector">6.9. Connector</a></li>
+<li><a href="#_container">6.10. Container</a></li>
+<li><a href="#_datasources_fraction">6.11. Datasources Fraction</a>
 <ul class="sectlevel3">
-<li><a href="#_configuration_44">65.1.1. Configuration</a></li>
+<li><a href="#_autodetectable_drivers">6.11.1. Autodetectable drivers</a></li>
 </ul>
 </li>
-<li><a href="#_jgroups_topology">65.2. JGroups Topology</a></li>
-<li><a href="#_openshift">65.3. OpenShift</a></li>
-<li><a href="#_topology_ui">65.4. Topology UI</a>
+<li><a href="#_drools_server">6.12. Drools Server</a></li>
+<li><a href="#_ee">6.13. EE</a></li>
+<li><a href="#_ejb">6.14. EJB</a>
 <ul class="sectlevel3">
-<li><a href="#_configuration_45">65.4.1. Configuration</a></li>
+<li><a href="#_ejb_remote">6.14.1. EJB Remote</a></li>
 </ul>
 </li>
+<li><a href="#_fluentd">6.15. Fluentd</a></li>
+<li><a href="#_flyway">6.16. Flyway</a></li>
+<li><a href="#_hibernate_search">6.17. Hibernate Search</a></li>
+<li><a href="#_hibernate_validator">6.18. Hibernate Validator</a></li>
+<li><a href="#_hystrix">6.19. Hystrix</a></li>
+<li><a href="#_infinispan">6.20. Infinispan</a></li>
+<li><a href="#_io">6.21. IO</a></li>
+<li><a href="#_jaeger">6.22. Jaeger</a></li>
+<li><a href="#_javafx">6.23. JavaFX</a></li>
+<li><a href="#_jax_rs">6.24. JAX-RS</a>
+<ul class="sectlevel3">
+<li><a href="#_jax_rs_cdi">6.24.1. JAX-RS + CDI</a></li>
+<li><a href="#_jax_rs_jaxb">6.24.2. JAX-RS + JAXB</a></li>
+<li><a href="#_jax_rs_json_p">6.24.3. JAX-RS + JSON-P</a></li>
+<li><a href="#_jax_rs_multipart">6.24.4. JAX-RS + Multipart</a></li>
+<li><a href="#_jax_rs_validator">6.24.5. JAX-RS + Validator</a></li>
 </ul>
 </li>
-<li><a href="#_transactions">66. Transactions</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_46">66.1. Configuration</a></li>
+<li><a href="#_jca">6.25. JCA</a></li>
+<li><a href="#_jboss_diagnostic_reporting">6.26. JBoss Diagnostic Reporting</a></li>
+<li><a href="#_jgroups">6.27. JGroups</a></li>
+<li><a href="#_jmx">6.28. JMX</a></li>
+<li><a href="#_jolokia">6.29. Jolokia</a></li>
+<li><a href="#_jpa">6.30. JPA</a>
+<ul class="sectlevel3">
+<li><a href="#_jpa_eclipselink">6.30.1. JPA EclipseLink</a></li>
+<li><a href="#_jpa_spatial_extensions">6.30.2. JPA Spatial Extensions</a></li>
 </ul>
 </li>
-<li><a href="#_undertow">67. Undertow</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_47">67.1. Configuration</a></li>
+<li><a href="#_jsf">6.31. JSF</a></li>
+<li><a href="#_json_p">6.32. JSON-P</a></li>
+<li><a href="#_keycloak">6.33. Keycloak</a>
+<ul class="sectlevel3">
+<li><a href="#_keycloak_server">6.33.1. Keycloak Server</a></li>
 </ul>
 </li>
-<li><a href="#_vert_x">68. Vert.x</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_48">68.1. Configuration</a></li>
+<li><a href="#_logging_2">6.34. Logging</a></li>
+<li><a href="#_logstash">6.35. Logstash</a></li>
+<li><a href="#_mail">6.36. Mail</a></li>
+<li><a href="#_management">6.37. Management</a>
+<ul class="sectlevel3">
+<li><a href="#_management_console">6.37.1. Management Console</a></li>
 </ul>
 </li>
-<li><a href="#_web">69. Web</a></li>
-<li><a href="#_web_services">70. Web Services</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_49">70.1. Configuration</a></li>
+<li><a href="#_messaging">6.38. Messaging</a></li>
+<li><a href="#_microprofile">6.39. MicroProfile</a></li>
+<li><a href="#_modcluster">6.40. Modcluster</a></li>
+<li><a href="#_mongodb">6.41. MongoDB</a></li>
+<li><a href="#_monitor">6.42. Monitor</a></li>
+<li><a href="#_msc">6.43. MSC</a></li>
+<li><a href="#_naming">6.44. Naming</a></li>
+<li><a href="#_neo4j">6.45. Neo4j</a></li>
+<li><a href="#_guava">6.46. Guava</a></li>
+<li><a href="#_rx_java">6.47. RX-Java</a></li>
+<li><a href="#_rx_netty">6.48. RX-Netty</a></li>
+<li><a href="#_opentracing">6.49. OpenTracing</a></li>
+<li><a href="#_orientdb">6.50. OrientDB</a></li>
+<li><a href="#_remoting">6.51. Remoting</a></li>
+<li><a href="#_request_controller">6.52. Request Controller</a></li>
+<li><a href="#_resource_adapters">6.53. Resource Adapters</a></li>
+<li><a href="#_ribbon">6.54. Ribbon</a>
+<ul class="sectlevel3">
+<li><a href="#_ribbon_secured">6.54.1. Ribbon Secured</a></li>
 </ul>
 </li>
-<li><a href="#_zipkin_jaxrs_support">71. Zipkin - JAXRS Support</a>
-<ul class="sectlevel2">
-<li><a href="#_configuration_50">71.1. Configuration</a></li>
+<li><a href="#_deployment_scanner">6.55. Deployment Scanner</a></li>
+<li><a href="#_security">6.56. Security</a></li>
+<li><a href="#_servo">6.57. Servo</a></li>
+<li><a href="#_spring_webmvc">6.58. Spring WebMVC</a></li>
+<li><a href="#_swagger">6.59. Swagger</a>
+<ul class="sectlevel3">
+<li><a href="#_swagger_webapp">6.59.1. Swagger Webapp</a></li>
+</ul>
+</li>
+<li><a href="#_teiid">6.60. Teiid</a></li>
+<li><a href="#_topology">6.61. Topology</a>
+<ul class="sectlevel3">
+<li><a href="#_hashicorp_consul">6.61.1. Hashicorp Consul</a></li>
+<li><a href="#_jgroups_topology">6.61.2. JGroups Topology</a></li>
+<li><a href="#_openshift">6.61.3. OpenShift</a></li>
+<li><a href="#_topology_ui">6.61.4. Topology UI</a></li>
+</ul>
+</li>
+<li><a href="#_transactions">6.62. Transactions</a></li>
+<li><a href="#_undertow">6.63. Undertow</a></li>
+<li><a href="#_vert_x">6.64. Vert.x</a></li>
+<li><a href="#_web">6.65. Web</a></li>
+<li><a href="#_web_services">6.66. Web Services</a></li>
+<li><a href="#_zipkin_jaxrs_support">6.67. Zipkin - JAXRS Support</a></li>
 </ul>
 </li>
 </ul>
@@ -1080,9 +927,9 @@ WildFly Swarm is capable of producing <em>just enough app-server</em> to support
 </div>
 </div>
 </div>
-<h1 id="_concepts" class="sect0">Concepts</h1>
+<h1 id="_concepts" class="sect0"><a class="anchor" href="#_concepts"></a>Concepts</h1>
 <div class="sect1">
-<h2 id="fractions">1. Fractions</h2>
+<h2 id="fractions"><a class="anchor" href="#fractions"></a>1. Fractions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>WildFly Swarm is defined by an unbounded set of capabilities.
@@ -1129,7 +976,7 @@ Address a fraction by adding its Maven coordinates to the <code>pom.xml</code> f
 </div>
 </div>
 <div class="sect1">
-<h2 id="packaging_types">2. Packaging Types (Uberjars &amp; Hollow Jars)</h2>
+<h2 id="packaging_types"><a class="anchor" href="#packaging_types"></a>2. Packaging Types (Uberjars &amp; Hollow Jars)</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When using WildFly Swarm, there are two different ways to package your
@@ -1137,7 +984,7 @@ runtime and application, depending on how you intend to use and deploy
 it.</p>
 </div>
 <div class="sect2">
-<h3 id="uberjar">2.1. Uberjar</h3>
+<h3 id="uberjar"><a class="anchor" href="#uberjar"></a>2.1. Uberjar</h3>
 <div class="paragraph">
 <p>An <em>uberjar</em> is a single Java <code>.jar</code> file that includes everything you need
 to execute your application. This means both the runtime components
@@ -1164,7 +1011,7 @@ application and the <code>-swarm.jar</code> suffix.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="hollow-jar">2.2. Hollow JAR</h3>
+<h3 id="hollow-jar"><a class="anchor" href="#hollow-jar"></a>2.2. Hollow JAR</h3>
 <div class="paragraph">
 <p>A <em>hollow JAR</em> is similar to an uberjar, but includes only
 the runtime components, and does not include your application code.</p>
@@ -1194,12 +1041,12 @@ executing the hollow JAR:</p>
 </div>
 </div>
 </div>
-<h1 id="_howto" class="sect0">HOWTO</h1>
+<h1 id="_howto" class="sect0"><a class="anchor" href="#_howto"></a>HOWTO</h1>
 <div class="sect1">
-<h2 id="_basics">3. Basics</h2>
+<h2 id="_basics"><a class="anchor" href="#_basics"></a>3. Basics</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="using-a-bom">3.1. Using a BOM</h3>
+<h3 id="using-a-bom"><a class="anchor" href="#using-a-bom"></a>3.1. Using a BOM</h3>
 <div class="paragraph">
 <p>To explicitly specify the WildFly Swarm
 fractions your application uses, instead of relying
@@ -1209,7 +1056,7 @@ having to track and update Maven artifact versions
 in several places.</p>
 </div>
 <div class="sect3">
-<h4 id="_different_types_of_boms">3.1.1. Different types of BOMs</h4>
+<h4 id="_different_types_of_boms"><a class="anchor" href="#_different_types_of_boms"></a>3.1.1. Different types of BOMs</h4>
 <div class="paragraph">
 <p>WildFly Swarm is described as <em>just enough app-server,</em>
 which means it comprises of multiple pieces.  Your application
@@ -1404,7 +1251,7 @@ for example <code>undertow</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_caveats">3.1.2. Caveats</h4>
+<h4 id="_caveats"><a class="anchor" href="#_caveats"></a>3.1.2. Caveats</h4>
 <div class="paragraph">
 <p>One shortcoming of importing a Maven BOM import is that it does not
 handle the configuration on the level of <code>&lt;pluginManagement&gt;</code>. When you use the
@@ -1438,7 +1285,7 @@ targeting with the BOM import.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-an-uberjar">3.2. Creating an Uberjar</h3>
+<h3 id="creating-an-uberjar"><a class="anchor" href="#creating-an-uberjar"></a>3.2. Creating an Uberjar</h3>
 <div class="paragraph">
 <p>One method of packaging an application for execution
 with WildFly Swarm is as an <em>uberjar</em>.</p>
@@ -1505,7 +1352,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-a-hollow-jar">3.3. Creating a hollow JAR</h3>
+<h3 id="creating-a-hollow-jar"><a class="anchor" href="#creating-a-hollow-jar"></a>3.3. Creating a hollow JAR</h3>
 <div class="paragraph">
 <p>The <a href="#hollow-jar">hollow JAR</a> is one method of packaging an application for
 execution with WildFly Swarm.</p>
@@ -1584,7 +1431,7 @@ the <code>.war</code> file with your application as the first argument:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-detecting-fractions">3.4. Auto-detecting fractions</h3>
+<h3 id="auto-detecting-fractions"><a class="anchor" href="#auto-detecting-fractions"></a>3.4. Auto-detecting fractions</h3>
 <div class="paragraph">
 <p>Migrating existing legacy applications to benefit from WildFly Swarm is simple when using fraction auto-detection.
 If you enable the WildFly Swarm Maven plugin in your application, WildFly Swarm detects which APIs you use, and includes the appropriate fractions at build time.</p>
@@ -1672,7 +1519,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
 </div>
 </div>
 <div class="sect2">
-<h3 id="using-explicit-fractions">3.5. Using explicit fractions</h3>
+<h3 id="using-explicit-fractions"><a class="anchor" href="#using-explicit-fractions"></a>3.5. Using explicit fractions</h3>
 <div class="paragraph">
 <p>When writing your application from scratch, ensure it compiles correctly and uses the correct version of APIs by explicitly selecting which fractions are packaged with it.</p>
 </div>
@@ -1737,7 +1584,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-a-datasource">3.6. Creating a datasource</h3>
+<h3 id="creating-a-datasource"><a class="anchor" href="#creating-a-datasource"></a>3.6. Creating a datasource</h3>
 <div class="paragraph">
 <p>When working with Java applications, a <em>datasource</em> has
 two components, both equally important:</p>
@@ -1762,12 +1609,12 @@ which provides an efficient way to share and manage a discrete connection or
 a pool of connections to a particular database using the driver.</p>
 </div>
 <div class="sect3">
-<h4 id="_configuring_a_jdbc_driver">3.6.1. Configuring a JDBC Driver</h4>
+<h4 id="_configuring_a_jdbc_driver"><a class="anchor" href="#_configuring_a_jdbc_driver"></a>3.6.1. Configuring a JDBC Driver</h4>
 <div class="paragraph">
 <p>There are two options how to configure JDBC drivers:</p>
 </div>
 <div class="sect4">
-<h5 id="auto-detecting-jdbc-drivers">Auto-detecting JDBC drivers</h5>
+<h5 id="auto-detecting-jdbc-drivers"><a class="anchor" href="#auto-detecting-jdbc-drivers"></a>Auto-detecting JDBC drivers</h5>
 <div class="paragraph">
 <p>WildFly Swarm has the capability to detect, install, and register
 a variety of JDBC drivers based on their inclusion as a dependency
@@ -1850,7 +1697,7 @@ scope) to your application:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="configuring-the-jdbc-driver-manually">Configuring the JDBC driver manually</h5>
+<h5 id="configuring-the-jdbc-driver-manually"><a class="anchor" href="#configuring-the-jdbc-driver-manually"></a>Configuring the JDBC driver manually</h5>
 <div class="ulist">
 <div class="title">Prerequisites</div>
 <ul>
@@ -1889,7 +1736,7 @@ key, which will be used later for connecting it to the datasource.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="configuring-a-datasource">3.6.2. Configuring a datasource</h4>
+<h4 id="configuring-a-datasource"><a class="anchor" href="#configuring-a-datasource"></a>3.6.2. Configuring a datasource</h4>
 <div class="ulist">
 <div class="title">Prerequisites</div>
 <ul>
@@ -1925,7 +1772,7 @@ using the JDBC driver of your choice. The configuration is stored under <code>sw
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_full_project_defaults_yml_file">3.6.3. Example full project-defaults.yml file</h4>
+<h4 id="_example_full_project_defaults_yml_file"><a class="anchor" href="#_example_full_project_defaults_yml_file"></a>3.6.3. Example full project-defaults.yml file</h4>
 <div class="paragraph">
 <p>Below, you can see an example <code>project-defaults</code> file that connect to an H2
 database.</p>
@@ -1950,7 +1797,7 @@ database.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="testing-in-a-container">3.7. Testing in a container</h3>
+<h3 id="testing-in-a-container"><a class="anchor" href="#testing-in-a-container"></a>3.7. Testing in a container</h3>
 <div class="paragraph">
 <p>Using Arquillian, you have the capability of injecting unit tests into a
 running application. This allows you to verify your application is behaving
@@ -2178,12 +2025,12 @@ In many IDEs, execute a test class by right-clicking it and selecting <code>Run<
 </div>
 </div>
 <div class="sect1">
-<h2 id="_advanced">4. Advanced</h2>
+<h2 id="_advanced"><a class="anchor" href="#_advanced"></a>4. Advanced</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_how_to_create_a_fraction">4.1. How to Create a Fraction</h3>
+<h3 id="_how_to_create_a_fraction"><a class="anchor" href="#_how_to_create_a_fraction"></a>4.1. How to Create a Fraction</h3>
 <div class="sect3">
-<h4 id="_introduction">4.1.1. Introduction</h4>
+<h4 id="_introduction"><a class="anchor" href="#_introduction"></a>4.1.1. Introduction</h4>
 <div class="paragraph">
 <p>The composable pieces of WildFly Swarm are called <em>fractions</em>. Each fraction
 starts with a single Maven-addressable artifact which may transitively bring
@@ -2191,7 +2038,7 @@ in others.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_code_pom_xml_code">4.1.2. The <code>pom.xml</code></h4>
+<h4 id="_the_code_pom_xml_code"><a class="anchor" href="#_the_code_pom_xml_code"></a>4.1.2. The <code>pom.xml</code></h4>
 <div class="paragraph">
 <p>It is useful to set at least a pair of properties, specifying the version
 of the WildFly Swarm SPI and fraction-plugin being used:</p>
@@ -2265,13 +2112,13 @@ within the parent <code>pom.xml</code> so that it fires for every sub-module:</p
 </div>
 </div>
 <div class="sect3">
-<h4 id="_what_s_in_a_fraction">4.1.3. What&#8217;s in a Fraction</h4>
+<h4 id="_what_s_in_a_fraction"><a class="anchor" href="#_what_s_in_a_fraction"></a>4.1.3. What&#8217;s in a Fraction</h4>
 <div class="paragraph">
 <p>A "fraction" can include all or none of the following components. Ultimately
 a fraction contributes configuration or capabilities to a runtime system.</p>
 </div>
 <div class="sect4">
-<h5 id="_package_layout">Package Layout</h5>
+<h5 id="_package_layout"><a class="anchor" href="#_package_layout"></a>Package Layout</h5>
 <div class="paragraph">
 <p>For a given fraction, a unique package root is required.  In the usual
 case of the core code, it matches the pattern of <code>org.wildfly.swarm.<em>CAPABILITY</em></code>,
@@ -2295,7 +2142,7 @@ classes that may be added to deployment archives.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_the_code_module_conf_code">The <code>module.conf</code></h5>
+<h5 id="_the_code_module_conf_code"><a class="anchor" href="#_the_code_module_conf_code"></a>The <code>module.conf</code></h5>
 <div class="paragraph">
 <p>Alongside your <code>pom.xm</code> you need at least an empty <code>module.conf</code> file to signal
 the plugin that your build is actually a fraction.</p>
@@ -2317,7 +2164,7 @@ org.wildfly.swarm.undertow</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_the_code_fraction_java_code">The <code>*Fraction.java</code></h5>
+<h5 id="_the_code_fraction_java_code"><a class="anchor" href="#_the_code_fraction_java_code"></a>The <code>*Fraction.java</code></h5>
 <div class="paragraph">
 <p>If the fraction includes configuration capabilities, or otherwise alters
 the runtime system through deployments or adjustments to the server, it
@@ -2362,7 +2209,7 @@ absolute root of the fraction java package, such as <code>org.wildfly.swarm.unde
 </div>
 </div>
 <div class="sect4">
-<h5 id="_runtime_cdi_components">Runtime CDI Components</h5>
+<h5 id="_runtime_cdi_components"><a class="anchor" href="#_runtime_cdi_components"></a>Runtime CDI Components</h5>
 <div class="paragraph">
 <p>Within the <code>runtime</code> sub-package of the fraction, a variety of CDI-enabled
 components may be used.  Within these classes, you can use typical CDI mechanisms
@@ -2382,7 +2229,7 @@ inject their own fraction. They should each be marked as <code>@ApplicationScope
 </div>
 </div>
 <div class="sect5">
-<h6 id="__code_archivepreparer_code"><code>ArchivePreparer</code></h6>
+<h6 id="__code_archivepreparer_code"><a class="anchor" href="#__code_archivepreparer_code"></a><code>ArchivePreparer</code></h6>
 <div class="paragraph">
 <p>If your fraction needs an opportunity to alter or otherwise prepare all deployed
 archives, you may implement the <code>org.wildfly.swarm.spi.api.ArchivePreparer</code> interface.</p>
@@ -2403,7 +2250,7 @@ archives, you may implement the <code>org.wildfly.swarm.spi.api.ArchivePreparer<
 </div>
 </div>
 <div class="sect5">
-<h6 id="__code_archivemetadataprocessor_code"><code>ArchiveMetadataProcessor</code></h6>
+<h6 id="__code_archivemetadataprocessor_code"><a class="anchor" href="#__code_archivemetadataprocessor_code"></a><code>ArchiveMetadataProcessor</code></h6>
 <div class="paragraph">
 <p>If your fraction needs an opportunity to process the Jandex metadata of all deployed
 archives, you may implement the <code>org.wildfly.swarm.spi.api.ArchiveMetadataProcessor</code>
@@ -2425,7 +2272,7 @@ interface.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="__code_customizer_code"><code>Customizer</code></h6>
+<h6 id="__code_customizer_code"><a class="anchor" href="#__code_customizer_code"></a><code>Customizer</code></h6>
 <div class="paragraph">
 <p>Most of the heavy-lifting of configuration may occur within implementations of
 <code>org.wildfly.swarm.spi.api.Customizer</code>.</p>
@@ -2460,7 +2307,7 @@ may be achieved.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="__code_archive_code_producers"><code>Archive</code> producers</h6>
+<h6 id="__code_archive_code_producers"><a class="anchor" href="#__code_archive_code_producers"></a><code>Archive</code> producers</h6>
 <div class="paragraph">
 <p>In some cases, a fraction implicitly produces a deployment archive by its simple
 presence in the dependency graph.  For example, including <code>org.wildfly.swarm:jolokia</code>
@@ -2487,7 +2334,7 @@ to be implemented.</p>
 </div>
 </div>
 <div class="sect5">
-<h6 id="__code_configurable_code_and_code_defaultable_code"><code>@Configurable</code> and <code>Defaultable&lt;&gt;</code></h6>
+<h6 id="__code_configurable_code_and_code_defaultable_code"><a class="anchor" href="#__code_configurable_code_and_code_defaultable_code"></a><code>@Configurable</code> and <code>Defaultable&lt;&gt;</code></h6>
 <div class="paragraph">
 <p>When creating a new <code>Fraction</code> implementation, each of its fields
 will automatically be configurable through the <code>project-*.yml</code>
@@ -2534,7 +2381,7 @@ the relevant CDI components.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_auto_detection">Auto-detection</h5>
+<h5 id="_auto_detection"><a class="anchor" href="#_auto_detection"></a>Auto-detection</h5>
 <div class="paragraph">
 <p>An important point of WildFly Swarm is the capability of the plugin
 to autodetect that a fraction is required.  Currently this is only supported
@@ -2575,7 +2422,7 @@ based on application usage of a given API:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_transitive_dependencies">Transitive dependencies</h5>
+<h5 id="_transitive_dependencies"><a class="anchor" href="#_transitive_dependencies"></a>Transitive dependencies</h5>
 <div class="paragraph">
 <p>If your fraction depends upon the presence of a Servlet container being
 configured, you should add a dependency on the necessary fractions into
@@ -2597,7 +2444,7 @@ fraction will be dragged along implicitly into their application.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_logging">Logging</h5>
+<h5 id="_logging"><a class="anchor" href="#_logging"></a>Logging</h5>
 <div class="paragraph">
 <p>Each fraction should use the <code>jboss-logging</code> framework along with
 the appropriate plugins to enable localization.</p>
@@ -2656,10 +2503,315 @@ the appropriate plugins to enable localization.</p>
 </div>
 </div>
 </div>
-<h1 id="_reference" class="sect0">Reference</h1>
+<h1 id="_reference" class="sect0"><a class="anchor" href="#_reference"></a>Reference</h1>
 <div class="sect1">
-<h2 id="_archaius">5. Archaius</h2>
+<h2 id="_general"><a class="anchor" href="#_general"></a>5. General</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_configuration_of_a_wildfly_swarm_application"><a class="anchor" href="#_configuration_of_a_wildfly_swarm_application"></a>5.1. Configuration of a WildFly Swarm Application</h3>
+<div class="paragraph">
+<p>Every application built with WildFly Swarm has a vast variety of configurable options.
+In all cases, reasonable defaults are already applied, and you only need concern yourself with those particular items you wish to explicitly change from their default values.</p>
+</div>
+<div class="paragraph">
+<p>This <em>Reference</em> serves as a complete index of all configurable items, separated by the fraction which introduces them.
+Only items related to the fractions involved in your application are pertinent to your application.</p>
+</div>
+<div class="sect3">
+<h4 id="_using_properties"><a class="anchor" href="#_using_properties"></a>5.1.1. Using Properties</h4>
+<div class="paragraph">
+<p>Within this document, the configuration items are presented using dotted notation, and are suitable for use as Java property names, provided to your application through explicit setting via the Maven plugin or through the command-line when executing your application.</p>
+</div>
+<div class="paragraph">
+<p>Any property that has <em>KEY</em> listed in its name indicates that a user-supplied key or identifier should be used in that segment of the name.</p>
+</div>
+<div class="paragraph">
+<p>For instance, the configuration item documented as <code>swarm.undertow.servers.KEY.default-host</code> indicates that the configuration applies to a particular named server.
+In actual usage, the property would be something such as <code>swarm.undertow.servers.default.default-host</code>, applying to the server known as <code>default</code>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Properties via Maven Plugin</div>
+<p>If you wish to set explicit configuration values to be baked in as defaults through the Maven plugin, in your <code>pom.xml</code> you would add a <code>&lt;properties&gt;</code> section to the plugin&#8217;s <code>&lt;configuration&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>For instance, the configuration item of <code>swarm.bind.address</code> is set through the plugin.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;build&gt;</span>
+  <span class="tag">&lt;plugins&gt;</span>
+    <span class="tag">&lt;plugin&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;configuration&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+          <span class="tag">&lt;swarm.bind.address&gt;</span>127.0.0.1<span class="tag">&lt;/swarm.bind.address&gt;</span>
+          <span class="tag">&lt;java.net.preferIPv4Stack&gt;</span>true<span class="tag">&lt;/java.net.preferIPv4Stack&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+      <span class="tag">&lt;/configuration&gt;</span>
+    <span class="tag">&lt;/plugin&gt;</span>
+  <span class="tag">&lt;/plugins&gt;</span>
+<span class="tag">&lt;/build&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+We generally recommend not using the Maven plugin to explicitly set properties to control configuration.
+The YAML method, described further below, is the preferred method.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<div class="title">Properties via the Command-Line</div>
+<p>While setting properties via the Maven plugin is not recommended, it is often useful to temporarily change a configuration item for a given launching of your application.
+This may be to customize some environment-specific setting, or to experiment with some configuration items before committing them to YAML.</p>
+</div>
+<div class="paragraph">
+<p>To use a property via the command-line, you simply pass them as you would any other Java process:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="shell">$ java -Dswarm.bind.address=127.0.0.1 -jar myapp-swarm.jar</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_using_yaml"><a class="anchor" href="#_using_yaml"></a>5.1.2. Using YAML</h4>
+<div class="paragraph">
+<p>YAML is the preferred method for long-term configuration of an application.
+Additionally, the YAML strategy provides for grouping together of environment-specific configurations which can be selectively enabled when launching the application.</p>
+</div>
+<div class="paragraph">
+<div class="title">General format</div>
+<p>In the configuration names within this document, a YAML structure can be derrived.</p>
+</div>
+<div class="paragraph">
+<p>For instance, the item described <code>swarm.undertow.servers.KEY.default-host</code> would translate to the following YAML, substituting the identifier of <code>default</code> for the <code>KEY</code> segment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">undertow</span>:
+    <span class="key">servers</span>:
+      <span class="key">default</span>:
+        <span class="key">default-host</span>: <span class="string"><span class="content">&lt;myhost&gt;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Default YAML Files</div>
+<p>If your application&#8217;s original <code>.war</code> contains a file named <code>project-defaults.yml</code>, that file represents the defaults applied overtop the absolute defaults that WildFly Swarm provides to your application.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, if specific configurations are selected, using the <code>-S &lt;name&gt;</code> commandline option, those associated files will be loaded, in order, prior to the <code>project-defaults.yml</code> file.
+The names provided to the <code>-S &lt;name&gt;</code> argument relates to a file named <code>project-&lt;name&gt;.yml</code> within your classpath.</p>
+</div>
+<div class="paragraph">
+<p>If you were to invoke your application with the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="shell">$ java -jar myapp-swarm.jar -Stesting -Scloud</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then the relevant YAML files would be loaded in the following preference order, where the first one containing a given configuration item wins:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>project-testing.yml</code></p>
+</li>
+<li>
+<p><code>project-cloud.yml</code></p>
+</li>
+<li>
+<p><code>project-defaults.yml</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Non-default YAML Files</div>
+<p>In some events, you may wish to reference a YAML file of configuration values that it <em>outside</em> of your application.
+In that case, the <code>-s &lt;path&gt;</code> command-line option may be used.</p>
+</div>
+<div class="paragraph">
+<p>Files loaded by the <code>-s &lt;path&gt;</code> option take precedent over any default YAML file contained within your application.
+Both <code>-s &lt;path&gt;</code> and <code>-S &lt;name&gt;</code> may be freely used concurrently, but be aware that all <code>-s &lt;path&gt;</code> options are considered to have higher precedent over <code>-S &lt;name&gt;</code> options.</p>
+</div>
+<div class="paragraph">
+<p>For instance, if you were to invoke your application with the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="shell">$ java -jar myapp-swarm -s/home/app/openshift.yml -Scloud -Stesting</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then the relevant YAML files would be loaded in the following order:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>/home/app/openshift.yml</code></p>
+</li>
+<li>
+<p><code>project-cloud.yml</code></p>
+</li>
+<li>
+<p><code>project-testing.yml</code></p>
+</li>
+<li>
+<p><code>project-defaults.yml</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The same preference would be applied even if the application was invoked using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="shell">$ java -jar myapp-swarmm -Scloud -Stesting -s/home/app/openshift.yml</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_network"><a class="anchor" href="#_network"></a>5.2. Network</h3>
+<div class="paragraph">
+<p>For network configuration, <strong>interfaces</strong>, <strong>socket-bindings</strong> and <strong>outbound-socket-bindings</strong> may be created or adjusted.
+The networking configuration is under the <code>network</code> key underneath the core <code>swarm</code> key.</p>
+</div>
+<div class="sect3">
+<h4 id="_interfaces"><a class="anchor" href="#_interfaces"></a>5.2.1. Interfaces</h4>
+<div class="paragraph">
+<p>An interface represents a known ethernet interface.
+By default the interface named <code>public</code> is bound to the IP address of <code>0.0.0.0</code> which represents all known interfaces of the underlying machine.
+This includes publicly-routed interfaces and the localhost <code>127.0.0.1</code> interface.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, when the <code>management</code> fraction is included in an application, an interface named <code>management</code> is also provisioned, which is bound to only the localhost <code>127.0.0.1</code> address.</p>
+</div>
+<div class="paragraph">
+<p>To configuration an additional interface, bound to <code>192.168.4.5</code> for instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">network</span>:
+    <span class="key">interfaces</span>:
+      <span class="key">backnet</span>:
+        <span class="key">bind</span>: <span class="string"><span class="content">192.168.4.5</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you wish to change the bind address for the public or management interfaces, special, easier-to-use properties are defined for those two cases:</p>
+</div>
+<div class="paragraph">
+<p>By setting <code>swarm.bind.address</code> or <code>swarm.management.bind.address</code> (or their related YAML values), the underlying address used by each can be changed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sockets"><a class="anchor" href="#_sockets"></a>5.2.2. Sockets</h4>
+<div class="paragraph">
+<p><em>Socket-bindings</em> and <em>outbound-socket-bindings</em> allow for externalized configuration of sockets (and ports) bound to a particular interface.
+Regular socket-bindings are for inbound connections, while outbound-socket-bindings denote connections capable of being made to remote locations.</p>
+</div>
+<div class="sect4">
+<h5 id="_socket_binding_groups"><a class="anchor" href="#_socket_binding_groups"></a>Socket-Binding Groups</h5>
+<div class="paragraph">
+<p>Groups of bindings occur within <em>socket-binding-groups</em>, with the default group being named <code>standard-sockets</code>.
+An entire group&#8217;s sockets can be bound to a given default interface, or all members of the group may be offset by a particular number of ports.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">network</span>:
+    <span class="key">socket-binding-groups</span>:
+      <span class="key">standard-sockets</span>:
+        <span class="key">port-offset</span>: <span class="string"><span class="content">10</span></span>
+        <span class="key">default-interface</span>: <span class="string"><span class="content">public</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Socket- Bindings</div>
+<p>Socket-bindings may be created or adjusted within a <code>socket-binding-group</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">network</span>:
+    <span class="key">socket-binding-groups</span>:
+      <span class="key">standard-sockets</span>:
+        <span class="key">http</span>:
+          <span class="key">port</span>: <span class="string"><span class="content">8081</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Outbound Socket-Bindings</div>
+<p>To create a named outbound socket-binding for connection to remote endpoints, <code>outbound-socket-bindings</code> may be defined within a <code>socket-binding-group</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">network</span>:
+    <span class="key">socket-binding-groups</span>:
+      <span class="key">standard-sockets</span>:
+        <span class="key">outbound-socket-bindings</span>:
+              <span class="key">neo4jtesthost</span>:
+                <span class="key">remote-host</span>: <span class="string"><span class="content">localhost</span></span>
+                <span class="key">remote-port</span>: <span class="string"><span class="content">7687</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__code_usage_txt_code"><a class="anchor" href="#__code_usage_txt_code"></a>5.3. <code>usage.txt</code></h3>
+<div class="paragraph">
+<p>Each WildFly Swarm application may contain a text file at one of the following locations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/usage.txt</code></p>
+</li>
+<li>
+<p><code>/META-INF/usage.txt</code></p>
+</li>
+<li>
+<p><code>/WEB-INF/usage.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If found, once the application has fully started, then the file will be logged with variable substitution from the configuration properties.</p>
+</div>
+<div class="sect3">
+<h4 id="_variable_substitution"><a class="anchor" href="#_variable_substitution"></a>5.3.1. Variable substitution</h4>
+<div class="paragraph">
+<p>Variables within the <code>usage.txt</code> file of the format <code>${swarm.thing}</code> will be replaced with their current value.
+This may be useful for display the currently active port used by the application, for instance by having content such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">The application is now ready on ${swarm.http.port}!</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fractions"><a class="anchor" href="#_fractions"></a>6. Fractions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_archaius"><a class="anchor" href="#_archaius"></a>6.1. Archaius</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2670,10 +2822,8 @@ the appropriate plugins to enable localization.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_asciidoctorj">6. AsciidoctorJ</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_asciidoctorj"><a class="anchor" href="#_asciidoctorj"></a>6.2. AsciidoctorJ</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2684,10 +2834,8 @@ the appropriate plugins to enable localization.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_batch_jberet">7. Batch (JBeret)</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_batch_jberet"><a class="anchor" href="#_batch_jberet"></a>6.3. Batch (JBeret)</h3>
 <div class="paragraph">
 <p>The Batch fraction provides support for scheduled job execution,
 through JSR-352.</p>
@@ -2705,9 +2853,8 @@ through JSR-352.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration">7.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.batch.default-job-repository</dt>
 <dd>
@@ -2793,11 +2940,8 @@ through JSR-352.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_bean_validation">8. Bean Validation</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bean_validation"><a class="anchor" href="#_bean_validation"></a>6.4. Bean Validation</h3>
 <div class="paragraph">
 <p>Provides class-level constraint and validation according to JSR 303.</p>
 </div>
@@ -2811,10 +2955,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_camel_core">9. Camel Core</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_camel_core"><a class="anchor" href="#_camel_core"></a>6.5. Camel Core</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2824,9 +2966,8 @@ through JSR-352.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_2">9.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.camel.contexts</dt>
 <dd>
@@ -2838,9 +2979,8 @@ through JSR-352.</p>
 </dd>
 </dl>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_camel_component_activemq">9.2. Camel Component :: Activemq</h3>
+<div class="sect3">
+<h4 id="_camel_component_activemq"><a class="anchor" href="#_camel_component_activemq"></a>6.5.1. Camel Component :: Activemq</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2851,8 +2991,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_ahc">9.3. Camel Component :: Ahc</h3>
+<div class="sect3">
+<h4 id="_camel_component_ahc"><a class="anchor" href="#_camel_component_ahc"></a>6.5.2. Camel Component :: Ahc</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2862,8 +3002,8 @@ through JSR-352.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_camel_component_ahc_ws">9.3.1. Camel Component :: Ahc-ws</h4>
+<div class="sect4">
+<h5 id="_camel_component_ahc_ws"><a class="anchor" href="#_camel_component_ahc_ws"></a>Camel Component :: Ahc-ws</h5>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2875,8 +3015,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_amqp">9.4. Camel Component :: Amqp</h3>
+<div class="sect3">
+<h4 id="_camel_component_amqp"><a class="anchor" href="#_camel_component_amqp"></a>6.5.3. Camel Component :: Amqp</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2887,8 +3027,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_atom">9.5. Camel Component :: Atom</h3>
+<div class="sect3">
+<h4 id="_camel_component_atom"><a class="anchor" href="#_camel_component_atom"></a>6.5.4. Camel Component :: Atom</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2899,8 +3039,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_avro">9.6. Camel Component :: Avro</h3>
+<div class="sect3">
+<h4 id="_camel_component_avro"><a class="anchor" href="#_camel_component_avro"></a>6.5.5. Camel Component :: Avro</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2911,8 +3051,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_aws">9.7. Camel Component :: Aws</h3>
+<div class="sect3">
+<h4 id="_camel_component_aws"><a class="anchor" href="#_camel_component_aws"></a>6.5.6. Camel Component :: Aws</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2923,8 +3063,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_barcode">9.8. Camel Component :: Barcode</h3>
+<div class="sect3">
+<h4 id="_camel_component_barcode"><a class="anchor" href="#_camel_component_barcode"></a>6.5.7. Camel Component :: Barcode</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2935,8 +3075,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_base64">9.9. Camel Component :: Base64</h3>
+<div class="sect3">
+<h4 id="_camel_component_base64"><a class="anchor" href="#_camel_component_base64"></a>6.5.8. Camel Component :: Base64</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2947,8 +3087,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_bean_validator">9.10. Camel Component :: Bean-validator</h3>
+<div class="sect3">
+<h4 id="_camel_component_bean_validator"><a class="anchor" href="#_camel_component_bean_validator"></a>6.5.9. Camel Component :: Bean-validator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2959,8 +3099,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_beanio">9.11. Camel Component :: Beanio</h3>
+<div class="sect3">
+<h4 id="_camel_component_beanio"><a class="anchor" href="#_camel_component_beanio"></a>6.5.10. Camel Component :: Beanio</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2971,8 +3111,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_bindy">9.12. Camel Component :: Bindy</h3>
+<div class="sect3">
+<h4 id="_camel_component_bindy"><a class="anchor" href="#_camel_component_bindy"></a>6.5.11. Camel Component :: Bindy</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2983,8 +3123,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_box">9.13. Camel Component :: Box</h3>
+<div class="sect3">
+<h4 id="_camel_component_box"><a class="anchor" href="#_camel_component_box"></a>6.5.12. Camel Component :: Box</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -2995,8 +3135,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_braintree">9.14. Camel Component :: Braintree</h3>
+<div class="sect3">
+<h4 id="_camel_component_braintree"><a class="anchor" href="#_camel_component_braintree"></a>6.5.13. Camel Component :: Braintree</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3007,8 +3147,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_cassandraql">9.15. Camel Component :: Cassandraql</h3>
+<div class="sect3">
+<h4 id="_camel_component_cassandraql"><a class="anchor" href="#_camel_component_cassandraql"></a>6.5.14. Camel Component :: Cassandraql</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3019,8 +3159,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_castor">9.16. Camel Component :: Castor</h3>
+<div class="sect3">
+<h4 id="_camel_component_castor"><a class="anchor" href="#_camel_component_castor"></a>6.5.15. Camel Component :: Castor</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3031,8 +3171,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_cdi">9.17. Camel Component :: Cdi</h3>
+<div class="sect3">
+<h4 id="_camel_component_cdi"><a class="anchor" href="#_camel_component_cdi"></a>6.5.16. Camel Component :: Cdi</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3043,8 +3183,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_coap">9.18. Camel Component :: Coap</h3>
+<div class="sect3">
+<h4 id="_camel_component_coap"><a class="anchor" href="#_camel_component_coap"></a>6.5.17. Camel Component :: Coap</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3055,8 +3195,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_context">9.19. Camel Component :: Context</h3>
+<div class="sect3">
+<h4 id="_camel_component_context"><a class="anchor" href="#_camel_component_context"></a>6.5.18. Camel Component :: Context</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3067,8 +3207,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_couchdb">9.20. Camel Component :: Couchdb</h3>
+<div class="sect3">
+<h4 id="_camel_component_couchdb"><a class="anchor" href="#_camel_component_couchdb"></a>6.5.19. Camel Component :: Couchdb</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3079,8 +3219,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_crypto">9.21. Camel Component :: Crypto</h3>
+<div class="sect3">
+<h4 id="_camel_component_crypto"><a class="anchor" href="#_camel_component_crypto"></a>6.5.20. Camel Component :: Crypto</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3091,8 +3231,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_csv">9.22. Camel Component :: Csv</h3>
+<div class="sect3">
+<h4 id="_camel_component_csv"><a class="anchor" href="#_camel_component_csv"></a>6.5.21. Camel Component :: Csv</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3103,8 +3243,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_cxf">9.23. Camel Component :: Cxf</h3>
+<div class="sect3">
+<h4 id="_camel_component_cxf"><a class="anchor" href="#_camel_component_cxf"></a>6.5.22. Camel Component :: Cxf</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3115,8 +3255,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_dns">9.24. Camel Component :: Dns</h3>
+<div class="sect3">
+<h4 id="_camel_component_dns"><a class="anchor" href="#_camel_component_dns"></a>6.5.23. Camel Component :: Dns</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3127,8 +3267,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_dozer">9.25. Camel Component :: Dozer</h3>
+<div class="sect3">
+<h4 id="_camel_component_dozer"><a class="anchor" href="#_camel_component_dozer"></a>6.5.24. Camel Component :: Dozer</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3139,8 +3279,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_dropbox">9.26. Camel Component :: Dropbox</h3>
+<div class="sect3">
+<h4 id="_camel_component_dropbox"><a class="anchor" href="#_camel_component_dropbox"></a>6.5.25. Camel Component :: Dropbox</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3151,8 +3291,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_ejb">9.27. Camel Component :: Ejb</h3>
+<div class="sect3">
+<h4 id="_camel_component_ejb"><a class="anchor" href="#_camel_component_ejb"></a>6.5.26. Camel Component :: Ejb</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3163,8 +3303,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_elasticsearch">9.28. Camel Component :: Elasticsearch</h3>
+<div class="sect3">
+<h4 id="_camel_component_elasticsearch"><a class="anchor" href="#_camel_component_elasticsearch"></a>6.5.27. Camel Component :: Elasticsearch</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3175,8 +3315,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_elsql">9.29. Camel Component :: Elsql</h3>
+<div class="sect3">
+<h4 id="_camel_component_elsql"><a class="anchor" href="#_camel_component_elsql"></a>6.5.28. Camel Component :: Elsql</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3187,8 +3327,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_exec">9.30. Camel Component :: Exec</h3>
+<div class="sect3">
+<h4 id="_camel_component_exec"><a class="anchor" href="#_camel_component_exec"></a>6.5.29. Camel Component :: Exec</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3199,8 +3339,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_facebook">9.31. Camel Component :: Facebook</h3>
+<div class="sect3">
+<h4 id="_camel_component_facebook"><a class="anchor" href="#_camel_component_facebook"></a>6.5.30. Camel Component :: Facebook</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3211,8 +3351,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_flatpack">9.32. Camel Component :: Flatpack</h3>
+<div class="sect3">
+<h4 id="_camel_component_flatpack"><a class="anchor" href="#_camel_component_flatpack"></a>6.5.31. Camel Component :: Flatpack</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3223,8 +3363,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_freemarker">9.33. Camel Component :: Freemarker</h3>
+<div class="sect3">
+<h4 id="_camel_component_freemarker"><a class="anchor" href="#_camel_component_freemarker"></a>6.5.32. Camel Component :: Freemarker</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3235,8 +3375,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_ftp">9.34. Camel Component :: Ftp</h3>
+<div class="sect3">
+<h4 id="_camel_component_ftp"><a class="anchor" href="#_camel_component_ftp"></a>6.5.33. Camel Component :: Ftp</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3247,8 +3387,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_git">9.35. Camel Component :: Git</h3>
+<div class="sect3">
+<h4 id="_camel_component_git"><a class="anchor" href="#_camel_component_git"></a>6.5.34. Camel Component :: Git</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3259,8 +3399,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_github">9.36. Camel Component :: Github</h3>
+<div class="sect3">
+<h4 id="_camel_component_github"><a class="anchor" href="#_camel_component_github"></a>6.5.35. Camel Component :: Github</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3271,8 +3411,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_groovy">9.37. Camel Component :: Groovy</h3>
+<div class="sect3">
+<h4 id="_camel_component_groovy"><a class="anchor" href="#_camel_component_groovy"></a>6.5.36. Camel Component :: Groovy</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3283,8 +3423,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_gson">9.38. Camel Component :: Gson</h3>
+<div class="sect3">
+<h4 id="_camel_component_gson"><a class="anchor" href="#_camel_component_gson"></a>6.5.37. Camel Component :: Gson</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3295,8 +3435,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_hl7">9.39. Camel Component :: Hl7</h3>
+<div class="sect3">
+<h4 id="_camel_component_hl7"><a class="anchor" href="#_camel_component_hl7"></a>6.5.38. Camel Component :: Hl7</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3307,8 +3447,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_http4">9.40. Camel Component :: Http4</h3>
+<div class="sect3">
+<h4 id="_camel_component_http4"><a class="anchor" href="#_camel_component_http4"></a>6.5.39. Camel Component :: Http4</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3319,8 +3459,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_hystrix">9.41. Camel Component :: Hystrix</h3>
+<div class="sect3">
+<h4 id="_camel_component_hystrix"><a class="anchor" href="#_camel_component_hystrix"></a>6.5.40. Camel Component :: Hystrix</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3331,8 +3471,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_infinispan">9.42. Camel Component :: Infinispan</h3>
+<div class="sect3">
+<h4 id="_camel_component_infinispan"><a class="anchor" href="#_camel_component_infinispan"></a>6.5.41. Camel Component :: Infinispan</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3343,8 +3483,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_influxdb">9.43. Camel Component :: Influxdb</h3>
+<div class="sect3">
+<h4 id="_camel_component_influxdb"><a class="anchor" href="#_camel_component_influxdb"></a>6.5.42. Camel Component :: Influxdb</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3355,8 +3495,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_irc">9.44. Camel Component :: Irc</h3>
+<div class="sect3">
+<h4 id="_camel_component_irc"><a class="anchor" href="#_camel_component_irc"></a>6.5.43. Camel Component :: Irc</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3367,8 +3507,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jackson">9.45. Camel Component :: Jackson</h3>
+<div class="sect3">
+<h4 id="_camel_component_jackson"><a class="anchor" href="#_camel_component_jackson"></a>6.5.44. Camel Component :: Jackson</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3379,8 +3519,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jacksonxml">9.46. Camel Component :: Jacksonxml</h3>
+<div class="sect3">
+<h4 id="_camel_component_jacksonxml"><a class="anchor" href="#_camel_component_jacksonxml"></a>6.5.45. Camel Component :: Jacksonxml</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3391,8 +3531,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jasypt">9.47. Camel Component :: Jasypt</h3>
+<div class="sect3">
+<h4 id="_camel_component_jasypt"><a class="anchor" href="#_camel_component_jasypt"></a>6.5.46. Camel Component :: Jasypt</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3403,8 +3543,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jaxb">9.48. Camel Component :: Jaxb</h3>
+<div class="sect3">
+<h4 id="_camel_component_jaxb"><a class="anchor" href="#_camel_component_jaxb"></a>6.5.47. Camel Component :: Jaxb</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3415,8 +3555,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jbpm">9.49. Camel Component :: Jbpm</h3>
+<div class="sect3">
+<h4 id="_camel_component_jbpm"><a class="anchor" href="#_camel_component_jbpm"></a>6.5.48. Camel Component :: Jbpm</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3427,8 +3567,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jcache">9.50. Camel Component :: Jcache</h3>
+<div class="sect3">
+<h4 id="_camel_component_jcache"><a class="anchor" href="#_camel_component_jcache"></a>6.5.49. Camel Component :: Jcache</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3439,8 +3579,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jdbc">9.51. Camel Component :: Jdbc</h3>
+<div class="sect3">
+<h4 id="_camel_component_jdbc"><a class="anchor" href="#_camel_component_jdbc"></a>6.5.50. Camel Component :: Jdbc</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3451,8 +3591,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jgroups">9.52. Camel Component :: Jgroups</h3>
+<div class="sect3">
+<h4 id="_camel_component_jgroups"><a class="anchor" href="#_camel_component_jgroups"></a>6.5.51. Camel Component :: Jgroups</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3463,8 +3603,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jms">9.53. Camel Component :: Jms</h3>
+<div class="sect3">
+<h4 id="_camel_component_jms"><a class="anchor" href="#_camel_component_jms"></a>6.5.52. Camel Component :: Jms</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3475,8 +3615,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jmx">9.54. Camel Component :: Jmx</h3>
+<div class="sect3">
+<h4 id="_camel_component_jmx"><a class="anchor" href="#_camel_component_jmx"></a>6.5.53. Camel Component :: Jmx</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3487,8 +3627,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jpa">9.55. Camel Component :: Jpa</h3>
+<div class="sect3">
+<h4 id="_camel_component_jpa"><a class="anchor" href="#_camel_component_jpa"></a>6.5.54. Camel Component :: Jpa</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3499,8 +3639,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jsch">9.56. Camel Component :: Jsch</h3>
+<div class="sect3">
+<h4 id="_camel_component_jsch"><a class="anchor" href="#_camel_component_jsch"></a>6.5.55. Camel Component :: Jsch</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3511,8 +3651,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_jsonpath">9.57. Camel Component :: Jsonpath</h3>
+<div class="sect3">
+<h4 id="_camel_component_jsonpath"><a class="anchor" href="#_camel_component_jsonpath"></a>6.5.56. Camel Component :: Jsonpath</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3523,8 +3663,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_kafka">9.58. Camel Component :: Kafka</h3>
+<div class="sect3">
+<h4 id="_camel_component_kafka"><a class="anchor" href="#_camel_component_kafka"></a>6.5.57. Camel Component :: Kafka</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3535,8 +3675,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_kubernetes">9.59. Camel Component :: Kubernetes</h3>
+<div class="sect3">
+<h4 id="_camel_component_kubernetes"><a class="anchor" href="#_camel_component_kubernetes"></a>6.5.58. Camel Component :: Kubernetes</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3547,8 +3687,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_ldap">9.60. Camel Component :: Ldap</h3>
+<div class="sect3">
+<h4 id="_camel_component_ldap"><a class="anchor" href="#_camel_component_ldap"></a>6.5.59. Camel Component :: Ldap</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3559,8 +3699,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_linkedin">9.61. Camel Component :: Linkedin</h3>
+<div class="sect3">
+<h4 id="_camel_component_linkedin"><a class="anchor" href="#_camel_component_linkedin"></a>6.5.60. Camel Component :: Linkedin</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3571,8 +3711,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_lucene">9.62. Camel Component :: Lucene</h3>
+<div class="sect3">
+<h4 id="_camel_component_lucene"><a class="anchor" href="#_camel_component_lucene"></a>6.5.61. Camel Component :: Lucene</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3583,8 +3723,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_mail">9.63. Camel Component :: Mail</h3>
+<div class="sect3">
+<h4 id="_camel_component_mail"><a class="anchor" href="#_camel_component_mail"></a>6.5.62. Camel Component :: Mail</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3595,8 +3735,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_metrics">9.64. Camel Component :: Metrics</h3>
+<div class="sect3">
+<h4 id="_camel_component_metrics"><a class="anchor" href="#_camel_component_metrics"></a>6.5.63. Camel Component :: Metrics</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3607,8 +3747,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_mina2">9.65. Camel Component :: Mina2</h3>
+<div class="sect3">
+<h4 id="_camel_component_mina2"><a class="anchor" href="#_camel_component_mina2"></a>6.5.64. Camel Component :: Mina2</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3619,8 +3759,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_mllp">9.66. Camel Component :: Mllp</h3>
+<div class="sect3">
+<h4 id="_camel_component_mllp"><a class="anchor" href="#_camel_component_mllp"></a>6.5.65. Camel Component :: Mllp</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3631,8 +3771,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_mongodb">9.67. Camel Component :: Mongodb</h3>
+<div class="sect3">
+<h4 id="_camel_component_mongodb"><a class="anchor" href="#_camel_component_mongodb"></a>6.5.66. Camel Component :: Mongodb</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3643,8 +3783,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_mqtt">9.68. Camel Component :: Mqtt</h3>
+<div class="sect3">
+<h4 id="_camel_component_mqtt"><a class="anchor" href="#_camel_component_mqtt"></a>6.5.67. Camel Component :: Mqtt</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3655,8 +3795,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_mvel">9.69. Camel Component :: Mvel</h3>
+<div class="sect3">
+<h4 id="_camel_component_mvel"><a class="anchor" href="#_camel_component_mvel"></a>6.5.68. Camel Component :: Mvel</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3667,8 +3807,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_mybatis">9.70. Camel Component :: Mybatis</h3>
+<div class="sect3">
+<h4 id="_camel_component_mybatis"><a class="anchor" href="#_camel_component_mybatis"></a>6.5.69. Camel Component :: Mybatis</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3679,8 +3819,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_nats">9.71. Camel Component :: Nats</h3>
+<div class="sect3">
+<h4 id="_camel_component_nats"><a class="anchor" href="#_camel_component_nats"></a>6.5.70. Camel Component :: Nats</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3691,8 +3831,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_netty4">9.72. Camel Component :: Netty4</h3>
+<div class="sect3">
+<h4 id="_camel_component_netty4"><a class="anchor" href="#_camel_component_netty4"></a>6.5.71. Camel Component :: Netty4</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3703,8 +3843,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_ognl">9.73. Camel Component :: Ognl</h3>
+<div class="sect3">
+<h4 id="_camel_component_ognl"><a class="anchor" href="#_camel_component_ognl"></a>6.5.72. Camel Component :: Ognl</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3715,8 +3855,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_olingo2">9.74. Camel Component :: Olingo2</h3>
+<div class="sect3">
+<h4 id="_camel_component_olingo2"><a class="anchor" href="#_camel_component_olingo2"></a>6.5.73. Camel Component :: Olingo2</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3727,8 +3867,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_optaplanner">9.75. Camel Component :: Optaplanner</h3>
+<div class="sect3">
+<h4 id="_camel_component_optaplanner"><a class="anchor" href="#_camel_component_optaplanner"></a>6.5.74. Camel Component :: Optaplanner</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3739,8 +3879,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_paho">9.76. Camel Component :: Paho</h3>
+<div class="sect3">
+<h4 id="_camel_component_paho"><a class="anchor" href="#_camel_component_paho"></a>6.5.75. Camel Component :: Paho</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3751,8 +3891,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_pdf">9.77. Camel Component :: Pdf</h3>
+<div class="sect3">
+<h4 id="_camel_component_pdf"><a class="anchor" href="#_camel_component_pdf"></a>6.5.76. Camel Component :: Pdf</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3763,8 +3903,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_protobuf">9.78. Camel Component :: Protobuf</h3>
+<div class="sect3">
+<h4 id="_camel_component_protobuf"><a class="anchor" href="#_camel_component_protobuf"></a>6.5.77. Camel Component :: Protobuf</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3775,8 +3915,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_quartz2">9.79. Camel Component :: Quartz2</h3>
+<div class="sect3">
+<h4 id="_camel_component_quartz2"><a class="anchor" href="#_camel_component_quartz2"></a>6.5.78. Camel Component :: Quartz2</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3787,8 +3927,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_rabbitmq">9.80. Camel Component :: Rabbitmq</h3>
+<div class="sect3">
+<h4 id="_camel_component_rabbitmq"><a class="anchor" href="#_camel_component_rabbitmq"></a>6.5.79. Camel Component :: Rabbitmq</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3799,8 +3939,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_reactive_streams">9.81. Camel Component :: Reactive-streams</h3>
+<div class="sect3">
+<h4 id="_camel_component_reactive_streams"><a class="anchor" href="#_camel_component_reactive_streams"></a>6.5.80. Camel Component :: Reactive-streams</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3811,8 +3951,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_rest_swagger">9.82. Camel Component :: Rest-swagger</h3>
+<div class="sect3">
+<h4 id="_camel_component_rest_swagger"><a class="anchor" href="#_camel_component_rest_swagger"></a>6.5.81. Camel Component :: Rest-swagger</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3823,8 +3963,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_rss">9.83. Camel Component :: Rss</h3>
+<div class="sect3">
+<h4 id="_camel_component_rss"><a class="anchor" href="#_camel_component_rss"></a>6.5.82. Camel Component :: Rss</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3835,8 +3975,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_salesforce">9.84. Camel Component :: Salesforce</h3>
+<div class="sect3">
+<h4 id="_camel_component_salesforce"><a class="anchor" href="#_camel_component_salesforce"></a>6.5.83. Camel Component :: Salesforce</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3847,8 +3987,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_sap_netweaver">9.85. Camel Component :: Sap-netweaver</h3>
+<div class="sect3">
+<h4 id="_camel_component_sap_netweaver"><a class="anchor" href="#_camel_component_sap_netweaver"></a>6.5.84. Camel Component :: Sap-netweaver</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3859,8 +3999,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_saxon">9.86. Camel Component :: Saxon</h3>
+<div class="sect3">
+<h4 id="_camel_component_saxon"><a class="anchor" href="#_camel_component_saxon"></a>6.5.85. Camel Component :: Saxon</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3871,8 +4011,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_schematron">9.87. Camel Component :: Schematron</h3>
+<div class="sect3">
+<h4 id="_camel_component_schematron"><a class="anchor" href="#_camel_component_schematron"></a>6.5.86. Camel Component :: Schematron</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3883,8 +4023,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_script">9.88. Camel Component :: Script</h3>
+<div class="sect3">
+<h4 id="_camel_component_script"><a class="anchor" href="#_camel_component_script"></a>6.5.87. Camel Component :: Script</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3895,8 +4035,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_servicenow">9.89. Camel Component :: Servicenow</h3>
+<div class="sect3">
+<h4 id="_camel_component_servicenow"><a class="anchor" href="#_camel_component_servicenow"></a>6.5.88. Camel Component :: Servicenow</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3907,8 +4047,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_servlet">9.90. Camel Component :: Servlet</h3>
+<div class="sect3">
+<h4 id="_camel_component_servlet"><a class="anchor" href="#_camel_component_servlet"></a>6.5.89. Camel Component :: Servlet</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3919,8 +4059,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_sjms">9.91. Camel Component :: Sjms</h3>
+<div class="sect3">
+<h4 id="_camel_component_sjms"><a class="anchor" href="#_camel_component_sjms"></a>6.5.90. Camel Component :: Sjms</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3931,8 +4071,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_sjms2">9.92. Camel Component :: Sjms2</h3>
+<div class="sect3">
+<h4 id="_camel_component_sjms2"><a class="anchor" href="#_camel_component_sjms2"></a>6.5.91. Camel Component :: Sjms2</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3943,8 +4083,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_smpp">9.93. Camel Component :: Smpp</h3>
+<div class="sect3">
+<h4 id="_camel_component_smpp"><a class="anchor" href="#_camel_component_smpp"></a>6.5.92. Camel Component :: Smpp</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3955,8 +4095,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_snakeyaml">9.94. Camel Component :: Snakeyaml</h3>
+<div class="sect3">
+<h4 id="_camel_component_snakeyaml"><a class="anchor" href="#_camel_component_snakeyaml"></a>6.5.93. Camel Component :: Snakeyaml</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3967,8 +4107,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_snmp">9.95. Camel Component :: Snmp</h3>
+<div class="sect3">
+<h4 id="_camel_component_snmp"><a class="anchor" href="#_camel_component_snmp"></a>6.5.94. Camel Component :: Snmp</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3979,8 +4119,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_soap">9.96. Camel Component :: Soap</h3>
+<div class="sect3">
+<h4 id="_camel_component_soap"><a class="anchor" href="#_camel_component_soap"></a>6.5.95. Camel Component :: Soap</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -3991,8 +4131,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_splunk">9.97. Camel Component :: Splunk</h3>
+<div class="sect3">
+<h4 id="_camel_component_splunk"><a class="anchor" href="#_camel_component_splunk"></a>6.5.96. Camel Component :: Splunk</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4003,8 +4143,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_spring_batch">9.98. Camel Component :: Spring-batch</h3>
+<div class="sect3">
+<h4 id="_camel_component_spring_batch"><a class="anchor" href="#_camel_component_spring_batch"></a>6.5.97. Camel Component :: Spring-batch</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4015,8 +4155,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_spring_integration">9.99. Camel Component :: Spring-integration</h3>
+<div class="sect3">
+<h4 id="_camel_component_spring_integration"><a class="anchor" href="#_camel_component_spring_integration"></a>6.5.98. Camel Component :: Spring-integration</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4027,8 +4167,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_spring_ldap">9.100. Camel Component :: Spring-ldap</h3>
+<div class="sect3">
+<h4 id="_camel_component_spring_ldap"><a class="anchor" href="#_camel_component_spring_ldap"></a>6.5.99. Camel Component :: Spring-ldap</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4039,8 +4179,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_spring_redis">9.101. Camel Component :: Spring-redis</h3>
+<div class="sect3">
+<h4 id="_camel_component_spring_redis"><a class="anchor" href="#_camel_component_spring_redis"></a>6.5.100. Camel Component :: Spring-redis</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4051,8 +4191,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_spring_security">9.102. Camel Component :: Spring-security</h3>
+<div class="sect3">
+<h4 id="_camel_component_spring_security"><a class="anchor" href="#_camel_component_spring_security"></a>6.5.101. Camel Component :: Spring-security</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4063,8 +4203,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_sql">9.103. Camel Component :: Sql</h3>
+<div class="sect3">
+<h4 id="_camel_component_sql"><a class="anchor" href="#_camel_component_sql"></a>6.5.102. Camel Component :: Sql</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4075,8 +4215,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_ssh">9.104. Camel Component :: Ssh</h3>
+<div class="sect3">
+<h4 id="_camel_component_ssh"><a class="anchor" href="#_camel_component_ssh"></a>6.5.103. Camel Component :: Ssh</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4087,8 +4227,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_stax">9.105. Camel Component :: Stax</h3>
+<div class="sect3">
+<h4 id="_camel_component_stax"><a class="anchor" href="#_camel_component_stax"></a>6.5.104. Camel Component :: Stax</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4099,8 +4239,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_stream">9.106. Camel Component :: Stream</h3>
+<div class="sect3">
+<h4 id="_camel_component_stream"><a class="anchor" href="#_camel_component_stream"></a>6.5.105. Camel Component :: Stream</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4111,8 +4251,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_swagger">9.107. Camel Component :: Swagger</h3>
+<div class="sect3">
+<h4 id="_camel_component_swagger"><a class="anchor" href="#_camel_component_swagger"></a>6.5.106. Camel Component :: Swagger</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4123,8 +4263,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_syslog">9.108. Camel Component :: Syslog</h3>
+<div class="sect3">
+<h4 id="_camel_component_syslog"><a class="anchor" href="#_camel_component_syslog"></a>6.5.107. Camel Component :: Syslog</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4135,8 +4275,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_tagsoup">9.109. Camel Component :: Tagsoup</h3>
+<div class="sect3">
+<h4 id="_camel_component_tagsoup"><a class="anchor" href="#_camel_component_tagsoup"></a>6.5.108. Camel Component :: Tagsoup</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4147,8 +4287,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_tarfile">9.110. Camel Component :: Tarfile</h3>
+<div class="sect3">
+<h4 id="_camel_component_tarfile"><a class="anchor" href="#_camel_component_tarfile"></a>6.5.109. Camel Component :: Tarfile</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4159,8 +4299,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_twitter">9.111. Camel Component :: Twitter</h3>
+<div class="sect3">
+<h4 id="_camel_component_twitter"><a class="anchor" href="#_camel_component_twitter"></a>6.5.110. Camel Component :: Twitter</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4171,8 +4311,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_undertow">9.112. Camel Component :: Undertow</h3>
+<div class="sect3">
+<h4 id="_camel_component_undertow"><a class="anchor" href="#_camel_component_undertow"></a>6.5.111. Camel Component :: Undertow</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4183,8 +4323,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_velocity">9.113. Camel Component :: Velocity</h3>
+<div class="sect3">
+<h4 id="_camel_component_velocity"><a class="anchor" href="#_camel_component_velocity"></a>6.5.112. Camel Component :: Velocity</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4195,8 +4335,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_vertx">9.114. Camel Component :: Vertx</h3>
+<div class="sect3">
+<h4 id="_camel_component_vertx"><a class="anchor" href="#_camel_component_vertx"></a>6.5.113. Camel Component :: Vertx</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4207,8 +4347,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_weather">9.115. Camel Component :: Weather</h3>
+<div class="sect3">
+<h4 id="_camel_component_weather"><a class="anchor" href="#_camel_component_weather"></a>6.5.114. Camel Component :: Weather</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4219,8 +4359,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_xmlbeans">9.116. Camel Component :: Xmlbeans</h3>
+<div class="sect3">
+<h4 id="_camel_component_xmlbeans"><a class="anchor" href="#_camel_component_xmlbeans"></a>6.5.115. Camel Component :: Xmlbeans</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4231,8 +4371,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_xmlsecurity">9.117. Camel Component :: Xmlsecurity</h3>
+<div class="sect3">
+<h4 id="_camel_component_xmlsecurity"><a class="anchor" href="#_camel_component_xmlsecurity"></a>6.5.116. Camel Component :: Xmlsecurity</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4243,8 +4383,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_xstream">9.118. Camel Component :: Xstream</h3>
+<div class="sect3">
+<h4 id="_camel_component_xstream"><a class="anchor" href="#_camel_component_xstream"></a>6.5.117. Camel Component :: Xstream</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4255,8 +4395,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_zipfile">9.119. Camel Component :: Zipfile</h3>
+<div class="sect3">
+<h4 id="_camel_component_zipfile"><a class="anchor" href="#_camel_component_zipfile"></a>6.5.118. Camel Component :: Zipfile</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4267,8 +4407,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_zipkin">9.120. Camel Component :: Zipkin</h3>
+<div class="sect3">
+<h4 id="_camel_component_zipkin"><a class="anchor" href="#_camel_component_zipkin"></a>6.5.119. Camel Component :: Zipkin</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4279,8 +4419,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_camel_component_zookeeper">9.121. Camel Component :: Zookeeper</h3>
+<div class="sect3">
+<h4 id="_camel_component_zookeeper"><a class="anchor" href="#_camel_component_zookeeper"></a>6.5.120. Camel Component :: Zookeeper</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4292,10 +4432,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_cassandra">10. Cassandra</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_cassandra"><a class="anchor" href="#_cassandra"></a>6.6. Cassandra</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4305,9 +4443,8 @@ through JSR-352.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_3">10.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.cassandra.cassandras.<em>KEY</em>.database</dt>
 <dd>
@@ -4340,11 +4477,8 @@ through JSR-352.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cdi">11. CDI</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_cdi"><a class="anchor" href="#_cdi"></a>6.7. CDI</h3>
 <div class="paragraph">
 <p>Provides context and dependency-injection support according to JSR-299.</p>
 </div>
@@ -4357,9 +4491,8 @@ through JSR-352.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_4">11.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.cdi.development-mode</dt>
 <dd>
@@ -4375,9 +4508,8 @@ through JSR-352.</p>
 </dd>
 </dl>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_cdi_configuration">11.2. CDI Configuration</h3>
+<div class="sect3">
+<h4 id="_cdi_configuration"><a class="anchor" href="#_cdi_configuration"></a>6.7.1. CDI Configuration</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4388,8 +4520,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_cdi_jax_rs_api_enhancements">11.3. CDI JAX-RS API Enhancements</h3>
+<div class="sect3">
+<h4 id="_cdi_jax_rs_api_enhancements"><a class="anchor" href="#_cdi_jax_rs_api_enhancements"></a>6.7.2. CDI JAX-RS API Enhancements</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4401,10 +4533,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_jboss_cli">12. JBoss CLI</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_jboss_cli"><a class="anchor" href="#_jboss_cli"></a>6.8. JBoss CLI</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4415,10 +4545,8 @@ through JSR-352.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_connector">13. Connector</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_connector"><a class="anchor" href="#_connector"></a>6.9. Connector</h3>
 <div class="paragraph">
 <p>Primarily an internal fraction used to provide support for
 higher-level fractions such as JCA (JSR-322).</p>
@@ -4437,10 +4565,8 @@ documentation.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_container">14. Container</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_container"><a class="anchor" href="#_container"></a>6.10. Container</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -4451,15 +4577,13 @@ documentation.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_datasources_fraction">15. Datasources Fraction</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_datasources_fraction"><a class="anchor" href="#_datasources_fraction"></a>6.11. Datasources Fraction</h3>
 <div class="paragraph">
 <p>Provides support for container-managed database connections.</p>
 </div>
-<div class="sect2">
-<h3 id="_autodetectable_drivers">15.1. Autodetectable drivers</h3>
+<div class="sect3">
+<h4 id="_autodetectable_drivers"><a class="anchor" href="#_autodetectable_drivers"></a>6.11.1. Autodetectable drivers</h4>
 <div class="paragraph">
 <p>If your application includes the appropriate vendor JDBC
 library in its normal dependencies, these drivers will be detected
@@ -4544,10 +4668,8 @@ may be used when defining a datasource is as follows:</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_configuration_5">15.2. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.datasources.data-sources.<em>KEY</em>.allocation-retry</dt>
 <dd>
@@ -5133,10 +5255,8 @@ may be used when defining a datasource is as follows:</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_drools_server">16. Drools Server</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_drools_server"><a class="anchor" href="#_drools_server"></a>6.12. Drools Server</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -5147,10 +5267,8 @@ may be used when defining a datasource is as follows:</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_ee">17. EE</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_ee"><a class="anchor" href="#_ee"></a>6.13. EE</h3>
 <div class="paragraph">
 <p>An internal fraction used to support other higher-level fractions.</p>
 </div>
@@ -5170,9 +5288,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_6">17.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.ee.annotation-property-replacement</dt>
 <dd>
@@ -5313,11 +5430,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_ejb">18. EJB</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_ejb"><a class="anchor" href="#_ejb"></a>6.14. EJB</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -5327,9 +5441,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_7">18.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.ejb.async-service.thread-pool-name</dt>
 <dd>
@@ -5597,9 +5710,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </dd>
 </dl>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_ejb_remote">18.2. EJB Remote</h3>
+<div class="sect3">
+<h4 id="_ejb_remote"><a class="anchor" href="#_ejb_remote"></a>6.14.1. EJB Remote</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -5611,10 +5723,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_fluentd">19. Fluentd</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_fluentd"><a class="anchor" href="#_fluentd"></a>6.15. Fluentd</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -5624,9 +5734,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_8">19.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.fluentd.hostname</dt>
 <dd>
@@ -5647,11 +5756,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_flyway">20. Flyway</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_flyway"><a class="anchor" href="#_flyway"></a>6.16. Flyway</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -5661,9 +5767,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_9">20.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.flyway.jdbc-password</dt>
 <dd>
@@ -5680,11 +5785,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_hibernate_search">21. Hibernate Search</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_hibernate_search"><a class="anchor" href="#_hibernate_search"></a>6.17. Hibernate Search</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -5695,10 +5797,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_hibernate_validator">22. Hibernate Validator</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_hibernate_validator"><a class="anchor" href="#_hibernate_validator"></a>6.18. Hibernate Validator</h3>
 <div class="paragraph">
 <p>Provides support and integration for applications using Hibernate Validator.</p>
 </div>
@@ -5712,10 +5812,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_hystrix">23. Hystrix</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_hystrix"><a class="anchor" href="#_hystrix"></a>6.19. Hystrix</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -5725,9 +5823,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_10">23.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.hystrix.collapser.default.maxRequestsInBatch</dt>
 <dd>
@@ -5868,11 +5965,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_infinispan">24. Infinispan</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_infinispan"><a class="anchor" href="#_infinispan"></a>6.20. Infinispan</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -5882,9 +5976,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_11">24.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.infinispan.cache-containers.<em>KEY</em>.aliases</dt>
 <dd>
@@ -8585,11 +8678,8 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_io">25. IO</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_io"><a class="anchor" href="#_io"></a>6.21. IO</h3>
 <div class="paragraph">
 <p>Primarily an internal fraction supporting I/O activities
 for higher-level fractions.</p>
@@ -8603,9 +8693,8 @@ for higher-level fractions.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_12">25.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.io.buffer-pools.<em>KEY</em>.buffer-size</dt>
 <dd>
@@ -8638,11 +8727,8 @@ for higher-level fractions.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jaeger">26. Jaeger</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_jaeger"><a class="anchor" href="#_jaeger"></a>6.22. Jaeger</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -8652,9 +8738,8 @@ for higher-level fractions.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_13">26.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.jaeger.agent-host</dt>
 <dd>
@@ -8695,11 +8780,8 @@ for higher-level fractions.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_javafx">27. JavaFX</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_javafx"><a class="anchor" href="#_javafx"></a>6.23. JavaFX</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -8710,10 +8792,8 @@ for higher-level fractions.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_jax_rs">28. JAX-RS</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_jax_rs"><a class="anchor" href="#_jax_rs"></a>6.24. JAX-RS</h3>
 <div class="paragraph">
 <p>Provides support for building RESTful web services according to JSR-311.</p>
 </div>
@@ -8726,9 +8806,8 @@ for higher-level fractions.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_14">28.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.deployment.<em>KEY</em>.jaxrs.application-path</dt>
 <dd>
@@ -8736,9 +8815,8 @@ for higher-level fractions.</p>
 </dd>
 </dl>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_jax_rs_cdi">28.2. JAX-RS + CDI</h3>
+<div class="sect3">
+<h4 id="_jax_rs_cdi"><a class="anchor" href="#_jax_rs_cdi"></a>6.24.1. JAX-RS + CDI</h4>
 <div class="paragraph">
 <p>An internal fraction providing integration between JAX-RS
 and CDI.</p>
@@ -8756,8 +8834,8 @@ and CDI.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_jax_rs_jaxb">28.3. JAX-RS + JAXB</h3>
+<div class="sect3">
+<h4 id="_jax_rs_jaxb"><a class="anchor" href="#_jax_rs_jaxb"></a>6.24.2. JAX-RS + JAXB</h4>
 <div class="paragraph">
 <p>Provides support within JAX-RS applications for the XML binding
 framework according to JSR-31 and JSR-222.</p>
@@ -8772,8 +8850,8 @@ framework according to JSR-31 and JSR-222.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_jax_rs_json_p">28.4. JAX-RS + JSON-P</h3>
+<div class="sect3">
+<h4 id="_jax_rs_json_p"><a class="anchor" href="#_jax_rs_json_p"></a>6.24.3. JAX-RS + JSON-P</h4>
 <div class="paragraph">
 <p>Provides support within JAX-RS application for JSON processing
 according to JSR-374.</p>
@@ -8788,8 +8866,8 @@ according to JSR-374.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_jax_rs_multipart">28.5. JAX-RS + Multipart</h3>
+<div class="sect3">
+<h4 id="_jax_rs_multipart"><a class="anchor" href="#_jax_rs_multipart"></a>6.24.4. JAX-RS + Multipart</h4>
 <div class="paragraph">
 <p>Provides support within JAX-RS application for MIME multipart
 form processing.</p>
@@ -8804,8 +8882,8 @@ form processing.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_jax_rs_validator">28.6. JAX-RS + Validator</h3>
+<div class="sect3">
+<h4 id="_jax_rs_validator"><a class="anchor" href="#_jax_rs_validator"></a>6.24.5. JAX-RS + Validator</h4>
 <div class="paragraph">
 <p>Provides integration and support between JAX-RS applications and
 Hibernate Validator.</p>
@@ -8821,10 +8899,8 @@ Hibernate Validator.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_jca">29. JCA</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_jca"><a class="anchor" href="#_jca"></a>6.25. JCA</h3>
 <div class="paragraph">
 <p>Provides support for the Java Connector Architecture (JCA)
 according to JSR 322.</p>
@@ -8838,9 +8914,8 @@ according to JSR 322.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_15">29.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.jca.archive-validation.enabled</dt>
 <dd>
@@ -9105,11 +9180,8 @@ according to JSR 322.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jboss_diagnostic_reporting">30. JBoss Diagnostic Reporting</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_jboss_diagnostic_reporting"><a class="anchor" href="#_jboss_diagnostic_reporting"></a>6.26. JBoss Diagnostic Reporting</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -9120,10 +9192,8 @@ according to JSR 322.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_jgroups">31. JGroups</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_jgroups"><a class="anchor" href="#_jgroups"></a>6.27. JGroups</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -9133,9 +9203,8 @@ according to JSR 322.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_16">31.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.default.multicast.address</dt>
 <dd>
@@ -9356,11 +9425,8 @@ according to JSR 322.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jmx">32. JMX</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_jmx"><a class="anchor" href="#_jmx"></a>6.28. JMX</h3>
 <div class="paragraph">
 <p>Provides support for Java Management Extensions (JMX)
 according to JSR-3.</p>
@@ -9374,9 +9440,8 @@ according to JSR-3.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_17">32.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.jmx.audit-log-configuration.enabled</dt>
 <dd>
@@ -9417,11 +9482,8 @@ according to JSR-3.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jolokia">33. Jolokia</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_jolokia"><a class="anchor" href="#_jolokia"></a>6.29. Jolokia</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -9431,9 +9493,8 @@ according to JSR-3.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_18">33.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.jolokia.context</dt>
 <dd>
@@ -9446,11 +9507,8 @@ according to JSR-3.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jpa">34. JPA</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_jpa"><a class="anchor" href="#_jpa"></a>6.30. JPA</h3>
 <div class="paragraph">
 <p>Provides support for the Java Persistence API according
 to JSR-220.</p>
@@ -9464,9 +9522,8 @@ to JSR-220.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_19">34.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.jpa.default-datasource</dt>
 <dd>
@@ -9478,9 +9535,8 @@ to JSR-220.</p>
 </dd>
 </dl>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_jpa_eclipselink">34.2. JPA EclipseLink</h3>
+<div class="sect3">
+<h4 id="_jpa_eclipselink"><a class="anchor" href="#_jpa_eclipselink"></a>6.30.1. JPA EclipseLink</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -9491,8 +9547,8 @@ to JSR-220.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_jpa_spatial_extensions">34.3. JPA Spatial Extensions</h3>
+<div class="sect3">
+<h4 id="_jpa_spatial_extensions"><a class="anchor" href="#_jpa_spatial_extensions"></a>6.30.2. JPA Spatial Extensions</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -9504,10 +9560,8 @@ to JSR-220.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_jsf">35. JSF</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_jsf"><a class="anchor" href="#_jsf"></a>6.31. JSF</h3>
 <div class="paragraph">
 <p>Provides support for JavaServer Faces according to JSR-344.</p>
 </div>
@@ -9520,9 +9574,8 @@ to JSR-220.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_20">35.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.jsf.default-jsf-impl-slot</dt>
 <dd>
@@ -9531,11 +9584,8 @@ to JSR-220.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_json_p">36. JSON-P</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_json_p"><a class="anchor" href="#_json_p"></a>6.32. JSON-P</h3>
 <div class="paragraph">
 <p>Provides support for JSON Processing according to JSR-353.</p>
 </div>
@@ -9549,10 +9599,8 @@ to JSR-220.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_keycloak">37. Keycloak</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_keycloak"><a class="anchor" href="#_keycloak"></a>6.33. Keycloak</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -9562,9 +9610,8 @@ to JSR-220.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_21">37.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.keycloak.json.path</dt>
 <dd>
@@ -9788,9 +9835,8 @@ to JSR-220.</p>
 </dd>
 </dl>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_keycloak_server">37.2. Keycloak Server</h3>
+<div class="sect3">
+<h4 id="_keycloak_server"><a class="anchor" href="#_keycloak_server"></a>6.33.1. Keycloak Server</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -9800,9 +9846,8 @@ to JSR-220.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_configuration_22">37.2.1. Configuration</h4>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.keycloakserver.master-realm-name</dt>
 <dd>
@@ -9864,11 +9909,8 @@ to JSR-220.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_logging_2">38. Logging</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_logging_2"><a class="anchor" href="#_logging_2"></a>6.34. Logging</h3>
 <div class="paragraph">
 <p>Provides facilities to configure logging categories, levels and handlers.</p>
 </div>
@@ -9886,9 +9928,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_23">38.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.logging.add-logging-api-dependencies</dt>
 <dd>
@@ -10645,11 +10686,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_logstash">39. Logstash</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_logstash"><a class="anchor" href="#_logstash"></a>6.35. Logstash</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -10659,9 +10697,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_24">39.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.logstash.enabled</dt>
 <dd>
@@ -10686,11 +10723,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_mail">40. Mail</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_mail"><a class="anchor" href="#_mail"></a>6.36. Mail</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -10700,9 +10734,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_25">40.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.mail.mail-sessions.<em>KEY</em>.customs.<em>KEY</em>.outbound-socket-binding-ref</dt>
 <dd>
@@ -10811,11 +10844,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_management">41. Management</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_management"><a class="anchor" href="#_management"></a>6.37. Management</h3>
 <div class="paragraph">
 <p>Provides the WildFly management API.</p>
 </div>
@@ -10828,9 +10858,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_26">41.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.management.audit-access.audit-log-logger.enabled</dt>
 <dd>
@@ -11795,9 +11824,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </dd>
 </dl>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_management_console">41.2. Management Console</h3>
+<div class="sect3">
+<h4 id="_management_console"><a class="anchor" href="#_management_console"></a>6.37.1. Management Console</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -11807,9 +11835,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_configuration_27">41.2.1. Configuration</h4>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.management-console.context</dt>
 <dd>
@@ -11819,11 +11846,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_messaging">42. Messaging</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_messaging"><a class="anchor" href="#_messaging"></a>6.38. Messaging</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -11833,9 +11857,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_28">42.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.messaging.jms-bridges.<em>KEY</em>.add-messageid-in-header</dt>
 <dd>
@@ -13660,11 +13683,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_microprofile">43. MicroProfile</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_microprofile"><a class="anchor" href="#_microprofile"></a>6.39. MicroProfile</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -13675,10 +13695,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_modcluster">44. Modcluster</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_modcluster"><a class="anchor" href="#_modcluster"></a>6.40. Modcluster</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -13688,9 +13706,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_29">44.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.modcluster.configuration-mod-cluster-config.advertise</dt>
 <dd>
@@ -13875,11 +13892,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_mongodb">45. MongoDB</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_mongodb"><a class="anchor" href="#_mongodb"></a>6.41. MongoDB</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -13889,9 +13903,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_30">45.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.mongodb.mongos.<em>KEY</em>.auth-type</dt>
 <dd>
@@ -13932,11 +13945,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_monitor">46. Monitor</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_monitor"><a class="anchor" href="#_monitor"></a>6.42. Monitor</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -13946,9 +13956,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_31">46.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.monitor.security-realm</dt>
 <dd>
@@ -13957,11 +13966,8 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_msc">47. MSC</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_msc"><a class="anchor" href="#_msc"></a>6.43. MSC</h3>
 <div class="paragraph">
 <p>Primarily an internal fraction providing support for the
 JBoss Modular Container (MSC). JBoss MSC provides the underpinning
@@ -13978,10 +13984,8 @@ application.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_naming">48. Naming</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_naming"><a class="anchor" href="#_naming"></a>6.44. Naming</h3>
 <div class="paragraph">
 <p>Provides support for JNDI.</p>
 </div>
@@ -13994,9 +13998,8 @@ application.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_32">48.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.naming.bindings.<em>KEY</em>.attribute-class</dt>
 <dd>
@@ -14033,11 +14036,8 @@ application.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_neo4j">49. Neo4j</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_neo4j"><a class="anchor" href="#_neo4j"></a>6.45. Neo4j</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14047,9 +14047,8 @@ application.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_33">49.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.neo4j.neo4js.<em>KEY</em>.hosts.<em>KEY</em>.outbound-socket-binding-ref</dt>
 <dd>
@@ -14078,11 +14077,8 @@ application.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_guava">50. Guava</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_guava"><a class="anchor" href="#_guava"></a>6.46. Guava</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14093,10 +14089,8 @@ application.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_rx_java">51. RX-Java</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rx_java"><a class="anchor" href="#_rx_java"></a>6.47. RX-Java</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14107,10 +14101,8 @@ application.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_rx_netty">52. RX-Netty</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rx_netty"><a class="anchor" href="#_rx_netty"></a>6.48. RX-Netty</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14121,10 +14113,8 @@ application.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_opentracing">53. OpenTracing</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_opentracing"><a class="anchor" href="#_opentracing"></a>6.49. OpenTracing</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14134,9 +14124,8 @@ application.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_34">53.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.opentracing.servlet.skipPattern</dt>
 <dd>
@@ -14145,11 +14134,8 @@ application.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_orientdb">54. OrientDB</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_orientdb"><a class="anchor" href="#_orientdb"></a>6.50. OrientDB</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14159,9 +14145,8 @@ application.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_35">54.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.orientdb.orients.<em>KEY</em>.database</dt>
 <dd>
@@ -14198,11 +14183,8 @@ application.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_remoting">55. Remoting</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_remoting"><a class="anchor" href="#_remoting"></a>6.51. Remoting</h3>
 <div class="paragraph">
 <p>Primarily an internal fraction providing remote invocation
 support for higher-level fractions such as EJB.</p>
@@ -14216,9 +14198,8 @@ support for higher-level fractions such as EJB.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_36">55.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.remoting.connectors.<em>KEY</em>.authentication-provider</dt>
 <dd>
@@ -14483,11 +14464,8 @@ support for higher-level fractions such as EJB.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_request_controller">56. Request Controller</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_request_controller"><a class="anchor" href="#_request_controller"></a>6.52. Request Controller</h3>
 <div class="paragraph">
 <p>Provides support for the WildFly request-controller, allowing
 for graceful pause/resume/shutdown of the container.</p>
@@ -14501,9 +14479,8 @@ for graceful pause/resume/shutdown of the container.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_37">56.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.requestcontroller.active-requests</dt>
 <dd>
@@ -14520,11 +14497,8 @@ for graceful pause/resume/shutdown of the container.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_resource_adapters">57. Resource Adapters</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_resource_adapters"><a class="anchor" href="#_resource_adapters"></a>6.53. Resource Adapters</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14534,9 +14508,8 @@ for graceful pause/resume/shutdown of the container.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_38">57.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.class-name</dt>
 <dd>
@@ -14801,11 +14774,8 @@ for graceful pause/resume/shutdown of the container.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_ribbon">58. Ribbon</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_ribbon"><a class="anchor" href="#_ribbon"></a>6.54. Ribbon</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14815,9 +14785,8 @@ for graceful pause/resume/shutdown of the container.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_39">58.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.deployment.<em>KEY</em>.ribbon.advertise</dt>
 <dd>
@@ -14825,9 +14794,8 @@ for graceful pause/resume/shutdown of the container.</p>
 </dd>
 </dl>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_ribbon_secured">58.2. Ribbon Secured</h3>
+<div class="sect3">
+<h4 id="_ribbon_secured"><a class="anchor" href="#_ribbon_secured"></a>6.54.1. Ribbon Secured</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14837,8 +14805,8 @@ for graceful pause/resume/shutdown of the container.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_ribbon_secured_client">58.2.1. Ribbon Secured Client</h4>
+<div class="sect4">
+<h5 id="_ribbon_secured_client"><a class="anchor" href="#_ribbon_secured_client"></a>Ribbon Secured Client</h5>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14851,10 +14819,8 @@ for graceful pause/resume/shutdown of the container.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_deployment_scanner">59. Deployment Scanner</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_deployment_scanner"><a class="anchor" href="#_deployment_scanner"></a>6.55. Deployment Scanner</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -14865,10 +14831,8 @@ for graceful pause/resume/shutdown of the container.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_security">60. Security</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_security"><a class="anchor" href="#_security"></a>6.56. Security</h3>
 <div class="paragraph">
 <p>Provides underlying security infrastructure to support JAAS
 and other security APIs.</p>
@@ -14882,9 +14846,8 @@ and other security APIs.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_40">60.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.security.classic-vault.code</dt>
 <dd>
@@ -15073,11 +15036,8 @@ and other security APIs.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_servo">61. Servo</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_servo"><a class="anchor" href="#_servo"></a>6.57. Servo</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -15088,10 +15048,8 @@ and other security APIs.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_spring_webmvc">62. Spring WebMVC</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_spring_webmvc"><a class="anchor" href="#_spring_webmvc"></a>6.58. Spring WebMVC</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -15102,10 +15060,8 @@ and other security APIs.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_swagger">63. Swagger</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_swagger"><a class="anchor" href="#_swagger"></a>6.59. Swagger</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -15115,9 +15071,8 @@ and other security APIs.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_41">63.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.deployment.<em>KEY</em>.swagger.description</dt>
 <dd>
@@ -15161,9 +15116,8 @@ and other security APIs.</p>
 </dd>
 </dl>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_swagger_webapp">63.2. Swagger Webapp</h3>
+<div class="sect3">
+<h4 id="_swagger_webapp"><a class="anchor" href="#_swagger_webapp"></a>6.59.1. Swagger Webapp</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -15173,9 +15127,8 @@ and other security APIs.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_configuration_42">63.2.1. Configuration</h4>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.swagger.web-app.context</dt>
 <dd>
@@ -15189,11 +15142,8 @@ and other security APIs.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_teiid">64. Teiid</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_teiid"><a class="anchor" href="#_teiid"></a>6.60. Teiid</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -15203,9 +15153,8 @@ and other security APIs.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_43">64.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.teiid.active-session-count</dt>
 <dd>
@@ -15494,11 +15443,8 @@ and other security APIs.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_topology">65. Topology</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_topology"><a class="anchor" href="#_topology"></a>6.61. Topology</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -15508,8 +15454,8 @@ and other security APIs.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_hashicorp_consul">65.1. Hashicorp Consul</h3>
+<div class="sect3">
+<h4 id="_hashicorp_consul"><a class="anchor" href="#_hashicorp_consul"></a>6.61.1. Hashicorp Consul</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -15519,9 +15465,8 @@ and other security APIs.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_configuration_44">65.1.1. Configuration</h4>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.topology.consul.url</dt>
 <dd>
@@ -15530,9 +15475,8 @@ and other security APIs.</p>
 </dl>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_jgroups_topology">65.2. JGroups Topology</h3>
+<div class="sect3">
+<h4 id="_jgroups_topology"><a class="anchor" href="#_jgroups_topology"></a>6.61.2. JGroups Topology</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -15543,8 +15487,8 @@ and other security APIs.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_openshift">65.3. OpenShift</h3>
+<div class="sect3">
+<h4 id="_openshift"><a class="anchor" href="#_openshift"></a>6.61.3. OpenShift</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -15555,8 +15499,8 @@ and other security APIs.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_topology_ui">65.4. Topology UI</h3>
+<div class="sect3">
+<h4 id="_topology_ui"><a class="anchor" href="#_topology_ui"></a>6.61.4. Topology UI</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -15566,9 +15510,8 @@ and other security APIs.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_configuration_45">65.4.1. Configuration</h4>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.topology.web-app.expose-topology-endpoint</dt>
 <dd>
@@ -15582,11 +15525,8 @@ and other security APIs.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_transactions">66. Transactions</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_transactions"><a class="anchor" href="#_transactions"></a>6.62. Transactions</h3>
 <div class="paragraph">
 <p>Provides support for the Java Transaction API (JTA) according to
 JSR-907.</p>
@@ -15600,9 +15540,8 @@ JSR-907.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_46">66.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.transactions.commit-markable-resources.<em>KEY</em>.batch-size</dt>
 <dd>
@@ -15807,11 +15746,8 @@ JSR-907.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_undertow">67. Undertow</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_undertow"><a class="anchor" href="#_undertow"></a>6.63. Undertow</h3>
 <div class="paragraph">
 <p>Provides basic HTTP support, including Java Servlets, JavaServer Pages (JSP),
 and JavaServer Pages Standard Tag Library (JSTL) according to JSR-340, JSR-245
@@ -15826,9 +15762,8 @@ and JSR-52.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_47">67.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.ajp.enable</dt>
 <dd>
@@ -17069,11 +17004,8 @@ and JSR-52.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_vert_x">68. Vert.x</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_vert_x"><a class="anchor" href="#_vert_x"></a>6.64. Vert.x</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -17083,9 +17015,8 @@ and JSR-52.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_48">68.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.vertx.cluster.host</dt>
 <dd>
@@ -17106,11 +17037,8 @@ and JSR-52.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_web">69. Web</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_web"><a class="anchor" href="#_web"></a>6.65. Web</h3>
 <div class="paragraph">
 <p>Provides a collection of fractions equivalent to the <em>Web Profile</em>:</p>
 </div>
@@ -17168,10 +17096,8 @@ and JSR-52.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_web_services">70. Web Services</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_web_services"><a class="anchor" href="#_web_services"></a>6.66. Web Services</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -17181,9 +17107,8 @@ and JSR-52.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_49">70.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.webservices.client-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
 <dd>
@@ -17256,11 +17181,8 @@ and JSR-52.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_zipkin_jaxrs_support">71. Zipkin - JAXRS Support</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_zipkin_jaxrs_support"><a class="anchor" href="#_zipkin_jaxrs_support"></a>6.67. Zipkin - JAXRS Support</h3>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -17270,9 +17192,8 @@ and JSR-52.</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configuration_50">71.1. Configuration</h3>
 <div class="dlist">
+<div class="title">Configuration</div>
 <dl>
 <dt class="hdlist1">swarm.zipkin.name</dt>
 <dd>
@@ -17295,7 +17216,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2017.11.0-SNAPSHOT<br>
-Last updated 2017-10-19 15:47:16 EDT
+Last updated 2017-10-20 10:44:28 EDT
 </div>
 </div>
 </body>
