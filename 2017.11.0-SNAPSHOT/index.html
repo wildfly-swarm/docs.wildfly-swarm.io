@@ -655,19 +655,25 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#_general">5. General</a>
 <ul class="sectlevel2">
-<li><a href="#_configuration_of_a_wildfly_swarm_application">5.1. Configuration of a WildFly Swarm Application</a>
+<li><a href="#_maven_plugin">5.1. Maven Plugin</a>
 <ul class="sectlevel3">
-<li><a href="#configure-your-application-using-properties">5.1.1. Configure your application using properties</a></li>
-<li><a href="#configure-your-application-using-yaml">5.1.2. Configure your application using YAML</a></li>
+<li><a href="#_goals">5.1.1. Goals</a></li>
+<li><a href="#_configuration">5.1.2. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#_network">5.2. Network</a>
+<li><a href="#_configuration_of_a_wildfly_swarm_application">5.2. Configuration of a WildFly Swarm Application</a>
 <ul class="sectlevel3">
-<li><a href="#_interfaces">5.2.1. Interfaces</a></li>
-<li><a href="#_sockets">5.2.2. Sockets</a></li>
+<li><a href="#configure-your-application-using-properties">5.2.1. Configure your application using properties</a></li>
+<li><a href="#configure-your-application-using-yaml">5.2.2. Configure your application using YAML</a></li>
 </ul>
 </li>
-<li><a href="#_the_code_usage_txt_code_file">5.3. The <code>usage.txt</code> file</a></li>
+<li><a href="#_network">5.3. Network</a>
+<ul class="sectlevel3">
+<li><a href="#_interfaces">5.3.1. Interfaces</a></li>
+<li><a href="#_sockets">5.3.2. Sockets</a></li>
+</ul>
+</li>
+<li><a href="#_the_code_usage_txt_code_file">5.4. The <code>usage.txt</code> file</a></li>
 </ul>
 </li>
 <li><a href="#_fractions">6. Fractions</a>
@@ -2511,7 +2517,373 @@ the appropriate plugins to enable localization.</p>
 <h2 id="_general"><a class="anchor" href="#_general"></a>5. General</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_configuration_of_a_wildfly_swarm_application"><a class="anchor" href="#_configuration_of_a_wildfly_swarm_application"></a>5.1. Configuration of a WildFly Swarm Application</h3>
+<h3 id="_maven_plugin"><a class="anchor" href="#_maven_plugin"></a>5.1. Maven Plugin</h3>
+<div class="paragraph">
+<p>WildFly Swarm provides a Maven plugin to accomplish most of the work of building <a href="#uberjar">uberjar</a> packages.</p>
+</div>
+<div class="paragraph">
+<div class="title">General Usage</div>
+<p>The WildFly Swarm Maven plugin is used like any other Maven plugin, that is through editing the <code>pom.xml</code> file in your application and adding a <code>&lt;plugin&gt;</code> section:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>${project.version}<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;executions&gt;</span>
+    ...
+    <span class="tag">&lt;configuration&gt;</span>
+      ...
+    <span class="tag">&lt;configuration</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/executions&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_goals"><a class="anchor" href="#_goals"></a>5.1.1. Goals</h4>
+<div class="paragraph">
+<p>The WildFly Swarm Maven plugin provides several goals:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>package</code></dt>
+<dd>
+<p>Creates the executable package (see <a href="#creating-an-uberjar">Creating an Uberjar</a>).</p>
+</dd>
+<dt class="hdlist1"><code>run</code></dt>
+<dd>
+<p>Executes your application in the Maven process. The application is stopped if the Maven build is interrupted, for example when you press Ctrl + C.</p>
+</dd>
+</dl>
+</div>
+<div id="maven-plugin-multistart-goal" class="dlist">
+<dl>
+<dt class="hdlist1"><code>start</code> and <code>multistart</code></dt>
+<dd>
+<p>Executes your application in a forked process. Generally, it is only useful for running integration tests using a plugin, such as the <code>maven-failsafe-plugin</code>.
+The <code>multistart</code> variant allows starting multiple WildFly Swarm&ndash;built applications using Maven GAVs to support complex testing scenarios.</p>
+</dd>
+<dt class="hdlist1"><code>stop</code></dt>
+<dd>
+<p>Stops any previously started applications.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The <code>stop</code> goal can only stop applications that were started <em>in the same Maven execution</em>.
+</td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configuration"><a class="anchor" href="#_configuration"></a>5.1.2. Configuration</h4>
+<div class="paragraph">
+<p>The plugin accepts the following options:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bundleDependencies</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>swarm.bundleDependencies</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>If true, dependencies will be included in the <code>-swarm.jar</code> file. Otherwise, they will be resolved from <code>$M2_REPO</code> or the network at runtime.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>true</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>package</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>debug</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><em>none</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The port to use for debugging. If set, the swarm process will suspend on start and open a debugger on this port.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>environment</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><em>none</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A properties-style list of environment variables to use when executing the application.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>multistart</code>, <code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>environmentFile</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>swarm.environmentFile</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A <code>.properties</code> file with environment variables to use when executing the application.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>multistart</code>, <code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fractionDetectMode</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>swarm.fractionDetectMode</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The mode of fraction detection. The available options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>when_missing</code>: Runs only when no WildFly Swarm dependencies are found.</p>
+</li>
+<li>
+<p><code>force</code>: Always run, and merge any detected fractions with the existing dependencies. Existing dependencies take precedence.</p>
+</li>
+<li>
+<p><code>never</code>: Disable fraction detection.</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>when_missing</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>package</code>, <code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fractions</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><em>none</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A list of extra fractions to include when auto-detection is used. It is useful for fractions that cannot be detected or user-provided fractions.</p>
+</div>
+<div class="paragraph">
+<p>The format of specifying a fraction can be:
+* <code>group:name:version</code>
+* <code>name:version</code>
+* <code>name</code></p>
+</div>
+<div class="paragraph">
+<p>If no group is provided, <code>org.wildfly.swarm</code> is assumed.</p>
+</div>
+<div class="paragraph">
+<p>If no version is provided, the version is taken from the WildFly Swarm BOM for the version of the plugin you are using.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>package</code>, <code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hollow</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>swarm.hollow</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Specifies if the resulting executable JAR should be hollow, and therefore not include the default deployment.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>false</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>multistart</code>, <code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jvmArguments</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>swarm.jvmArguments</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A list of <code>&lt;jvmArgument&gt;</code> elements specifying additional JVM arguments (such as <code>-Xmx32m</code>).</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>multistart</code>, <code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modules</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><em>none</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Paths to a directory containing additional module definitions.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>package</code>, <code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>processes</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><em>none</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Application configurations to start (see <a href="#maven-plugin-multistart-goal">multistart</a>).</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>multistart</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>properties</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><em>none</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>See <a href="#maven-plugin-properties">Properties</a>.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>package</code>, <code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>propertiesFile</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>swarm.propertiesFile</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>See <a href="#maven-plugin-properties">Properties</a>.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>package</code>, <code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>stderrFile</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>swarm.stderr</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A file path where to store the <code>stderr</code> output instead of sending it to the <code>stderr</code> output of the launching process.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>stdoutFile</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>swarm.stdout</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A file path where to store the <code>stdout</code> output instead of sending it to the <code>stdout</code> output of the launching process.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>useUberJar</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>swarm.useUberJar</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>If true, the <code>-swarm.jar</code> file specified at <code>${project.build.directory}</code> is used. This JAR is not created automatically, so make sure you execute the <code>package</code> goal first.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>false</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>run</code>, <code>start</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="maven-plugin-properties"><a class="anchor" href="#maven-plugin-properties"></a>Properties</h5>
+<div class="paragraph">
+<p>Properties can be used to configure execution and affect the packaging
+or running of your application.</p>
+</div>
+<div class="paragraph">
+<p>If you add a <code>&lt;properties&gt;</code> or <code>&lt;propertiesFile&gt;</code> section to the <code>&lt;configuration&gt;</code> of the plugin, the properties are used when executing your application using the <code>mvn wildfly-swarm:run</code> command.
+In addition to that, the same properties are added to your <code><em>myapp</em>-swarm.jar</code> file to affect subsequent executions of the uberjar.
+Any properties loaded from the <code>&lt;propertiesFile&gt;</code> override identically-named properties in the <code>&lt;properties&gt;</code> section.</p>
+</div>
+<div class="paragraph">
+<p>Any properties added to the uberjar can be overridden at runtime using the traditional <code>-Dname=value</code> mechanism of the <code>java</code> binary, or using the YAML-based configuration files.</p>
+</div>
+<div class="paragraph">
+<p>Only the following properties are added to the uberjar at package time:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The properties specified outside of the <code>&lt;properties&gt;</code> section or the <code>&lt;propertiesFile&gt;</code>, whose path starts with one of the following:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>jboss.</code></p>
+</li>
+<li>
+<p><code>wildfly.</code></p>
+</li>
+<li>
+<p><code>swarm.</code></p>
+</li>
+<li>
+<p><code>maven.</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The properties that override a property specified in the <code>&lt;properties&gt;</code> section or the <code>&lt;propertiesFile&gt;</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_of_a_wildfly_swarm_application"><a class="anchor" href="#_configuration_of_a_wildfly_swarm_application"></a>5.2. Configuration of a WildFly Swarm Application</h3>
 <div class="paragraph">
 <p>Every application built with WildFly Swarm has a many configurable options.
 In all cases, reasonable defaults are already applied, therefore you do not have to change any options unless you explicitly want to.</p>
@@ -2521,7 +2893,7 @@ In all cases, reasonable defaults are already applied, therefore you do not have
 Only the items related to the fractions that your application uses are relevant to you.</p>
 </div>
 <div class="sect3">
-<h4 id="configure-your-application-using-properties"><a class="anchor" href="#configure-your-application-using-properties"></a>5.1.1. Configure your application using properties</h4>
+<h4 id="configure-your-application-using-properties"><a class="anchor" href="#configure-your-application-using-properties"></a>5.2.1. Configure your application using properties</h4>
 <div class="paragraph">
 <p>In this document, configuration items are presented using dotted notation, and are suitable for use as Java property names, which your application consumes through explicit setting in the Maven plugin configuration, or through the command line when executing your application.</p>
 </div>
@@ -2598,7 +2970,7 @@ You can customize an environment-specific setting or experiment with configurati
 </div>
 </div>
 <div class="sect3">
-<h4 id="configure-your-application-using-yaml"><a class="anchor" href="#configure-your-application-using-yaml"></a>5.1.2. Configure your application using YAML</h4>
+<h4 id="configure-your-application-using-yaml"><a class="anchor" href="#configure-your-application-using-yaml"></a>5.2.2. Configure your application using YAML</h4>
 <div class="paragraph">
 <p>YAML is the preferred method for long-term configuration of your application.
 In addition to that, the YAML strategy provides grouping of environment-specific configurations, which can be selectively enabled when launching the application.</p>
@@ -2706,13 +3078,13 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 </div>
 <div class="sect2">
-<h3 id="_network"><a class="anchor" href="#_network"></a>5.2. Network</h3>
+<h3 id="_network"><a class="anchor" href="#_network"></a>5.3. Network</h3>
 <div class="paragraph">
 <p>For network configuration, create or adjust <em>interfaces,</em> <em>socket-bindings,</em> and <em>outbound-socket-bindings.</em>
 The networking configuration is stored under the <code>network</code> &#8594; <code>swarm</code> key.</p>
 </div>
 <div class="sect3">
-<h4 id="_interfaces"><a class="anchor" href="#_interfaces"></a>5.2.1. Interfaces</h4>
+<h4 id="_interfaces"><a class="anchor" href="#_interfaces"></a>5.3.1. Interfaces</h4>
 <div class="paragraph">
 <p>An interface represents a known ethernet interface.
 By default, the interface named <code>public</code> is bound to the <code>0.0.0.0</code> IP address, which represents all known interfaces of the underlying machine.
@@ -2756,7 +3128,7 @@ This includes both publicly-routed interfaces, and the localhost (<code>127.0.0.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sockets"><a class="anchor" href="#_sockets"></a>5.2.2. Sockets</h4>
+<h4 id="_sockets"><a class="anchor" href="#_sockets"></a>5.3.2. Sockets</h4>
 <div class="paragraph">
 <p><em>Socket bindings</em> and <em>outbound socket bindings</em> allow externalized configuration of sockets and ports bound to a particular interface.
 Use regular socket-bindings for inbound connections, while outbound-socket-bindings denote connections capable of changing to remote locations.</p>
@@ -2827,7 +3199,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="sect2">
-<h3 id="_the_code_usage_txt_code_file"><a class="anchor" href="#_the_code_usage_txt_code_file"></a>5.3. The <code>usage.txt</code> file</h3>
+<h3 id="_the_code_usage_txt_code_file"><a class="anchor" href="#_the_code_usage_txt_code_file"></a>5.4. The <code>usage.txt</code> file</h3>
 <div class="paragraph">
 <p>Each WildFly Swarm application can contain a text file with usage instructions at one of the following locations:</p>
 </div>
@@ -9262,215 +9634,215 @@ according to JSR 322.</p>
 <dd>
 <p>Default multicast address for JGroups</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.address</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.address</dt>
 <dd>
 <p>The IP address of the channel.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.address-as-uuid</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.address-as-uuid</dt>
 <dd>
 <p>The address of the channel as a UUID.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.cluster</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.cluster</dt>
 <dd>
 <p>The cluster name of the JGroups channel. If undefined, the name of the channel will be used.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.discard-own-messages</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.discard-own-messages</dt>
 <dd>
 <p>If true, do not receive messages sent by this node (ourself).</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.forks.<em>KEY</em>.protocols.<em>KEY</em>.module</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.forks.<em>KEY</em>.protocols.<em>KEY</em>.module</dt>
 <dd>
 <p>The module with which to resolve the protocol type.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.forks.<em>KEY</em>.protocols.<em>KEY</em>.properties</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.forks.<em>KEY</em>.protocols.<em>KEY</em>.properties</dt>
 <dd>
 <p>The properties of this protocol.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.forks.<em>KEY</em>.protocols.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.forks.<em>KEY</em>.protocols.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
 <dd>
 <p>The value of a protocol property.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.forks.<em>KEY</em>.protocols.<em>KEY</em>.socket-binding</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.forks.<em>KEY</em>.protocols.<em>KEY</em>.socket-binding</dt>
 <dd>
 <p>The socket binding specification for this protocol layer, used to specify IP interfaces and ports for communication.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.module</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.module</dt>
 <dd>
 <p>The module from which to load channel services</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.num-tasks-in-timer</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.num-tasks-in-timer</dt>
 <dd>
 <p>The current number of timer tasks.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.num-timer-threads</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.num-timer-threads</dt>
 <dd>
 <p>The number of timer threads.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.received-bytes</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.received-bytes</dt>
 <dd>
 <p>The number of bytes received by this channel.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.received-messages</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.received-messages</dt>
 <dd>
 <p>The number of messages received by this channel.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.sent-bytes</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.sent-bytes</dt>
 <dd>
 <p>The number of bytes sent by this channel.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.sent-messages</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.sent-messages</dt>
 <dd>
 <p>The number of messages sent by this channel.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.stack</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.stack</dt>
 <dd>
 <p>The protocol stack of the JGroups channel</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.state</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.state</dt>
 <dd>
 <p>The state of the channel (OPEN, CONNECTING, CONNECTED, CLOSED).</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.stats-enabled</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.stats-enabled</dt>
 <dd>
 <p>If enabled, collect channel statistics.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.version</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.version</dt>
 <dd>
 <p>The JGroups software version.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.channels.<em>KEY</em>.view</dt>
+<dt class="hdlist1">swarm.j-groups.channels.<em>KEY</em>.view</dt>
 <dd>
 <p>The channel&#8217;s view of group membership.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.default-channel</dt>
+<dt class="hdlist1">swarm.j-groups.default-channel</dt>
 <dd>
 <p>The default JGroups channel.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.R-e-l-a-y2.properties</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.R-e-l-a-y2.properties</dt>
 <dd>
 <p>The properties of this protocol.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.R-e-l-a-y2.properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.R-e-l-a-y2.properties.<em>KEY</em>.value</dt>
 <dd>
 <p>The value of a protocol property.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.R-e-l-a-y2.remote-sites.<em>KEY</em>.channel</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.R-e-l-a-y2.remote-sites.<em>KEY</em>.channel</dt>
 <dd>
 <p>The name of the bridge channel used to communicate with this remote site.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.R-e-l-a-y2.site</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.R-e-l-a-y2.site</dt>
 <dd>
 <p>The name of the local site.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.protocols.<em>KEY</em>.module</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.protocols.<em>KEY</em>.module</dt>
 <dd>
 <p>The module with which to resolve the protocol type.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.protocols.<em>KEY</em>.properties</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.protocols.<em>KEY</em>.properties</dt>
 <dd>
 <p>The properties of this protocol.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.protocols.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.protocols.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
 <dd>
 <p>The value of a protocol property.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.protocols.<em>KEY</em>.socket-binding</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.protocols.<em>KEY</em>.socket-binding</dt>
 <dd>
 <p>The socket binding specification for this protocol layer, used to specify IP interfaces and ports for communication.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.default-thread-pool.keepalive-time</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.default-thread-pool.keepalive-time</dt>
 <dd>
 <p>Used to specify the amount of milliseconds that pool threads should be kept running when idle; if not specified, threads will run until the executor is shut down.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.default-thread-pool.max-threads</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.default-thread-pool.max-threads</dt>
 <dd>
 <p>The maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.default-thread-pool.min-threads</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.default-thread-pool.min-threads</dt>
 <dd>
 <p>The core thread pool size which is smaller than the maximum pool size. If undefined, the core thread pool size is the same as the maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.default-thread-pool.queue-length</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.default-thread-pool.queue-length</dt>
 <dd>
 <p>The queue length.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.diagnostics-socket-binding</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.diagnostics-socket-binding</dt>
 <dd>
 <p>The diagnostics socket binding specification for this protocol layer, used to specify IP interfaces and ports for communication.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.internal-thread-pool.keepalive-time</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.internal-thread-pool.keepalive-time</dt>
 <dd>
 <p>Used to specify the amount of milliseconds that pool threads should be kept running when idle; if not specified, threads will run until the executor is shut down.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.internal-thread-pool.max-threads</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.internal-thread-pool.max-threads</dt>
 <dd>
 <p>The maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.internal-thread-pool.min-threads</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.internal-thread-pool.min-threads</dt>
 <dd>
 <p>The core thread pool size which is smaller than the maximum pool size. If undefined, the core thread pool size is the same as the maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.internal-thread-pool.queue-length</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.internal-thread-pool.queue-length</dt>
 <dd>
 <p>The queue length.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.machine</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.machine</dt>
 <dd>
 <p>The machine (i.e. host) identifier for this node. Used by Infinispan topology-aware consistent hash.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.module</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.module</dt>
 <dd>
 <p>The module with which to resolve the protocol type.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.oob-thread-pool.keepalive-time</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.oob-thread-pool.keepalive-time</dt>
 <dd>
 <p>Used to specify the amount of milliseconds that pool threads should be kept running when idle; if not specified, threads will run until the executor is shut down.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.oob-thread-pool.max-threads</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.oob-thread-pool.max-threads</dt>
 <dd>
 <p>The maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.oob-thread-pool.min-threads</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.oob-thread-pool.min-threads</dt>
 <dd>
 <p>The core thread pool size which is smaller than the maximum pool size. If undefined, the core thread pool size is the same as the maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.oob-thread-pool.queue-length</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.oob-thread-pool.queue-length</dt>
 <dd>
 <p>The queue length.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.properties</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.properties</dt>
 <dd>
 <p>The properties of this protocol.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
 <dd>
 <p>The value of a protocol property.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.rack</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.rack</dt>
 <dd>
 <p>The rack (i.e. server rack) identifier for this node. Used by Infinispan topology-aware consistent hash.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.site</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.site</dt>
 <dd>
 <p>The site (i.e. data centre) identifier for this node. Used by Infinispan topology-aware consistent hash.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.socket-binding</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.socket-binding</dt>
 <dd>
 <p>The socket binding specification for this protocol layer, used to specify IP interfaces and ports for communication.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.timer-thread-pool.keepalive-time</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.timer-thread-pool.keepalive-time</dt>
 <dd>
 <p>Used to specify the amount of milliseconds that pool threads should be kept running when idle; if not specified, threads will run until the executor is shut down.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.timer-thread-pool.max-threads</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.timer-thread-pool.max-threads</dt>
 <dd>
 <p>The maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.timer-thread-pool.min-threads</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.timer-thread-pool.min-threads</dt>
 <dd>
 <p>The core thread pool size which is smaller than the maximum pool size. If undefined, the core thread pool size is the same as the maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jgroups.stacks.<em>KEY</em>.transports.<em>KEY</em>.timer-thread-pool.queue-length</dt>
+<dt class="hdlist1">swarm.j-groups.stacks.<em>KEY</em>.transports.<em>KEY</em>.timer-thread-pool.queue-length</dt>
 <dd>
 <p>The queue length.</p>
 </dd>
@@ -9495,39 +9867,39 @@ according to JSR-3.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.jmx.audit-log-configuration.enabled</dt>
+<dt class="hdlist1">swarm.j-m-x.audit-log-configuration.enabled</dt>
 <dd>
 <p>Whether audit logging is enabled.</p>
 </dd>
-<dt class="hdlist1">swarm.jmx.audit-log-configuration.log-boot</dt>
+<dt class="hdlist1">swarm.j-m-x.audit-log-configuration.log-boot</dt>
 <dd>
 <p>Whether operations should be logged on server boot.</p>
 </dd>
-<dt class="hdlist1">swarm.jmx.audit-log-configuration.log-read-only</dt>
+<dt class="hdlist1">swarm.j-m-x.audit-log-configuration.log-read-only</dt>
 <dd>
 <p>Whether operations that do not modify the configuration or any runtime services should be logged.</p>
 </dd>
-<dt class="hdlist1">swarm.jmx.expression-expose-model.domain-name</dt>
+<dt class="hdlist1">swarm.j-m-x.expression-expose-model.domain-name</dt>
 <dd>
 <p>The domain name to use for the 'expression' model controller JMX facade in the MBeanServer.</p>
 </dd>
-<dt class="hdlist1">swarm.jmx.jmx-remoting-connector.use-management-endpoint</dt>
+<dt class="hdlist1">swarm.j-m-x.jmx-remoting-connector.use-management-endpoint</dt>
 <dd>
 <p>If true the connector will use the management endpoint, otherwise it will use the remoting subsystem one</p>
 </dd>
-<dt class="hdlist1">swarm.jmx.non-core-mbean-sensitivity</dt>
+<dt class="hdlist1">swarm.j-m-x.non-core-mbean-sensitivity</dt>
 <dd>
 <p>Whether or not core MBeans, i.e. mbeans not coming from the model controller, should be considered sensitive.</p>
 </dd>
-<dt class="hdlist1">swarm.jmx.resolved-expose-model.domain-name</dt>
+<dt class="hdlist1">swarm.j-m-x.resolved-expose-model.domain-name</dt>
 <dd>
 <p>The domain name to use for the 'resolved' model controller JMX facade in the MBeanServer.</p>
 </dd>
-<dt class="hdlist1">swarm.jmx.resolved-expose-model.proper-property-format</dt>
+<dt class="hdlist1">swarm.j-m-x.resolved-expose-model.proper-property-format</dt>
 <dd>
 <p>If false, PROPERTY type attributes are represented as a DMR string, this is the legacy behaviour. If true, PROPERTY type attributes are represented by a composite type where the key is a string, and the value has the same type as the property in the underlying model.</p>
 </dd>
-<dt class="hdlist1">swarm.jmx.show-model</dt>
+<dt class="hdlist1">swarm.j-m-x.show-model</dt>
 <dd>
 <p>Alias for the existence of the 'resolved' model controller jmx facade. When writing, if set to 'true' it will add the 'resolved' model controller jmx facade resource with the default domain name.</p>
 </dd>
@@ -9577,11 +9949,11 @@ to JSR-220.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.jpa.default-datasource</dt>
+<dt class="hdlist1">swarm.j-p-a.default-datasource</dt>
 <dd>
 <p>The name of the default global datasource.</p>
 </dd>
-<dt class="hdlist1">swarm.jpa.default-extended-persistence-inheritance</dt>
+<dt class="hdlist1">swarm.j-p-a.default-extended-persistence-inheritance</dt>
 <dd>
 <p>Controls how JPA extended persistence context (XPC) inheritance is performed. 'DEEP' shares the extended persistence context at top bean level.  'SHALLOW' the extended persistece context is only shared with the parent bean (never with sibling beans).</p>
 </dd>
@@ -9629,7 +10001,7 @@ to JSR-220.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.jsf.default-jsf-impl-slot</dt>
+<dt class="hdlist1">swarm.j-s-f.default-jsf-impl-slot</dt>
 <dd>
 <p>Default JSF implementation slot</p>
 </dd>
@@ -13958,39 +14330,39 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.mongodb.mongos.<em>KEY</em>.auth-type</dt>
+<dt class="hdlist1">swarm.mongo-d-b.mongos.<em>KEY</em>.auth-type</dt>
 <dd>
 <p>MongoDB authorization type</p>
 </dd>
-<dt class="hdlist1">swarm.mongodb.mongos.<em>KEY</em>.database</dt>
+<dt class="hdlist1">swarm.mongo-d-b.mongos.<em>KEY</em>.database</dt>
 <dd>
 <p>MongoDB database name</p>
 </dd>
-<dt class="hdlist1">swarm.mongodb.mongos.<em>KEY</em>.hosts.<em>KEY</em>.outbound-socket-binding-ref</dt>
+<dt class="hdlist1">swarm.mongo-d-b.mongos.<em>KEY</em>.hosts.<em>KEY</em>.outbound-socket-binding-ref</dt>
 <dd>
 <p>MongoDB target hostname/port number</p>
 </dd>
-<dt class="hdlist1">swarm.mongodb.mongos.<em>KEY</em>.id</dt>
+<dt class="hdlist1">swarm.mongo-d-b.mongos.<em>KEY</em>.id</dt>
 <dd>
 <p>Unique profile identification</p>
 </dd>
-<dt class="hdlist1">swarm.mongodb.mongos.<em>KEY</em>.jndi-name</dt>
+<dt class="hdlist1">swarm.mongo-d-b.mongos.<em>KEY</em>.jndi-name</dt>
 <dd>
 <p>JNDI address</p>
 </dd>
-<dt class="hdlist1">swarm.mongodb.mongos.<em>KEY</em>.module</dt>
+<dt class="hdlist1">swarm.mongo-d-b.mongos.<em>KEY</em>.module</dt>
 <dd>
 <p>Module name</p>
 </dd>
-<dt class="hdlist1">swarm.mongodb.mongos.<em>KEY</em>.properties.<em>KEY</em>.property</dt>
+<dt class="hdlist1">swarm.mongo-d-b.mongos.<em>KEY</em>.properties.<em>KEY</em>.property</dt>
 <dd>
 <p>Custom MongoDB property</p>
 </dd>
-<dt class="hdlist1">swarm.mongodb.mongos.<em>KEY</em>.security-domain</dt>
+<dt class="hdlist1">swarm.mongo-d-b.mongos.<em>KEY</em>.security-domain</dt>
 <dd>
 <p>Security domain name</p>
 </dd>
-<dt class="hdlist1">swarm.mongodb.mongos.<em>KEY</em>.ssl</dt>
+<dt class="hdlist1">swarm.mongo-d-b.mongos.<em>KEY</em>.ssl</dt>
 <dd>
 <p>use SSL for connecting to MongoDB</p>
 </dd>
@@ -14200,35 +14572,35 @@ application.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.orientdb.orients.<em>KEY</em>.database</dt>
+<dt class="hdlist1">swarm.orient-d-b.orients.<em>KEY</em>.database</dt>
 <dd>
 <p>Database name</p>
 </dd>
-<dt class="hdlist1">swarm.orientdb.orients.<em>KEY</em>.hosts.<em>KEY</em>.outbound-socket-binding-ref</dt>
+<dt class="hdlist1">swarm.orient-d-b.orients.<em>KEY</em>.hosts.<em>KEY</em>.outbound-socket-binding-ref</dt>
 <dd>
 <p>OrientDB target hostname/port</p>
 </dd>
-<dt class="hdlist1">swarm.orientdb.orients.<em>KEY</em>.id</dt>
+<dt class="hdlist1">swarm.orient-d-b.orients.<em>KEY</em>.id</dt>
 <dd>
 <p>Unique profile identification</p>
 </dd>
-<dt class="hdlist1">swarm.orientdb.orients.<em>KEY</em>.jndi-name</dt>
+<dt class="hdlist1">swarm.orient-d-b.orients.<em>KEY</em>.jndi-name</dt>
 <dd>
 <p>Database JNDI address</p>
 </dd>
-<dt class="hdlist1">swarm.orientdb.orients.<em>KEY</em>.max-partition-size</dt>
+<dt class="hdlist1">swarm.orient-d-b.orients.<em>KEY</em>.max-partition-size</dt>
 <dd>
 <p>Max database pool partition size</p>
 </dd>
-<dt class="hdlist1">swarm.orientdb.orients.<em>KEY</em>.max-pool-size</dt>
+<dt class="hdlist1">swarm.orient-d-b.orients.<em>KEY</em>.max-pool-size</dt>
 <dd>
 <p>Max database pool size</p>
 </dd>
-<dt class="hdlist1">swarm.orientdb.orients.<em>KEY</em>.module</dt>
+<dt class="hdlist1">swarm.orient-d-b.orients.<em>KEY</em>.module</dt>
 <dd>
 <p>Module name</p>
 </dd>
-<dt class="hdlist1">swarm.orientdb.orients.<em>KEY</em>.security-domain</dt>
+<dt class="hdlist1">swarm.orient-d-b.orients.<em>KEY</em>.security-domain</dt>
 <dd>
 <p>Security domain name</p>
 </dd>
@@ -14563,263 +14935,263 @@ for graceful pause/resume/shutdown of the container.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.class-name</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.class-name</dt>
 <dd>
 <p>Specifies the fully qualified class name of an administration object.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.config-properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.config-properties.<em>KEY</em>.value</dt>
 <dd>
 <p>Custom defined config property value.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.enabled</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.enabled</dt>
 <dd>
 <p>Specifies if the administration object should be enabled.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.jndi-name</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.jndi-name</dt>
 <dd>
 <p>Specifies the JNDI name for the administration object.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.use-java-context</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.admin-objects.<em>KEY</em>.use-java-context</dt>
 <dd>
 <p>Setting this to false will bind the object into global JNDI.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.archive</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.archive</dt>
 <dd>
 <p>Specifies the resource adapter archive.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.beanvalidationgroups</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.beanvalidationgroups</dt>
 <dd>
 <p>Specifies the bean validation groups that should be used.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.bootstrap-context</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.bootstrap-context</dt>
 <dd>
 <p>Specifies the unique name of the bootstrap context that should be used.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.config-properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.config-properties.<em>KEY</em>.value</dt>
 <dd>
 <p>Custom defined config property value.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.allocation-retry</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.allocation-retry</dt>
 <dd>
 <p>The allocation retry element indicates the number of times that allocating a connection should be tried before throwing an exception.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.allocation-retry-wait-millis</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.allocation-retry-wait-millis</dt>
 <dd>
 <p>The allocation retry wait millis element specifies the amount of time, in milliseconds, to wait between retrying to allocate a connection.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.background-validation</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.background-validation</dt>
 <dd>
 <p>An element to specify that connections should be validated on a background thread versus being validated prior to use. Changing this value requires a server restart.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.background-validation-millis</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.background-validation-millis</dt>
 <dd>
 <p>The background-validation-millis element specifies the amount of time, in milliseconds, that background validation will run. Changing this value requires a server restart.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.blocking-timeout-wait-millis</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.blocking-timeout-wait-millis</dt>
 <dd>
 <p>The blocking-timeout-millis element specifies the maximum time, in milliseconds, to block while waiting for a connection before throwing an exception. Note that this blocks only while waiting for locking a connection, and will never throw an exception if creating a new connection takes an inordinately long time.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.capacity-decrementer-class</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.capacity-decrementer-class</dt>
 <dd>
 <p>Class defining the policy for decrementing connections in the pool</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.capacity-decrementer-properties</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.capacity-decrementer-properties</dt>
 <dd>
 <p>Properties to inject in class defining the policy for decrementing connections in the pool</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.capacity-incrementer-class</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.capacity-incrementer-class</dt>
 <dd>
 <p>Class defining the policy for incrementing connections in the pool</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.capacity-incrementer-properties</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.capacity-incrementer-properties</dt>
 <dd>
 <p>Properties to inject in class defining the policy for incrementing connections in the pool</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.class-name</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.class-name</dt>
 <dd>
 <p>Specifies the fully qualified class name of a managed connection factory or admin object.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.config-properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.config-properties.<em>KEY</em>.value</dt>
 <dd>
 <p>Custom defined config property value.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.connectable</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.connectable</dt>
 <dd>
 <p>Enable the use of CMR. This feature means that a local resource can reliably participate in an XA transaction.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.enabled</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.enabled</dt>
 <dd>
 <p>Specifies if the resource adapter should be enabled.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.enlistment</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.enlistment</dt>
 <dd>
 <p>Defines if lazy enlistment should be used if supported by the resource adapter.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.enlistment-trace</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.enlistment-trace</dt>
 <dd>
 <p>Defines if WildFly/IronJacamar should record enlistment traces</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.flush-strategy</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.flush-strategy</dt>
 <dd>
 <p>Specifies how the pool should be flush in case of an error. Valid values are: FailingConnectionOnly (default), IdleConnections and EntirePool.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.idle-timeout-minutes</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.idle-timeout-minutes</dt>
 <dd>
 <p>The idle-timeout-minutes elements specifies the maximum time, in minutes, a connection may be idle before being closed. The actual maximum time depends also on the IdleRemover scan time, which is half of the smallest idle-timeout-minutes value of any pool. Changing this value requires a server restart..</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.initial-pool-size</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.initial-pool-size</dt>
 <dd>
 <p>TThe initial-pool-size element indicates the initial number of connections a pool should hold.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.interleaving</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.interleaving</dt>
 <dd>
 <p>An element to enable interleaving for XA connections.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.jndi-name</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.jndi-name</dt>
 <dd>
 <p>Specifies the JNDI name for the connection factory.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.max-pool-size</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.max-pool-size</dt>
 <dd>
 <p>The max-pool-size element specifies the maximum number of connections for a pool. No more connections will be created in each sub-pool.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.mcp</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.mcp</dt>
 <dd>
 <p>Defines the ManagedConnectionPool implementation, f.ex. org.jboss.jca.core.connectionmanager.pool.mcp.SemaphoreArrayListManagedConnectionPool</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.min-pool-size</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.min-pool-size</dt>
 <dd>
 <p>The min-pool-size element specifies the minimum number of connections for a pool.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.no-recovery</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.no-recovery</dt>
 <dd>
 <p>Specifies if the connection pool should be excluded from recovery.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.no-tx-separate-pool</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.no-tx-separate-pool</dt>
 <dd>
 <p>Oracle does not like XA connections getting used both inside and outside a JTA transaction. To workaround the problem you can create separate sub-pools for the different contexts.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.pad-xid</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.pad-xid</dt>
 <dd>
 <p>Should the Xid be padded.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.pool-fair</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.pool-fair</dt>
 <dd>
 <p>Defines if pool should use be fair</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.pool-prefill</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.pool-prefill</dt>
 <dd>
 <p>Should the pool be prefilled. Changing this value requires a server restart.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.pool-use-strict-min</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.pool-use-strict-min</dt>
 <dd>
 <p>Specifies if the min-pool-size should be considered strictly.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.recovery-password</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.recovery-password</dt>
 <dd>
 <p>The password used for recovery.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.recovery-plugin-class-name</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.recovery-plugin-class-name</dt>
 <dd>
 <p>The fully qualified class name of the recovery plugin implementation.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.recovery-plugin-properties</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.recovery-plugin-properties</dt>
 <dd>
 <p>The properties for the recovery plugin.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.recovery-security-domain</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.recovery-security-domain</dt>
 <dd>
 <p>The security domain used for recovery.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.recovery-username</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.recovery-username</dt>
 <dd>
 <p>The user name used for recovery.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.same-rm-override</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.same-rm-override</dt>
 <dd>
 <p>The is-same-rm-override element allows one to unconditionally set whether the javax.transaction.xa.XAResource.isSameRM(XAResource) returns true or false.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.security-application</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.security-application</dt>
 <dd>
 <p>Indicates that app supplied parameters (such as from getConnection(user, pw)) are used to distinguish connections in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.security-domain</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.security-domain</dt>
 <dd>
 <p>Specifies the security domain which defines the javax.security.auth.Subject that are used to distinguish connections in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.security-domain-and-application</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.security-domain-and-application</dt>
 <dd>
 <p>Indicates that either app supplied parameters (such as from getConnection(user, pw)) or Subject (from security domain) are used to distinguish connections in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.sharable</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.sharable</dt>
 <dd>
 <p>Enable the use of sharable connections which allows lazy association to be enabled if supported</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.tracking</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.tracking</dt>
 <dd>
 <p>Defines if IronJacamar should track connection handles across transaction boundaries</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.use-ccm</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.use-ccm</dt>
 <dd>
 <p>Enable the use of a cached connection manager.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.use-fast-fail</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.use-fast-fail</dt>
 <dd>
 <p>Whether to fail a connection allocation on the first try if it is invalid (true) or keep trying until the pool is exhausted of all potential connections (false).</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.use-java-context</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.use-java-context</dt>
 <dd>
 <p>Setting this to false will bind the object into global JNDI.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.validate-on-match</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.validate-on-match</dt>
 <dd>
 <p>The validate-on-match element specifies if connection validation should be done when a connection factory attempts to match a managed connection. This is typically exclusive to the use of background validation</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.wrap-xa-resource</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.wrap-xa-resource</dt>
 <dd>
 <p>Should the XAResource instances be wrapped in an org.jboss.tm.XAResourceWrapper instance.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.xa-resource-timeout</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.connection-definitions.<em>KEY</em>.xa-resource-timeout</dt>
 <dd>
 <p>The value is passed to XAResource.setTransactionTimeout(), in seconds. Default is zero.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.module</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.module</dt>
 <dd>
 <p>Specifies the module from which resource adapter will be loaded</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.statistics-enabled</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.statistics-enabled</dt>
 <dd>
 <p>Define whether runtime statistics are enabled or not.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.transaction-support</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.transaction-support</dt>
 <dd>
 <p>Specifies the transaction support level of the resource adapter.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.wm-security</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.wm-security</dt>
 <dd>
 <p>Toggle on/off wm.security for this resource-adapter. In case of false all wm-security-* parameters are ignored, even thei defaults.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.wm-security-default-groups</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.wm-security-default-groups</dt>
 <dd>
 <p>Defines a default groups list that should be added to the used Subject instance</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.wm-security-default-principal</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.wm-security-default-principal</dt>
 <dd>
 <p>Defines a default principal name that should be added to the used Subject instance</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.wm-security-domain</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.wm-security-domain</dt>
 <dd>
 <p>Defines the name of the security domain that should be used</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.wm-security-mapping-groups</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.wm-security-mapping-groups</dt>
 <dd>
 <p>List of groups mappings</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.wm-security-mapping-required</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.wm-security-mapping-required</dt>
 <dd>
 <p>Defines if a mapping is required for security credentials. A value of false means Case 1 as defined in section 16.4.3, and a value of true means Case 2 as defined in section 16.4.4.</p>
 </dd>
-<dt class="hdlist1">swarm.resourceadapter.resource-adapters.<em>KEY</em>.wm-security-mapping-users</dt>
+<dt class="hdlist1">swarm.resource-adapter.resource-adapters.<em>KEY</em>.wm-security-mapping-users</dt>
 <dd>
 <p>List of user mappings</p>
 </dd>
@@ -17162,71 +17534,71 @@ and JSR-52.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.webservices.client-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
+<dt class="hdlist1">swarm.web-services.client-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
 <dd>
 <p>Handler class</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.client-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.protocol-bindings</dt>
+<dt class="hdlist1">swarm.web-services.client-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.protocol-bindings</dt>
 <dd>
 <p>Protocol binding</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.client-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
+<dt class="hdlist1">swarm.web-services.client-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
 <dd>
 <p>Handler class</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.client-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.protocol-bindings</dt>
+<dt class="hdlist1">swarm.web-services.client-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.protocol-bindings</dt>
 <dd>
 <p>Protocol binding</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.client-configs.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">swarm.web-services.client-configs.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
 <dd>
 <p>Endpoint configuration property value</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.endpoint-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
+<dt class="hdlist1">swarm.web-services.endpoint-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
 <dd>
 <p>Handler class</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.endpoint-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.protocol-bindings</dt>
+<dt class="hdlist1">swarm.web-services.endpoint-configs.<em>KEY</em>.post-handler-chains.<em>KEY</em>.protocol-bindings</dt>
 <dd>
 <p>Protocol binding</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.endpoint-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
+<dt class="hdlist1">swarm.web-services.endpoint-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.handlers.<em>KEY</em>.attribute-class</dt>
 <dd>
 <p>Handler class</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.endpoint-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.protocol-bindings</dt>
+<dt class="hdlist1">swarm.web-services.endpoint-configs.<em>KEY</em>.pre-handler-chains.<em>KEY</em>.protocol-bindings</dt>
 <dd>
 <p>Protocol binding</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.endpoint-configs.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
+<dt class="hdlist1">swarm.web-services.endpoint-configs.<em>KEY</em>.properties.<em>KEY</em>.value</dt>
 <dd>
 <p>Endpoint configuration property value</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.modify-wsdl-address</dt>
+<dt class="hdlist1">swarm.web-services.modify-wsdl-address</dt>
 <dd>
 <p>Whether the soap address can be modified.</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.statistics-enabled</dt>
+<dt class="hdlist1">swarm.web-services.statistics-enabled</dt>
 <dd>
 <p>Whether statistics are to be gathered for endpoints, default value is 'false'.</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.wsdl-host</dt>
+<dt class="hdlist1">swarm.web-services.wsdl-host</dt>
 <dd>
 <p>The WSDL, that is a required deployment artifact for an endpoint, has a &lt;soap:address&gt; element which points to the location of the endpoint. JBoss supports rewriting of that SOAP address. If the content of &lt;soap:address&gt; is a valid URL, JBossWS will not rewrite it unless 'modify-wsdl-address' is true. If the content of &lt;soap:address&gt; is not a valid URL, JBossWS will rewrite it using the attribute values given below. If 'wsdl-host' is set to 'jbossws.undefined.host', JBossWS uses requesters host when rewriting the &lt;soap:address&gt;</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.wsdl-path-rewrite-rule</dt>
+<dt class="hdlist1">swarm.web-services.wsdl-path-rewrite-rule</dt>
 <dd>
 <p>This string defines a SED substitution command (e.g., 's/regexp/replacement/g') that JBossWS executes against the path component of each &lt;soap:address&gt; URL published from the server. When wsdl-path-rewrite-rule is not defined, JBossWS retains the original path component of each &lt;soap:address&gt; URL. When 'modify-wsdl-address' is set to "false" this element is ignored.</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.wsdl-port</dt>
+<dt class="hdlist1">swarm.web-services.wsdl-port</dt>
 <dd>
 <p>The non-secure port that will be used for rewriting the SOAP address. If absent the port will be identified by querying the list of installed connectors.</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.wsdl-secure-port</dt>
+<dt class="hdlist1">swarm.web-services.wsdl-secure-port</dt>
 <dd>
 <p>The secure port that will be used for rewriting the SOAP address. If absent the port will be identified by querying the list of installed connectors.</p>
 </dd>
-<dt class="hdlist1">swarm.webservices.wsdl-uri-scheme</dt>
+<dt class="hdlist1">swarm.web-services.wsdl-uri-scheme</dt>
 <dd>
 <p>The URI scheme to use for rewriting &lt;soap:address&gt; . Valid values are 'http' and 'https'. This configuration overrides scheme computed by processing the endpoint (even if a transport guarantee is specified). The provided values for 'wsdl-port' and 'wsdl-secure-port' (or their default values) are used depending on specified scheme.</p>
 </dd>
@@ -17268,7 +17640,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2017.11.0-SNAPSHOT<br>
-Last updated 2017-10-24 13:47:48 EDT
+Last updated 2017-10-25 13:15:23 MST
 </div>
 </div>
 </body>
