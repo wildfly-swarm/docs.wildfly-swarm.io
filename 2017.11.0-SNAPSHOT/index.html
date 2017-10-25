@@ -4546,15 +4546,15 @@ through JSR-352.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.cdi.development-mode</dt>
+<dt class="hdlist1">swarm.c-d-i.development-mode</dt>
 <dd>
 <p>Weld comes with a special mode for application development. When the development mode is enabled, certain built-in tools, which facilitate the development of CDI applications, are available. Setting this attribute to true activates the development mode.</p>
 </dd>
-<dt class="hdlist1">swarm.cdi.non-portable-mode</dt>
+<dt class="hdlist1">swarm.c-d-i.non-portable-mode</dt>
 <dd>
 <p>If true then the non-portable mode is enabled. The non-portable mode is suggested by the specification to overcome problems with legacy applications that do not use CDI SPI properly and may be rejected by more strict validation in CDI 1.1.</p>
 </dd>
-<dt class="hdlist1">swarm.cdi.require-bean-descriptor</dt>
+<dt class="hdlist1">swarm.c-d-i.require-bean-descriptor</dt>
 <dd>
 <p>If true then implicit bean archives without bean descriptor file (beans.xml) are ignored by Weld</p>
 </dd>
@@ -5343,139 +5343,139 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.ee.annotation-property-replacement</dt>
+<dt class="hdlist1">swarm.e-e.annotation-property-replacement</dt>
 <dd>
 <p>Flag indicating whether Java EE annotations will have property replacements applied</p>
 </dd>
-<dt class="hdlist1">swarm.ee.context-services.<em>KEY</em>.jndi-name</dt>
+<dt class="hdlist1">swarm.e-e.context-services.<em>KEY</em>.jndi-name</dt>
 <dd>
 <p>The JNDI Name to lookup the context service.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.context-services.<em>KEY</em>.use-transaction-setup-provider</dt>
+<dt class="hdlist1">swarm.e-e.context-services.<em>KEY</em>.use-transaction-setup-provider</dt>
 <dd>
 <p>Flag which indicates if the transaction setup provider should be used</p>
 </dd>
-<dt class="hdlist1">swarm.ee.default-bindings-service.context-service</dt>
+<dt class="hdlist1">swarm.e-e.default-bindings-service.context-service</dt>
 <dd>
 <p>The JNDI name where the default EE Context Service can be found</p>
 </dd>
-<dt class="hdlist1">swarm.ee.default-bindings-service.datasource</dt>
+<dt class="hdlist1">swarm.e-e.default-bindings-service.datasource</dt>
 <dd>
 <p>The JNDI name where the default EE Datasource can be found</p>
 </dd>
-<dt class="hdlist1">swarm.ee.default-bindings-service.jms-connection-factory</dt>
+<dt class="hdlist1">swarm.e-e.default-bindings-service.jms-connection-factory</dt>
 <dd>
 <p>The JNDI name where the default EE JMS Connection Factory can be found</p>
 </dd>
-<dt class="hdlist1">swarm.ee.default-bindings-service.managed-executor-service</dt>
+<dt class="hdlist1">swarm.e-e.default-bindings-service.managed-executor-service</dt>
 <dd>
 <p>The JNDI name where the default EE Managed Executor Service can be found</p>
 </dd>
-<dt class="hdlist1">swarm.ee.default-bindings-service.managed-scheduled-executor-service</dt>
+<dt class="hdlist1">swarm.e-e.default-bindings-service.managed-scheduled-executor-service</dt>
 <dd>
 <p>The JNDI name where the default EE Managed Scheduled Executor Service can be found</p>
 </dd>
-<dt class="hdlist1">swarm.ee.default-bindings-service.managed-thread-factory</dt>
+<dt class="hdlist1">swarm.e-e.default-bindings-service.managed-thread-factory</dt>
 <dd>
 <p>The JNDI name where the default EE Managed Thread Factory can be found</p>
 </dd>
-<dt class="hdlist1">swarm.ee.ear-subdeployments-isolated</dt>
+<dt class="hdlist1">swarm.e-e.ear-subdeployments-isolated</dt>
 <dd>
 <p>Flag indicating whether each of the subdeployments within a .ear can access classes belonging to another subdeployment within the same .ear. A value of false means the subdeployments can see classes belonging to other subdeployments within the .ear.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.global-modules</dt>
+<dt class="hdlist1">swarm.e-e.global-modules</dt>
 <dd>
 <p>A list of modules that should be made available to all deployments.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.jboss-descriptor-property-replacement</dt>
+<dt class="hdlist1">swarm.e-e.jboss-descriptor-property-replacement</dt>
 <dd>
 <p>Flag indicating whether JBoss specific deployment descriptors will have property replacements applied</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-executor-services.<em>KEY</em>.context-service</dt>
+<dt class="hdlist1">swarm.e-e.managed-executor-services.<em>KEY</em>.context-service</dt>
 <dd>
 <p>The name of the context service to be used by the executor.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-executor-services.<em>KEY</em>.core-threads</dt>
+<dt class="hdlist1">swarm.e-e.managed-executor-services.<em>KEY</em>.core-threads</dt>
 <dd>
 <p>The minimum number of threads to be used by the executor. If left undefined the default core-size is calculated based on the number of processors. A value of zero is not advised and in some cases invalid. See the queue-length attribute for details on how this value is used to determine the queuing strategy.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-executor-services.<em>KEY</em>.hung-task-threshold</dt>
+<dt class="hdlist1">swarm.e-e.managed-executor-services.<em>KEY</em>.hung-task-threshold</dt>
 <dd>
 <p>The runtime, in milliseconds, for tasks to be considered hung by the managed executor service. If value is 0 tasks are never considered hung.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-executor-services.<em>KEY</em>.jndi-name</dt>
+<dt class="hdlist1">swarm.e-e.managed-executor-services.<em>KEY</em>.jndi-name</dt>
 <dd>
 <p>The JNDI Name to lookup the managed executor service.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-executor-services.<em>KEY</em>.keepalive-time</dt>
+<dt class="hdlist1">swarm.e-e.managed-executor-services.<em>KEY</em>.keepalive-time</dt>
 <dd>
 <p>When the number of threads is greater than the core, this is the maximum time, in milliseconds, that excess idle threads will wait for new tasks before terminating.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-executor-services.<em>KEY</em>.long-running-tasks</dt>
+<dt class="hdlist1">swarm.e-e.managed-executor-services.<em>KEY</em>.long-running-tasks</dt>
 <dd>
 <p>Flag which hints the duration of tasks executed by the executor.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-executor-services.<em>KEY</em>.max-threads</dt>
+<dt class="hdlist1">swarm.e-e.managed-executor-services.<em>KEY</em>.max-threads</dt>
 <dd>
 <p>The maximum number of threads to be used by the executor. If left undefined the value from core-size will be used. This value is ignored if an unbounded queue is used (only core-threads will be used in that case).</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-executor-services.<em>KEY</em>.queue-length</dt>
+<dt class="hdlist1">swarm.e-e.managed-executor-services.<em>KEY</em>.queue-length</dt>
 <dd>
 <p>The executors task queue capacity. A length of 0 means direct hand-off and possible rejection will occur. An undefined length (the default), or Integer.MAX_VALUE, indicates that an unbounded queue should be used. All other values specify an exact queue size. If an unbounded queue or direct hand-off is used, a core-threads value greater than zero is required.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-executor-services.<em>KEY</em>.reject-policy</dt>
+<dt class="hdlist1">swarm.e-e.managed-executor-services.<em>KEY</em>.reject-policy</dt>
 <dd>
 <p>The policy to be applied to aborted tasks.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-executor-services.<em>KEY</em>.thread-factory</dt>
+<dt class="hdlist1">swarm.e-e.managed-executor-services.<em>KEY</em>.thread-factory</dt>
 <dd>
 <p>The name of the thread factory to be used by the executor.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-scheduled-executor-services.<em>KEY</em>.context-service</dt>
+<dt class="hdlist1">swarm.e-e.managed-scheduled-executor-services.<em>KEY</em>.context-service</dt>
 <dd>
 <p>The name of the context service to be used by the scheduled executor.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-scheduled-executor-services.<em>KEY</em>.core-threads</dt>
+<dt class="hdlist1">swarm.e-e.managed-scheduled-executor-services.<em>KEY</em>.core-threads</dt>
 <dd>
 <p>The minimum number of threads to be used by the scheduled executor.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-scheduled-executor-services.<em>KEY</em>.hung-task-threshold</dt>
+<dt class="hdlist1">swarm.e-e.managed-scheduled-executor-services.<em>KEY</em>.hung-task-threshold</dt>
 <dd>
 <p>The runtime, in milliseconds, for tasks to be considered hung by the scheduled executor. If 0 tasks are never considered hung.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-scheduled-executor-services.<em>KEY</em>.jndi-name</dt>
+<dt class="hdlist1">swarm.e-e.managed-scheduled-executor-services.<em>KEY</em>.jndi-name</dt>
 <dd>
 <p>The JNDI Name to lookup the managed scheduled executor service.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-scheduled-executor-services.<em>KEY</em>.keepalive-time</dt>
+<dt class="hdlist1">swarm.e-e.managed-scheduled-executor-services.<em>KEY</em>.keepalive-time</dt>
 <dd>
 <p>When the number of threads is greater than the core, this is the maximum time, in milliseconds, that excess idle threads will wait for new tasks before terminating.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-scheduled-executor-services.<em>KEY</em>.long-running-tasks</dt>
+<dt class="hdlist1">swarm.e-e.managed-scheduled-executor-services.<em>KEY</em>.long-running-tasks</dt>
 <dd>
 <p>Flag which hints the duration of tasks executed by the scheduled executor.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-scheduled-executor-services.<em>KEY</em>.reject-policy</dt>
+<dt class="hdlist1">swarm.e-e.managed-scheduled-executor-services.<em>KEY</em>.reject-policy</dt>
 <dd>
 <p>The policy to be applied to aborted tasks.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-scheduled-executor-services.<em>KEY</em>.thread-factory</dt>
+<dt class="hdlist1">swarm.e-e.managed-scheduled-executor-services.<em>KEY</em>.thread-factory</dt>
 <dd>
 <p>The name of the thread factory to be used by the scheduled executor.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-thread-factories.<em>KEY</em>.context-service</dt>
+<dt class="hdlist1">swarm.e-e.managed-thread-factories.<em>KEY</em>.context-service</dt>
 <dd>
 <p>The name of the context service to be used by the managed thread factory</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-thread-factories.<em>KEY</em>.jndi-name</dt>
+<dt class="hdlist1">swarm.e-e.managed-thread-factories.<em>KEY</em>.jndi-name</dt>
 <dd>
 <p>The JNDI Name to lookup the managed thread factory.</p>
 </dd>
-<dt class="hdlist1">swarm.ee.managed-thread-factories.<em>KEY</em>.priority</dt>
+<dt class="hdlist1">swarm.e-e.managed-thread-factories.<em>KEY</em>.priority</dt>
 <dd>
 <p>The priority applied to threads created by the factory</p>
 </dd>
-<dt class="hdlist1">swarm.ee.spec-descriptor-property-replacement</dt>
+<dt class="hdlist1">swarm.e-e.spec-descriptor-property-replacement</dt>
 <dd>
 <p>Flag indicating whether descriptors defined by the Java EE specification will have property replacements applied</p>
 </dd>
@@ -8748,31 +8748,31 @@ for higher-level fractions.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.io.buffer-pools.<em>KEY</em>.buffer-size</dt>
+<dt class="hdlist1">swarm.i-o.buffer-pools.<em>KEY</em>.buffer-size</dt>
 <dd>
 <p>The size of each buffer slice in bytes, if not set optimal value is calculated based on available RAM resources in your system.</p>
 </dd>
-<dt class="hdlist1">swarm.io.buffer-pools.<em>KEY</em>.buffers-per-slice</dt>
+<dt class="hdlist1">swarm.i-o.buffer-pools.<em>KEY</em>.buffers-per-slice</dt>
 <dd>
 <p>How many buffers per slice, if not set optimal value is calculated based on available RAM resources in your system.</p>
 </dd>
-<dt class="hdlist1">swarm.io.buffer-pools.<em>KEY</em>.direct-buffers</dt>
+<dt class="hdlist1">swarm.i-o.buffer-pools.<em>KEY</em>.direct-buffers</dt>
 <dd>
 <p>Does the buffer pool use direct buffers, some platforms don&#8217;t support direct buffers</p>
 </dd>
-<dt class="hdlist1">swarm.io.workers.<em>KEY</em>.io-threads</dt>
+<dt class="hdlist1">swarm.i-o.workers.<em>KEY</em>.io-threads</dt>
 <dd>
 <p>Specify the number of I/O threads to create for the worker.  If not specified, a default will be chosen, which is calculated by cpuCount * 2</p>
 </dd>
-<dt class="hdlist1">swarm.io.workers.<em>KEY</em>.stack-size</dt>
+<dt class="hdlist1">swarm.i-o.workers.<em>KEY</em>.stack-size</dt>
 <dd>
 <p>The stack size (in bytes) to attempt to use for worker threads.</p>
 </dd>
-<dt class="hdlist1">swarm.io.workers.<em>KEY</em>.task-keepalive</dt>
+<dt class="hdlist1">swarm.i-o.workers.<em>KEY</em>.task-keepalive</dt>
 <dd>
 <p>Specify the number of milliseconds to keep non-core task threads alive.</p>
 </dd>
-<dt class="hdlist1">swarm.io.workers.<em>KEY</em>.task-max-threads</dt>
+<dt class="hdlist1">swarm.i-o.workers.<em>KEY</em>.task-max-threads</dt>
 <dd>
 <p>Specify the maximum number of threads for the worker task thread pool.If not set, default value used which is calculated by formula cpuCount * 16</p>
 </dd>
@@ -8969,263 +8969,263 @@ according to JSR 322.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.jca.archive-validation.enabled</dt>
+<dt class="hdlist1">swarm.j-c-a.archive-validation.enabled</dt>
 <dd>
 <p>Specify whether archive validation is enabled</p>
 </dd>
-<dt class="hdlist1">swarm.jca.archive-validation.fail-on-error</dt>
+<dt class="hdlist1">swarm.j-c-a.archive-validation.fail-on-error</dt>
 <dd>
 <p>Should an archive validation error report fail the deployment</p>
 </dd>
-<dt class="hdlist1">swarm.jca.archive-validation.fail-on-warn</dt>
+<dt class="hdlist1">swarm.j-c-a.archive-validation.fail-on-warn</dt>
 <dd>
 <p>Should an archive validation warning report fail the deployment</p>
 </dd>
-<dt class="hdlist1">swarm.jca.bean-validation.enabled</dt>
+<dt class="hdlist1">swarm.j-c-a.bean-validation.enabled</dt>
 <dd>
 <p>Specify whether bean validation is enabled</p>
 </dd>
-<dt class="hdlist1">swarm.jca.bootstrap-contexts.<em>KEY</em>.name</dt>
+<dt class="hdlist1">swarm.j-c-a.bootstrap-contexts.<em>KEY</em>.name</dt>
 <dd>
 <p>The name of the BootstrapContext</p>
 </dd>
-<dt class="hdlist1">swarm.jca.bootstrap-contexts.<em>KEY</em>.workmanager</dt>
+<dt class="hdlist1">swarm.j-c-a.bootstrap-contexts.<em>KEY</em>.workmanager</dt>
 <dd>
 <p>The WorkManager instance for the BootstrapContext</p>
 </dd>
-<dt class="hdlist1">swarm.jca.cached-connection-manager.debug</dt>
+<dt class="hdlist1">swarm.j-c-a.cached-connection-manager.debug</dt>
 <dd>
 <p>Enable/disable debug information logging</p>
 </dd>
-<dt class="hdlist1">swarm.jca.cached-connection-manager.error</dt>
+<dt class="hdlist1">swarm.j-c-a.cached-connection-manager.error</dt>
 <dd>
 <p>Enable/disable error information logging</p>
 </dd>
-<dt class="hdlist1">swarm.jca.cached-connection-manager.ignore-unknown-connections</dt>
+<dt class="hdlist1">swarm.j-c-a.cached-connection-manager.ignore-unknown-connections</dt>
 <dd>
 <p>Do not cache unknown connections</p>
 </dd>
-<dt class="hdlist1">swarm.jca.cached-connection-manager.install</dt>
+<dt class="hdlist1">swarm.j-c-a.cached-connection-manager.install</dt>
 <dd>
 <p>Enable/disable the cached connection manager valve and interceptor</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.allow-core-timeout</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.allow-core-timeout</dt>
 <dd>
 <p>Whether core threads may time out.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.core-threads</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.core-threads</dt>
 <dd>
 <p>The core thread pool size which is smaller than the maximum pool size. If undefined, the core thread pool size is the same as the maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.current-thread-count</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.current-thread-count</dt>
 <dd>
 <p>The current number of threads in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.handoff-executor</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.handoff-executor</dt>
 <dd>
 <p>An executor to delegate tasks to in the event that a task cannot be accepted. If not specified, tasks that cannot be accepted will be silently discarded.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.keepalive-time</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.keepalive-time</dt>
 <dd>
 <p>Used to specify the amount of time that pool threads should be kept running when idle; if not specified, threads will run until the executor is shut down.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.largest-thread-count</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.largest-thread-count</dt>
 <dd>
 <p>The largest number of threads that have ever simultaneously been in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.max-threads</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.max-threads</dt>
 <dd>
 <p>The maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.name</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.name</dt>
 <dd>
 <p>The name of the thread pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.queue-length</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.queue-length</dt>
 <dd>
 <p>The queue length.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.queue-size</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.queue-size</dt>
 <dd>
 <p>The queue size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.rejected-count</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.rejected-count</dt>
 <dd>
 <p>The number of tasks that have been passed to the handoff-executor (if one is specified) or discarded.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.thread-factory</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.thread-factory</dt>
 <dd>
 <p>Specifies the name of a specific thread factory to use to create worker threads. If not defined an appropriate default thread factory will be used.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.name</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.name</dt>
 <dd>
 <p>The name of the DistributedWorkManager</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.policy</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.policy</dt>
 <dd>
 <p>The policy decides when to redistribute a Work instance</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.policy-options</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.policy-options</dt>
 <dd>
 <p>List of policy&#8217;s options key/value pairs</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.selector</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.selector</dt>
 <dd>
 <p>The selector decides to which nodes in the network to redistribute the Work instance to</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.selector-options</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.selector-options</dt>
 <dd>
 <p>List of selector&#8217;s options key/value pairs</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.allow-core-timeout</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.allow-core-timeout</dt>
 <dd>
 <p>Whether core threads may time out.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.core-threads</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.core-threads</dt>
 <dd>
 <p>The core thread pool size which is smaller than the maximum pool size. If undefined, the core thread pool size is the same as the maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.current-thread-count</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.current-thread-count</dt>
 <dd>
 <p>The current number of threads in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.handoff-executor</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.handoff-executor</dt>
 <dd>
 <p>An executor to delegate tasks to in the event that a task cannot be accepted. If not specified, tasks that cannot be accepted will be silently discarded.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.keepalive-time</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.keepalive-time</dt>
 <dd>
 <p>Used to specify the amount of time that pool threads should be kept running when idle; if not specified, threads will run until the executor is shut down.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.largest-thread-count</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.largest-thread-count</dt>
 <dd>
 <p>The largest number of threads that have ever simultaneously been in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.max-threads</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.max-threads</dt>
 <dd>
 <p>The maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.name</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.name</dt>
 <dd>
 <p>The name of the thread pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.queue-length</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.queue-length</dt>
 <dd>
 <p>The queue length.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.queue-size</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.queue-size</dt>
 <dd>
 <p>The queue size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.rejected-count</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.rejected-count</dt>
 <dd>
 <p>The number of tasks that have been passed to the handoff-executor (if one is specified) or discarded.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.thread-factory</dt>
+<dt class="hdlist1">swarm.j-c-a.distributed-workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.thread-factory</dt>
 <dd>
 <p>Specifies the name of a specific thread factory to use to create worker threads. If not defined an appropriate default thread factory will be used.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.tracer.enabled</dt>
+<dt class="hdlist1">swarm.j-c-a.tracer.enabled</dt>
 <dd>
 <p>Specify whether tracer is enabled</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.allow-core-timeout</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.allow-core-timeout</dt>
 <dd>
 <p>Whether core threads may time out.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.core-threads</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.core-threads</dt>
 <dd>
 <p>The core thread pool size which is smaller than the maximum pool size. If undefined, the core thread pool size is the same as the maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.current-thread-count</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.current-thread-count</dt>
 <dd>
 <p>The current number of threads in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.handoff-executor</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.handoff-executor</dt>
 <dd>
 <p>An executor to delegate tasks to in the event that a task cannot be accepted. If not specified, tasks that cannot be accepted will be silently discarded.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.keepalive-time</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.keepalive-time</dt>
 <dd>
 <p>Used to specify the amount of time that pool threads should be kept running when idle; if not specified, threads will run until the executor is shut down.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.largest-thread-count</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.largest-thread-count</dt>
 <dd>
 <p>The largest number of threads that have ever simultaneously been in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.max-threads</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.max-threads</dt>
 <dd>
 <p>The maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.name</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.name</dt>
 <dd>
 <p>The name of the thread pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.queue-length</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.queue-length</dt>
 <dd>
 <p>The queue length.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.queue-size</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.queue-size</dt>
 <dd>
 <p>The queue size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.rejected-count</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.rejected-count</dt>
 <dd>
 <p>The number of tasks that have been passed to the handoff-executor (if one is specified) or discarded.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.thread-factory</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.long-running-threads.<em>KEY</em>.thread-factory</dt>
 <dd>
 <p>Specifies the name of a specific thread factory to use to create worker threads. If not defined an appropriate default thread factory will be used.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.name</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.name</dt>
 <dd>
 <p>The name of the WorkManager</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.allow-core-timeout</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.allow-core-timeout</dt>
 <dd>
 <p>Whether core threads may time out.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.core-threads</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.core-threads</dt>
 <dd>
 <p>The core thread pool size which is smaller than the maximum pool size. If undefined, the core thread pool size is the same as the maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.current-thread-count</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.current-thread-count</dt>
 <dd>
 <p>The current number of threads in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.handoff-executor</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.handoff-executor</dt>
 <dd>
 <p>An executor to delegate tasks to in the event that a task cannot be accepted. If not specified, tasks that cannot be accepted will be silently discarded.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.keepalive-time</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.keepalive-time</dt>
 <dd>
 <p>Used to specify the amount of time that pool threads should be kept running when idle; if not specified, threads will run until the executor is shut down.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.largest-thread-count</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.largest-thread-count</dt>
 <dd>
 <p>The largest number of threads that have ever simultaneously been in the pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.max-threads</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.max-threads</dt>
 <dd>
 <p>The maximum thread pool size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.name</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.name</dt>
 <dd>
 <p>The name of the thread pool.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.queue-length</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.queue-length</dt>
 <dd>
 <p>The queue length.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.queue-size</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.queue-size</dt>
 <dd>
 <p>The queue size.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.rejected-count</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.rejected-count</dt>
 <dd>
 <p>The number of tasks that have been passed to the handoff-executor (if one is specified) or discarded.</p>
 </dd>
-<dt class="hdlist1">swarm.jca.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.thread-factory</dt>
+<dt class="hdlist1">swarm.j-c-a.workmanagers.<em>KEY</em>.short-running-threads.<em>KEY</em>.thread-factory</dt>
 <dd>
 <p>Specifies the name of a specific thread factory to use to create worker threads. If not defined an appropriate default thread factory will be used.</p>
 </dd>
@@ -14534,15 +14534,15 @@ for graceful pause/resume/shutdown of the container.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.requestcontroller.active-requests</dt>
+<dt class="hdlist1">swarm.request-controller.active-requests</dt>
 <dd>
 <p>The number of requests that are currently running in the server</p>
 </dd>
-<dt class="hdlist1">swarm.requestcontroller.max-requests</dt>
+<dt class="hdlist1">swarm.request-controller.max-requests</dt>
 <dd>
 <p>The maximum number of all types of requests that can be running in a server at a time</p>
 </dd>
-<dt class="hdlist1">swarm.requestcontroller.track-individual-endpoints</dt>
+<dt class="hdlist1">swarm.request-controller.track-individual-endpoints</dt>
 <dd>
 <p>If this is true requests are tracked at an endpoint level, which will allow individual deployments to be suspended</p>
 </dd>
