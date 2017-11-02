@@ -1326,7 +1326,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
   <span class="tag">&lt;plugin&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>${project.version}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;executions&gt;</span>
       <span class="tag">&lt;execution&gt;</span>
         <span class="tag">&lt;id&gt;</span>package<span class="tag">&lt;/id&gt;</span>
@@ -1395,7 +1395,7 @@ In addition to that, put <code>true</code> in the <code>hollow</code> property o
   <span class="tag">&lt;plugin&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>${project.version}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;executions&gt;</span>
       <span class="tag">&lt;execution&gt;</span>
         <span class="tag">&lt;id&gt;</span>package<span class="tag">&lt;/id&gt;</span>
@@ -1423,12 +1423,12 @@ In addition to that, put <code>true</code> in the <code>hollow</code> property o
 <li>
 <p>Execute the hollow JAR:</p>
 <div class="paragraph">
-<p>Execute the resulting <code>-hollowswarm.jar</code> file using the Java binary and pass
+<p>Execute the resulting <code>-hollow-swarm.jar</code> file using the Java binary and pass
 the <code>.war</code> file with your application as the first argument:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>$ java -jar ./target/myapp-hollowswarm.jar ./target/myapp.war</code></pre>
+<pre class="CodeRay highlight"><code>$ java -jar ./target/myapp-hollow-swarm.jar ./target/myapp.war</code></pre>
 </div>
 </div>
 </li>
@@ -1490,7 +1490,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
   <span class="tag">&lt;plugin&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>${project.version}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;executions&gt;</span>
       <span class="tag">&lt;execution&gt;</span>
         <span class="tag">&lt;id&gt;</span>package<span class="tag">&lt;/id&gt;</span>
@@ -2537,7 +2537,7 @@ the appropriate plugins to enable localization.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>${project.version}<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
   <span class="tag">&lt;executions&gt;</span>
     ...
     <span class="tag">&lt;configuration&gt;</span>
@@ -3050,7 +3050,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar myapp-swarm -s/home/app/openshift.yml -Scloud -Stesting</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar myapp-swarm.jar -s/home/app/openshift.yml -Scloud -Stesting</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3077,7 +3077,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar myapp-swarmm -Scloud -Stesting -s/home/app/openshift.yml</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar myapp-swarm.jar -Scloud -Stesting -s/home/app/openshift.yml</code></pre>
 </div>
 </div>
 </div>
@@ -17794,7 +17794,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2017.11.0-SNAPSHOT<br>
-Last updated 2017-10-30 07:14:51 MST
+Last updated 2017-11-02 08:29:52 MST
 </div>
 </div>
 </body>
