@@ -655,10 +655,10 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#_general">5. General</a>
 <ul class="sectlevel2">
-<li><a href="#_maven_plugin">5.1. Maven Plugin</a>
+<li><a href="#maven-plugin">5.1. Maven Plugin</a>
 <ul class="sectlevel3">
 <li><a href="#_goals">5.1.1. Goals</a></li>
-<li><a href="#_configuration">5.1.2. Configuration</a></li>
+<li><a href="#maven-plugin-configuration">5.1.2. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#_configuration_of_a_wildfly_swarm_application">5.2. Configuration of a WildFly Swarm Application</a>
@@ -953,38 +953,8 @@ Each piece of functionality is called a <em>fraction.</em>
 Some fractions provide only access to APIs, such as JAX-RS or CDI; other fractions provide higher-level capabilities, such as integration with RHSSO (Keycloak).</p>
 </div>
 <div class="paragraph">
-<p>The typical method for consuming WildFly Swarm fractions is through Maven coordinates.
-Address a fraction by adding its Maven coordinates to the <code>pom.xml</code> file in your application. The functionality the fraction provides is then packaged with your application (see <a href="#creating-an-uberjar">Creating an Uberjar</a>).</p>
-</div>
-<div class="exampleblock">
-<div class="title">Example 1. Addressing Fractions in a POM file</div>
-<div class="content">
-<div class="paragraph">
-<p>Address the fractions in the <code>&lt;dependency&gt;</code> section of the <code>pom.xml</code> file.</p>
-</div>
-<div class="paragraph">
-<p>Example with the JAX-RS fraction:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
-  <span class="tag">&lt;artifactId&gt;</span>jaxrs<span class="tag">&lt;/artifactId&gt;</span>
-<span class="tag">&lt;/dependency&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Example with the RHSSO/Keycloak fraction:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
-  <span class="tag">&lt;artifactId&gt;</span>keycloak<span class="tag">&lt;/artifactId&gt;</span>
-<span class="tag">&lt;/dependency&gt;</span></code></pre>
-</div>
-</div>
-</div>
+<p>The typical method for consuming WildFly Swarm fractions is through Maven coordinates, which you add to the <code>pom.xml</code> file in your application.
+The functionality the fraction provides is then packaged with your application (see <a href="#creating-an-uberjar">Creating an Uberjar</a>).</p>
 </div>
 <div class="paragraph">
 <p>To enable easier consumption of WildFly Swarm fractions, a bill of materials (BOM) is available. For more information, see <a href="#using-a-bom">Using a BOM</a>.</p>
@@ -1041,7 +1011,7 @@ be rebuilt more quickly.</p>
 </div>
 <div class="paragraph">
 <p>The names of the hollow JARs that WildFly Swarm produces include the name of
-your application, and the <code>-hollowswarm.jar</code> suffix. You must package the
+your application, and the <code>-hollow-swarm.jar</code> suffix. You must package the
 <code>.war</code> file of your application separately in order to benefit from the hollow
 JAR.</p>
 </div>
@@ -1051,7 +1021,7 @@ executing the hollow JAR:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>$ java -jar myapp-hollowswarm.jar myapp.war</code></pre>
+<pre class="CodeRay highlight"><code>$ java -jar myapp-hollow-swarm.jar myapp.war</code></pre>
 </div>
 </div>
 </div>
@@ -1318,7 +1288,7 @@ with WildFly Swarm is as an <em>uberjar</em>.</p>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Add the <code>wildfly-swarm-maven-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block,
+<p>Add the <code>wildfly-swarm-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block,
 with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.</p>
 <div class="listingblock">
 <div class="content">
@@ -1370,8 +1340,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
 <div class="sect2">
 <h3 id="creating-a-hollow-jar"><a class="anchor" href="#creating-a-hollow-jar"></a>3.3. Creating a hollow JAR</h3>
 <div class="paragraph">
-<p>The <a href="#hollow-jar">hollow JAR</a> is one method of packaging an application for
-execution with WildFly Swarm.</p>
+<p>The <a href="#hollow-jar">hollow JAR</a> is one method of packaging an application for execution with WildFly Swarm.</p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisites</div>
@@ -1385,10 +1354,10 @@ execution with WildFly Swarm.</p>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Add the <code>wildfly-swarm-maven-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block,
-with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
-In addition to that, put <code>true</code> in the <code>hollow</code> property of the
-<code>&lt;configuration&gt;</code> element:</p>
+<p>Add the <code>wildfly-swarm-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block, with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
+In addition to that, put <code>true</code> in the <code>hollow</code> property of the <code>&lt;configuration&gt;</code> element:</p>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugins&gt;</span>
@@ -1411,6 +1380,11 @@ In addition to that, put <code>true</code> in the <code>hollow</code> property o
 <span class="tag">&lt;/plugins&gt;</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>You can also execute the Maven binary with the system property <code>-Dswarm.hollow=true</code> instead. For more information, see the <a href="#maven-plugin-configuration">Maven plugin configuration reference</a>.</p>
+</div>
+</div>
+</div>
 </li>
 <li>
 <p>Perform a normal Maven build:</p>
@@ -1423,8 +1397,7 @@ In addition to that, put <code>true</code> in the <code>hollow</code> property o
 <li>
 <p>Execute the hollow JAR:</p>
 <div class="paragraph">
-<p>Execute the resulting <code>-hollow-swarm.jar</code> file using the Java binary and pass
-the <code>.war</code> file with your application as the first argument:</p>
+<p>Execute the resulting <code>-hollow-swarm.jar</code> file using the Java binary and pass the <code>.war</code> file with your application as the first argument:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1451,6 +1424,18 @@ the <code>.war</code> file with your application as the first argument:</p>
 <div class="paragraph">
 <p>Migrating existing legacy applications to benefit from WildFly Swarm is simple when using fraction auto-detection.
 If you enable the WildFly Swarm Maven plugin in your application, WildFly Swarm detects which APIs you use, and includes the appropriate fractions at build time.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+By default, WildFly Swarm only auto-detects if you do not specify any fractions explicitly. This behavior is controlled by the <code>fractionDetectMode</code> property. For more information, see the <a href="#maven-plugin-configuration">Maven plugin configuration reference</a>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>For example, consider your <code>pom.xml</code> already specifies the API <code>.jar</code> file for a specification such as JAX-RS:</p>
@@ -1482,7 +1467,7 @@ If you enable the WildFly Swarm Maven plugin in your application, WildFly Swarm 
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Add the <code>wildfly-swarm-maven-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block,
+<p>Add the <code>wildfly-swarm-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block,
 with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.</p>
 <div class="listingblock">
 <div class="content">
@@ -2524,7 +2509,7 @@ the appropriate plugins to enable localization.</p>
 <h2 id="_general"><a class="anchor" href="#_general"></a>5. General</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_maven_plugin"><a class="anchor" href="#_maven_plugin"></a>5.1. Maven Plugin</h3>
+<h3 id="maven-plugin"><a class="anchor" href="#maven-plugin"></a>5.1. Maven Plugin</h3>
 <div class="paragraph">
 <p>WildFly Swarm provides a Maven plugin to accomplish most of the work of building <a href="#uberjar">uberjar</a> packages.</p>
 </div>
@@ -2591,7 +2576,7 @@ The <code>stop</code> goal can only stop applications that were started <em>in t
 </div>
 </div>
 <div class="sect3">
-<h4 id="_configuration"><a class="anchor" href="#_configuration"></a>5.1.2. Configuration</h4>
+<h4 id="maven-plugin-configuration"><a class="anchor" href="#maven-plugin-configuration"></a>5.1.2. Configuration</h4>
 <div class="paragraph">
 <p>The plugin accepts the following options:</p>
 </div>
@@ -2732,7 +2717,7 @@ The <code>stop</code> goal can only stop applications that were started <em>in t
 <p><code>false</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>multistart</code>, <code>run</code>, <code>start</code></p>
+<p><code>package</code></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2908,7 +2893,7 @@ Only the items related to the fractions that your application uses are relevant 
 <p>Any property that has the <em>KEY</em> parameter in its name indicates that you must supply a key or identifier in that segment of the name.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2. Using configuration items with the KEY parameter</div>
+<div class="title">Example 1. Using configuration items with the KEY parameter</div>
 <div class="content">
 <div class="paragraph">
 <p>The configuration item documented as <code>swarm.undertow.servers.KEY.default-host</code> indicates that the configuration applies to a particular named server.</p>
@@ -2923,7 +2908,7 @@ Only the items related to the fractions that your application uses are relevant 
 <p>If you want to set explicit configuration values as defaults through the Maven plugin, add a <code>&lt;properties&gt;</code> section to the <code>&lt;configuration&gt;</code> block of the plugin in the <code>pom.xml</code> file in your application.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 3. Setting a configuration item through the Maven Plugin</div>
+<div class="title">Example 2. Setting a configuration item through the Maven Plugin</div>
 <div class="content">
 <div class="paragraph">
 <p>An example Maven plugin configuration for the <code>swarm.bind.address</code> item:</p>
@@ -3007,7 +2992,7 @@ In addition to that, the YAML strategy provides grouping of environment-specific
 A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code>project-&lt;name&gt;.yml</code> file on your classpath.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4. Specifying configuration files on the command line</div>
+<div class="title">Example 3. Specifying configuration files on the command line</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the following application execution:</p>
@@ -3043,7 +3028,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 <p>Both the <code>-s &lt;path&gt;</code> and <code>-S &lt;name&gt;</code> command-line options can be used at the same time, but files specified using the <code>-s &lt;path&gt;</code> option take precedence over YAML files contained in your application.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 5. Specifying configuration files inside and outside of the application</div>
+<div class="title">Example 4. Specifying configuration files inside and outside of the application</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the following application execution:</p>
@@ -3101,7 +3086,7 @@ This includes both publicly-routed interfaces, and the localhost (<code>127.0.0.
 <p>In addition to that, when you include the <code>management</code> fraction in an application, an interface named <code>management</code> is also provisioned, and it is bound only to localhost.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 6. Additional interface configuration</div>
+<div class="title">Example 5. Additional interface configuration</div>
 <div class="content">
 <div class="paragraph">
 <p>The following interface is called <code>backnet</code>, and is bound to the <code>192.168.4.5</code> address.</p>
@@ -3147,7 +3132,7 @@ Use regular socket-bindings for inbound connections, while outbound-socket-bindi
 You can bind the sockets of an entire group to a given default interface, or you can offset all members of the group by a particular number of ports.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. Socket-binding group</div>
+<div class="title">Example 6. Socket-binding group</div>
 <div class="content">
 <div class="paragraph">
 <p>The ports of the <code>standard-sockets</code> default group are offset by 10:</p>
@@ -3165,7 +3150,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8. Socket binding</div>
+<div class="title">Example 7. Socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>Socket-bindings may be created or adjusted within a <code>socket-binding-group</code>:</p>
@@ -3183,7 +3168,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 9. Outbound socket binding</div>
+<div class="title">Example 8. Outbound socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>To create a named outbound socket binding for connection to remote endpoints, define <code>outbound-socket-bindings</code> in a <code>socket-binding-group</code>:</p>
@@ -17794,7 +17779,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2017.11.0-SNAPSHOT<br>
-Last updated 2017-11-02 09:45:36 MST
+Last updated 2017-11-02 12:22:45 MST
 </div>
 </div>
 </body>
