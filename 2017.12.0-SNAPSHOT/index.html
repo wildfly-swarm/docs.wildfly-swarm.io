@@ -819,6 +819,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_datasources">6.11. Datasources</a>
 <ul class="sectlevel3">
 <li><a href="#_autodetectable_drivers">6.11.1. Autodetectable drivers</a></li>
+<li><a href="#_example_datasource_definitions">6.11.2. Example datasource definitions</a></li>
 </ul>
 </li>
 <li><a href="#_drools_server">6.12. Drools Server</a></li>
@@ -5068,6 +5069,75 @@ may be used when defining a datasource is as follows:</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect3">
+<h4 id="_example_datasource_definitions"><a class="anchor" href="#_example_datasource_definitions"></a>6.11.2. Example datasource definitions</h4>
+<div class="sect4">
+<h5 id="_mysql"><a class="anchor" href="#_mysql"></a>MySQL</h5>
+<div class="paragraph">
+<p>An example of a MySQL datasource configuration with connection information, basic security, and validation options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">datasources</span>:
+    <span class="key">data-sources</span>:
+      <span class="key">MyDS</span>:
+        <span class="key">driver-name</span>: <span class="string"><span class="content">mysql</span></span>
+        <span class="key">connection-url</span>: <span class="string"><span class="content">jdbc:mysql://localhost:3306/jbossdb</span></span>
+        <span class="key">user-name</span>: <span class="string"><span class="content">admin</span></span>
+        <span class="key">password</span>: <span class="string"><span class="content">admin</span></span>
+        <span class="key">valid-connection-checker-class-name</span>: <span class="string"><span class="content">org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker</span></span>
+        <span class="key">validate-on-match</span>: <span class="string"><span class="content">true</span></span>
+        <span class="key">background-validation</span>: <span class="string"><span class="content">false</span></span>
+        <span class="key">exception-sorter-class-name</span>: <span class="string"><span class="content">org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter</span></span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_postgresql"><a class="anchor" href="#_postgresql"></a>PostgreSQL</h5>
+<div class="paragraph">
+<p>An example of a PostgreSQL datasource configuration with connection information, basic security, and validation options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">datasources</span>:
+    <span class="key">data-sources</span>:
+      <span class="key">MyDS</span>:
+        <span class="key">driver-name</span>: <span class="string"><span class="content">postgresql</span></span>
+        <span class="key">connection-url</span>: <span class="string"><span class="content">jdbc:postgresql://localhost:5432/postgresdb</span></span>
+        <span class="key">user-name</span>: <span class="string"><span class="content">admin</span></span>
+        <span class="key">password</span>: <span class="string"><span class="content">admin</span></span>
+        <span class="key">valid-connection-checker-class-name</span>: <span class="string"><span class="content">org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker</span></span>
+        <span class="key">validate-on-match</span>: <span class="string"><span class="content">true</span></span>
+        <span class="key">background-validation</span>: <span class="string"><span class="content">false</span></span>
+        <span class="key">exception-sorter-class-name</span>: <span class="string"><span class="content">org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter</span></span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_oracle"><a class="anchor" href="#_oracle"></a>Oracle</h5>
+<div class="paragraph">
+<p>An example of an Oracle datasource configuration with connection information, basic security, and validation options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">datasources</span>:
+    <span class="key">data-sources</span>:
+      <span class="key">MyDS</span>:
+        <span class="key">driver-name</span>: <span class="string"><span class="content">oracle</span></span>
+        <span class="key">connection-url</span>: <span class="string"><span class="content">jdbc:oracle:thin:@localhost:1521:XE</span></span>
+        <span class="key">user-name</span>: <span class="string"><span class="content">admin</span></span>
+        <span class="key">password</span>: <span class="string"><span class="content">admin</span></span>
+        <span class="key">valid-connection-checker-class-name</span>: <span class="string"><span class="content">org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker</span></span>
+        <span class="key">validate-on-match</span>: <span class="string"><span class="content">true</span></span>
+        <span class="key">background-validation</span>: <span class="string"><span class="content">false</span></span>
+        <span class="key">stale-connection-checker-class-name</span>: <span class="string"><span class="content">org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker</span></span>
+        <span class="key">exception-sorter-class-name</span>: <span class="string"><span class="content">org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter</span></span></code></pre>
+</div>
+</div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -5661,6 +5731,7 @@ may be used when defining a datasource is as follows:</p>
 <p>Defatul datasource JDBC driver name</p>
 </dd>
 </dl>
+</div>
 </div>
 </div>
 </div>
@@ -17625,7 +17696,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2017.12.0-SNAPSHOT<br>
-Last updated 2017-11-06 14:01:46 MST
+Last updated 2017-11-07 07:29:56 MST
 </div>
 </div>
 </body>
