@@ -661,10 +661,10 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#maven-plugin-configuration">5.1.2. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#_configuration_of_a_wildfly_swarm_application">5.2. Configuration of a WildFly Swarm Application</a>
+<li><a href="#configuring-a-wildfly-swarm-application">5.2. Configuring a WildFly Swarm application</a>
 <ul class="sectlevel3">
-<li><a href="#configure-your-application-using-properties">5.2.1. Configure your application using properties</a></li>
-<li><a href="#configure-your-application-using-yaml">5.2.2. Configure your application using YAML</a></li>
+<li><a href="#configuring-an-application-using-properties">5.2.1. Configuring an application using properties</a></li>
+<li><a href="#configuring-an-application-using-yaml">5.2.2. Configuring an application using YAML</a></li>
 </ul>
 </li>
 <li><a href="#_network">5.3. Network</a>
@@ -2869,19 +2869,19 @@ Any properties loaded from the <code>&lt;propertiesFile&gt;</code> override iden
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configuration_of_a_wildfly_swarm_application"><a class="anchor" href="#_configuration_of_a_wildfly_swarm_application"></a>5.2. Configuration of a WildFly Swarm Application</h3>
+<h3 id="configuring-a-wildfly-swarm-application"><a class="anchor" href="#configuring-a-wildfly-swarm-application"></a>5.2. Configuring a WildFly Swarm application</h3>
 <div class="paragraph">
-<p>Every application built with WildFly Swarm has a many configurable options.
-In all cases, reasonable defaults are already applied, therefore you do not have to change any options unless you explicitly want to.</p>
+<p>You can configure numerous options with applications built with WildFly Swarm.
+For all options, reasonable defaults are already applied, so you do not have to change any options unless you explicitly want to.</p>
 </div>
 <div class="paragraph">
 <p>This reference is a complete list of all configurable items, grouped by the fraction that introduces them.
 Only the items related to the fractions that your application uses are relevant to you.</p>
 </div>
 <div class="sect3">
-<h4 id="configure-your-application-using-properties"><a class="anchor" href="#configure-your-application-using-properties"></a>5.2.1. Configure your application using properties</h4>
+<h4 id="configuring-an-application-using-properties"><a class="anchor" href="#configuring-an-application-using-properties"></a>5.2.1. Configuring an application using properties</h4>
 <div class="paragraph">
-<p>In this document, configuration items are presented using dotted notation, and are suitable for use as Java property names, which your application consumes through explicit setting in the Maven plugin configuration, or through the command line when executing your application.</p>
+<p>Here, configuration items are presented using dotted notation, and are suitable for use as Java property names, which your application consumes through explicit setting in the Maven plugin configuration, or through the command line when your application is being executed.</p>
 </div>
 <div class="paragraph">
 <p>Any property that has the <em>KEY</em> parameter in its name indicates that you must supply a key or identifier in that segment of the name.</p>
@@ -2893,7 +2893,7 @@ Only the items related to the fractions that your application uses are relevant 
 <p>The configuration item documented as <code>swarm.undertow.servers.KEY.default-host</code> indicates that the configuration applies to a particular named server.</p>
 </div>
 <div class="paragraph">
-<p>In practical usage, the property would be, for example, <code>swarm.undertow.servers.default.default-host</code>, for a server known as <code>default</code>.</p>
+<p>In practical usage, the property would be, for example, <code>swarm.undertow.servers.default.default-host</code> for a server known as <code>default</code>.</p>
 </div>
 </div>
 </div>
@@ -2935,19 +2935,19 @@ Only the items related to the fractions that your application uses are relevant 
 <div class="title">Note</div>
 </td>
 <td class="content">
-It is not recommended to use the Maven plugin to explicitly set properties to control the configuration.
-Instead, using the <a href="#configure-your-application-using-yaml">YAML method</a> is recommended.
+It is not recommended to set properties using the Maven plugin to control the configuration in the long term.
+Instead, use the <a href="#configuring-an-application-using-yaml">YAML method</a>.
 </td>
 </tr>
 </table>
 </div>
 <h5 id="_setting_properties_using_the_command_line" class="discrete">Setting properties using the Command Line</h5>
 <div class="paragraph">
-<p>Even hough setting properties using the Maven plugin is not recommended, it is useful for temporarily changing a configuration item for a single launch of your application.
-You can customize an environment-specific setting or experiment with configuration items before committing them to YAML.</p>
+<p>Setting properties using the Maven plugin is useful for temporarily changing a configuration item for a single execution of your application.
+You can customize an environment-specific setting or experiment with configuration items before setting them in a YAML configuration file.</p>
 </div>
 <div class="paragraph">
-<p>To use a property on the command line, pass them as a command-line parameter to the Java binary:</p>
+<p>To use a property on the command line, pass it as a command-line parameter to the Java binary:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2956,17 +2956,20 @@ You can customize an environment-specific setting or experiment with configurati
 </div>
 </div>
 <div class="sect3">
-<h4 id="configure-your-application-using-yaml"><a class="anchor" href="#configure-your-application-using-yaml"></a>5.2.2. Configure your application using YAML</h4>
+<h4 id="configuring-an-application-using-yaml"><a class="anchor" href="#configuring-an-application-using-yaml"></a>5.2.2. Configuring an application using YAML</h4>
 <div class="paragraph">
 <p>YAML is the preferred method for long-term configuration of your application.
-In addition to that, the YAML strategy provides grouping of environment-specific configurations, which can be selectively enabled when launching the application.</p>
+In addition to that, the YAML strategy provides grouping of environment-specific configurations, which you can selectively enable when executing the application.</p>
 </div>
-<h5 id="_general_yaml_format" class="discrete">General YAML format</h5>
+<h5 id="_the_general_yaml_format" class="discrete">The General YAML format</h5>
 <div class="paragraph">
 <p>The configuration names correspond to the YAML configuration structure.</p>
 </div>
+<div class="exampleblock">
+<div class="title">Example 3. YAML configuration</div>
+<div class="content">
 <div class="paragraph">
-<p>For example, the item documented as <code>swarm.undertow.servers.KEY.default-host</code> translates to the following YAML, substituting the <code>KEY</code> segment with the <code>default</code> identifier:</p>
+<p>For example, the item documented as <code>swarm.undertow.servers.KEY.default-host</code> translates to the following YAML structure, substituting the <code>KEY</code> segment with the <code>default</code> identifier:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2977,16 +2980,19 @@ In addition to that, the YAML strategy provides grouping of environment-specific
         <span class="key">default-host</span>: <span class="string"><span class="content">&lt;myhost&gt;</span></span></code></pre>
 </div>
 </div>
+</div>
+</div>
 <h5 id="_default_yaml_files" class="discrete">Default YAML Files</h5>
 <div class="paragraph">
-<p>If the original <code>.war</code> file with your application contains a file named <code>project-defaults.yml</code>, that file represents the defaults applied over the absolute defaults that WildFly Swarm provides to your application.</p>
+<p>If the original <code>.war</code> file with your application contains a file named <code>project-defaults.yml</code>, that file represents the defaults applied over the absolute defaults that WildFly Swarm provides.</p>
 </div>
 <div class="paragraph">
-<p>Additionally, if you provide specific configuration files using the <code>-S &lt;name&gt;</code> command-line option, those files are loaded, in that order, before <code>project-defaults.yml</code>.
+<p>In addition to the <code>project-defaults.yml</code> file, you can provide specific configuration files using the <code>-S &lt;name&gt;</code> command-line option.
+The specified files are loaded, in the order you provided them, before <code>project-defaults.yml</code>.
 A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code>project-&lt;name&gt;.yml</code> file on your classpath.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 3. Specifying configuration files on the command line</div>
+<div class="title">Example 4. Specifying configuration files on the command line</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the following application execution:</p>
@@ -2997,7 +3003,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, the following YAML files are loaded in this order. The first file containing a given configuration item takes precedence over others:</p>
+<p>The following YAML files are loaded, in this order. The first file containing a given configuration item takes precedence over others:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -3022,7 +3028,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 <p>Both the <code>-s &lt;path&gt;</code> and <code>-S &lt;name&gt;</code> command-line options can be used at the same time, but files specified using the <code>-s &lt;path&gt;</code> option take precedence over YAML files contained in your application.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4. Specifying configuration files inside and outside of the application</div>
+<div class="title">Example 5. Specifying configuration files inside and outside of the application</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the following application execution:</p>
@@ -3033,7 +3039,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, the following YAML files are loaded in this order:</p>
+<p>The following YAML files are loaded, in this order:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -3052,7 +3058,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </ol>
 </div>
 <div class="paragraph">
-<p>The same order of preference is applied even when the application is invoked as follows:</p>
+<p>The same order of preference is applied even if you invoke the application as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3080,7 +3086,7 @@ This includes both publicly-routed interfaces, and the localhost (<code>127.0.0.
 <p>In addition to that, when you include the <code>management</code> fraction in an application, an interface named <code>management</code> is also provisioned, and it is bound only to localhost.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 5. Additional interface configuration</div>
+<div class="title">Example 6. Additional interface configuration</div>
 <div class="content">
 <div class="paragraph">
 <p>The following interface is called <code>backnet</code>, and is bound to the <code>192.168.4.5</code> address.</p>
@@ -3126,7 +3132,7 @@ Use regular socket-bindings for inbound connections, while outbound-socket-bindi
 You can bind the sockets of an entire group to a given default interface, or you can offset all members of the group by a particular number of ports.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 6. Socket-binding group</div>
+<div class="title">Example 7. Socket-binding group</div>
 <div class="content">
 <div class="paragraph">
 <p>The ports of the <code>standard-sockets</code> default group are offset by 10:</p>
@@ -3144,7 +3150,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. Socket binding</div>
+<div class="title">Example 8. Socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>Socket-bindings may be created or adjusted within a <code>socket-binding-group</code>:</p>
@@ -3162,7 +3168,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8. Outbound socket binding</div>
+<div class="title">Example 9. Outbound socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>To create a named outbound socket binding for connection to remote endpoints, define <code>outbound-socket-bindings</code> in a <code>socket-binding-group</code>:</p>
@@ -17696,7 +17702,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2017.12.0-SNAPSHOT<br>
-Last updated 2017-11-08 14:28:26 MST
+Last updated 2017-11-09 07:58:49 MST
 </div>
 </div>
 </body>
