@@ -874,7 +874,14 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </li>
 <li><a href="#_messaging">6.38. Messaging</a></li>
-<li><a href="#_microprofile">6.39. MicroProfile</a></li>
+<li><a href="#_microprofile">6.39. MicroProfile</a>
+<ul class="sectlevel3">
+<li><a href="#_eclipse_microprofile_config">6.39.1. Eclipse MicroProfile Config</a></li>
+<li><a href="#_microprofile_health">6.39.2. Microprofile-Health</a></li>
+<li><a href="#_microprofile_jwt_rbac_auth_fraction">6.39.3. MicroProfile JWT RBAC Auth Fraction</a></li>
+<li><a href="#_microprofile_metrics_fraction">6.39.4. Microprofile Metrics Fraction</a></li>
+</ul>
+</li>
 <li><a href="#_modcluster">6.40. Modcluster</a></li>
 <li><a href="#_mongodb">6.41. MongoDB</a></li>
 <li><a href="#_monitor">6.42. Monitor</a></li>
@@ -14180,6 +14187,153 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_eclipse_microprofile_config"><a class="anchor" href="#_eclipse_microprofile_config"></a>6.39.1. Eclipse MicroProfile Config</h4>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>microprofile-config<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="dlist">
+<div class="title">Configuration</div>
+<dl>
+<dt class="hdlist1">swarm.micro-profile-config.config-source-providers.<em>KEY</em>.attribute-class</dt>
+<dd>
+<p>Class of the ConfigSourceProvider to load</p>
+</dd>
+<dt class="hdlist1">swarm.micro-profile-config.config-sources.<em>KEY</em>.attribute-class</dt>
+<dd>
+<p>Class of the config source to load</p>
+</dd>
+<dt class="hdlist1">swarm.micro-profile-config.config-sources.<em>KEY</em>.dir</dt>
+<dd>
+<p>Directory that is scanned to config properties for this config source (file names are key, file content are value)</p>
+</dd>
+<dt class="hdlist1">swarm.micro-profile-config.config-sources.<em>KEY</em>.ordinal</dt>
+<dd>
+<p>Ordinal value for the config source</p>
+</dd>
+<dt class="hdlist1">swarm.micro-profile-config.config-sources.<em>KEY</em>.properties</dt>
+<dd>
+<p>Properties configured for this config source</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_microprofile_health"><a class="anchor" href="#_microprofile_health"></a>6.39.2. Microprofile-Health</h4>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>microprofile-health<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="dlist">
+<div class="title">Configuration</div>
+<dl>
+<dt class="hdlist1">swarm.monitor.security-realm</dt>
+<dd>
+<p>(not yet documented)</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_microprofile_jwt_rbac_auth_fraction"><a class="anchor" href="#_microprofile_jwt_rbac_auth_fraction"></a>6.39.3. MicroProfile JWT RBAC Auth Fraction</h4>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>microprofile-jwt<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="dlist">
+<div class="title">Configuration</div>
+<dl>
+<dt class="hdlist1">swarm.mpjwtauth.token.expGracePeriod</dt>
+<dd>
+<p>The JWT token expiration grace period in seconds</p>
+</dd>
+<dt class="hdlist1">swarm.mpjwtauth.token.issuedBy</dt>
+<dd>
+<p>The URI of the JWT token issuer</p>
+</dd>
+<dt class="hdlist1">swarm.mpjwtauth.token.signerPubKey</dt>
+<dd>
+<p>The public key of the JWT token signer</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_microprofile_metrics_fraction"><a class="anchor" href="#_microprofile_metrics_fraction"></a>6.39.4. Microprofile Metrics Fraction</h4>
+<div class="paragraph">
+<p>This fraction implements the <a href="https://github.com/eclipse/microprofile-metrics/releases/tag/1.0">MicroProfile Metrics 1.0 specification</a>.</p>
+</div>
+<div class="paragraph">
+<p>To use this in your project you need the following in your pom.xml</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">   <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>microprofile-metrics<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is no need to include the MicroProfile Metrics API dependency, as it comes with the fraction.</p>
+</div>
+<div class="paragraph">
+<p>By default the base metrics and vendor metrics of the server are exposed as required by the spec.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Exposing application metrics currently only works if you chose <code>war</code> packaging of your application
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;project&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.example<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>swarm-demo<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;packaging&gt;</span>war<span class="tag">&lt;/packaging&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>war packaging</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>microprofile-metrics<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_modcluster"><a class="anchor" href="#_modcluster"></a>6.40. Modcluster</h3>
@@ -17702,7 +17856,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2017.12.0-SNAPSHOT<br>
-Last updated 2017-11-13 11:28:39 MST
+Last updated 2017-11-13 13:36:36 MST
 </div>
 </div>
 </body>
