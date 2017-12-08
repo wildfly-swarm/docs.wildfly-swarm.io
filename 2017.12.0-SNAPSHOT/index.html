@@ -916,23 +916,26 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_teiid_fraction">6.62. Teiid Fraction</a>
 <ul class="sectlevel3">
 <li><a href="#_teiid_accumulo_translator">6.62.1. Teiid Accumulo Translator</a></li>
-<li><a href="#_teiid_cassandra_translator">6.62.2. Teiid Cassandra Translator</a></li>
-<li><a href="#_teiid_excel_translator">6.62.3. Teiid Excel Translator</a></li>
-<li><a href="#_teiid_file_translator">6.62.4. Teiid File Translator</a></li>
-<li><a href="#_teiid_file_ftp_translator">6.62.5. Teiid File Ftp Translator</a></li>
-<li><a href="#_teiid_google_translator">6.62.6. Teiid Google Translator</a></li>
-<li><a href="#_teiid_jdbc_translator">6.62.7. Teiid JDBC Translator</a></li>
-<li><a href="#_teiid_ldap_translator">6.62.8. Teiid LDAP Translator</a></li>
-<li><a href="#_teiid_loopback_translator">6.62.9. Teiid Loopback Translator</a></li>
-<li><a href="#_teiid_mongodb_translator">6.62.10. Teiid MongoDB Translator</a></li>
-<li><a href="#_teiid_odata_v2_translator">6.62.11. Teiid OData V2 Translator</a></li>
-<li><a href="#_teiid_odata_v4_translator">6.62.12. Teiid OData V4 Translator</a></li>
-<li><a href="#_teiid_olap_translator">6.62.13. Teiid OLAP Translator</a></li>
-<li><a href="#_teiid_salesforce_translator">6.62.14. Teiid Salesforce Translator</a></li>
-<li><a href="#_teiid_simpledb_translator">6.62.15. Teiid SimpleDB Translator</a></li>
-<li><a href="#_teiid_solr_translator">6.62.16. Teiid SOLR Translator</a></li>
-<li><a href="#_teiid_swagger_translator">6.62.17. Teiid Swagger Translator</a></li>
-<li><a href="#_teiid_webservice_rest_translator">6.62.18. Teiid WebService (REST) Translator</a></li>
+<li><a href="#_teiid_amazon_s3_translator">6.62.2. Teiid Amazon S3 Translator</a></li>
+<li><a href="#_teiid_cassandra_translator">6.62.3. Teiid Cassandra Translator</a></li>
+<li><a href="#_teiid_couchbase_translator">6.62.4. Teiid Couchbase Translator</a></li>
+<li><a href="#_teiid_excel_translator">6.62.5. Teiid Excel Translator</a></li>
+<li><a href="#_teiid_file_translator">6.62.6. Teiid File Translator</a></li>
+<li><a href="#_teiid_file_ftp_translator">6.62.7. Teiid File Ftp Translator</a></li>
+<li><a href="#_teiid_google_translator">6.62.8. Teiid Google Translator</a></li>
+<li><a href="#_teiid_infinispan_hotrod_translator">6.62.9. Teiid Infinispan Hotrod Translator</a></li>
+<li><a href="#_teiid_jdbc_translator">6.62.10. Teiid JDBC Translator</a></li>
+<li><a href="#_teiid_ldap_translator">6.62.11. Teiid LDAP Translator</a></li>
+<li><a href="#_teiid_loopback_translator">6.62.12. Teiid Loopback Translator</a></li>
+<li><a href="#_teiid_mongodb_translator">6.62.13. Teiid MongoDB Translator</a></li>
+<li><a href="#_teiid_odata_v2_translator">6.62.14. Teiid OData V2 Translator</a></li>
+<li><a href="#_teiid_odata_v4_translator">6.62.15. Teiid OData V4 Translator</a></li>
+<li><a href="#_teiid_olap_translator">6.62.16. Teiid OLAP Translator</a></li>
+<li><a href="#_teiid_salesforce_translator">6.62.17. Teiid Salesforce Translator</a></li>
+<li><a href="#_teiid_simpledb_translator">6.62.18. Teiid SimpleDB Translator</a></li>
+<li><a href="#_teiid_solr_translator">6.62.19. Teiid SOLR Translator</a></li>
+<li><a href="#_teiid_swagger_translator">6.62.20. Teiid Swagger Translator</a></li>
+<li><a href="#_teiid_webservice_rest_translator">6.62.21. Teiid WebService (REST) Translator</a></li>
 </ul>
 </li>
 <li><a href="#_topology">6.63. Topology</a>
@@ -2376,7 +2379,7 @@ capabilities.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Configurable</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">swarm.myfraction.taco</span><span class="delimiter">&quot;</span></span>)
-<span class="annotation">@AttributeDefinite</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Determines the type of taco to expose.</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@AttributeDocumentation</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Determines the type of taco to expose.</span><span class="delimiter">&quot;</span></span>)
 <span class="directive">private</span> <span class="predefined-type">String</span> tacoType;</code></pre>
 </div>
 </div>
@@ -2389,7 +2392,7 @@ item.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Configurable</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">swarm.myfraction.taco</span><span class="delimiter">&quot;</span></span>)
-<span class="annotation">@AttributeDefinite</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Determines the type of taco to expose.</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@AttributeDocumentation</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Determines the type of taco to expose.</span><span class="delimiter">&quot;</span></span>)
 <span class="directive">private</span> Defaultable&lt;<span class="predefined-type">String</span>&gt; tacoType = Defaultable.string(<span class="string"><span class="delimiter">&quot;</span><span class="content">soft</span><span class="delimiter">&quot;</span></span>);</code></pre>
 </div>
 </div>
@@ -18582,7 +18585,19 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_cassandra_translator"><a class="anchor" href="#_teiid_cassandra_translator"></a>6.62.2. Teiid Cassandra Translator</h4>
+<h4 id="_teiid_amazon_s3_translator"><a class="anchor" href="#_teiid_amazon_s3_translator"></a>6.62.2. Teiid Amazon S3 Translator</h4>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>teiid-amazon-s3<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_teiid_cassandra_translator"><a class="anchor" href="#_teiid_cassandra_translator"></a>6.62.3. Teiid Cassandra Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18594,7 +18609,19 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_excel_translator"><a class="anchor" href="#_teiid_excel_translator"></a>6.62.3. Teiid Excel Translator</h4>
+<h4 id="_teiid_couchbase_translator"><a class="anchor" href="#_teiid_couchbase_translator"></a>6.62.4. Teiid Couchbase Translator</h4>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>teiid-couchbase<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_teiid_excel_translator"><a class="anchor" href="#_teiid_excel_translator"></a>6.62.5. Teiid Excel Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18606,7 +18633,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_file_translator"><a class="anchor" href="#_teiid_file_translator"></a>6.62.4. Teiid File Translator</h4>
+<h4 id="_teiid_file_translator"><a class="anchor" href="#_teiid_file_translator"></a>6.62.6. Teiid File Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18618,7 +18645,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_file_ftp_translator"><a class="anchor" href="#_teiid_file_ftp_translator"></a>6.62.5. Teiid File Ftp Translator</h4>
+<h4 id="_teiid_file_ftp_translator"><a class="anchor" href="#_teiid_file_ftp_translator"></a>6.62.7. Teiid File Ftp Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18630,7 +18657,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_google_translator"><a class="anchor" href="#_teiid_google_translator"></a>6.62.6. Teiid Google Translator</h4>
+<h4 id="_teiid_google_translator"><a class="anchor" href="#_teiid_google_translator"></a>6.62.8. Teiid Google Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18642,7 +18669,19 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_jdbc_translator"><a class="anchor" href="#_teiid_jdbc_translator"></a>6.62.7. Teiid JDBC Translator</h4>
+<h4 id="_teiid_infinispan_hotrod_translator"><a class="anchor" href="#_teiid_infinispan_hotrod_translator"></a>6.62.9. Teiid Infinispan Hotrod Translator</h4>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>teiid-infinispan-hotrod<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_teiid_jdbc_translator"><a class="anchor" href="#_teiid_jdbc_translator"></a>6.62.10. Teiid JDBC Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18654,7 +18693,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_ldap_translator"><a class="anchor" href="#_teiid_ldap_translator"></a>6.62.8. Teiid LDAP Translator</h4>
+<h4 id="_teiid_ldap_translator"><a class="anchor" href="#_teiid_ldap_translator"></a>6.62.11. Teiid LDAP Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18666,7 +18705,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_loopback_translator"><a class="anchor" href="#_teiid_loopback_translator"></a>6.62.9. Teiid Loopback Translator</h4>
+<h4 id="_teiid_loopback_translator"><a class="anchor" href="#_teiid_loopback_translator"></a>6.62.12. Teiid Loopback Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18678,7 +18717,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_mongodb_translator"><a class="anchor" href="#_teiid_mongodb_translator"></a>6.62.10. Teiid MongoDB Translator</h4>
+<h4 id="_teiid_mongodb_translator"><a class="anchor" href="#_teiid_mongodb_translator"></a>6.62.13. Teiid MongoDB Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18690,7 +18729,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_odata_v2_translator"><a class="anchor" href="#_teiid_odata_v2_translator"></a>6.62.11. Teiid OData V2 Translator</h4>
+<h4 id="_teiid_odata_v2_translator"><a class="anchor" href="#_teiid_odata_v2_translator"></a>6.62.14. Teiid OData V2 Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18702,7 +18741,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_odata_v4_translator"><a class="anchor" href="#_teiid_odata_v4_translator"></a>6.62.12. Teiid OData V4 Translator</h4>
+<h4 id="_teiid_odata_v4_translator"><a class="anchor" href="#_teiid_odata_v4_translator"></a>6.62.15. Teiid OData V4 Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18714,7 +18753,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_olap_translator"><a class="anchor" href="#_teiid_olap_translator"></a>6.62.13. Teiid OLAP Translator</h4>
+<h4 id="_teiid_olap_translator"><a class="anchor" href="#_teiid_olap_translator"></a>6.62.16. Teiid OLAP Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18726,7 +18765,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_salesforce_translator"><a class="anchor" href="#_teiid_salesforce_translator"></a>6.62.14. Teiid Salesforce Translator</h4>
+<h4 id="_teiid_salesforce_translator"><a class="anchor" href="#_teiid_salesforce_translator"></a>6.62.17. Teiid Salesforce Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18748,9 +18787,21 @@ and other security APIs.</p>
 </div>
 </div>
 </div>
+<div class="sect4">
+<h5 id="_teiid_salesforce_api_version_41_translator"><a class="anchor" href="#_teiid_salesforce_api_version_41_translator"></a>Teiid Salesforce API Version 41 Translator</h5>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>teiid-salesforce-41<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_simpledb_translator"><a class="anchor" href="#_teiid_simpledb_translator"></a>6.62.15. Teiid SimpleDB Translator</h4>
+<h4 id="_teiid_simpledb_translator"><a class="anchor" href="#_teiid_simpledb_translator"></a>6.62.18. Teiid SimpleDB Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18762,7 +18813,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_solr_translator"><a class="anchor" href="#_teiid_solr_translator"></a>6.62.16. Teiid SOLR Translator</h4>
+<h4 id="_teiid_solr_translator"><a class="anchor" href="#_teiid_solr_translator"></a>6.62.19. Teiid SOLR Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18774,7 +18825,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_swagger_translator"><a class="anchor" href="#_teiid_swagger_translator"></a>6.62.17. Teiid Swagger Translator</h4>
+<h4 id="_teiid_swagger_translator"><a class="anchor" href="#_teiid_swagger_translator"></a>6.62.20. Teiid Swagger Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18786,7 +18837,7 @@ and other security APIs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_teiid_webservice_rest_translator"><a class="anchor" href="#_teiid_webservice_rest_translator"></a>6.62.18. Teiid WebService (REST) Translator</h4>
+<h4 id="_teiid_webservice_rest_translator"><a class="anchor" href="#_teiid_webservice_rest_translator"></a>6.62.21. Teiid WebService (REST) Translator</h4>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -20715,7 +20766,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2017.12.0-SNAPSHOT<br>
-Last updated 2017-12-06 07:51:09 MST
+Last updated 2017-12-07 16:51:18 MST
 </div>
 </div>
 </body>
