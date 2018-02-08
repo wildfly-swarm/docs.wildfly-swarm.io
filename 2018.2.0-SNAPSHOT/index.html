@@ -636,6 +636,12 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </li>
 <li><a href="#testing-in-a-container">3.7. Testing in a container</a></li>
+<li><a href="#_logging">3.8. Logging</a>
+<ul class="sectlevel3">
+<li><a href="#enabling-logging_{context}">3.8.1. Enabling logging</a></li>
+<li><a href="#logging-to-a-file_{context}">3.8.2. Logging to a file</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_advanced">4. Advanced</a>
@@ -867,7 +873,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_keycloak_server">6.34.1. Keycloak Server</a></li>
 </ul>
 </li>
-<li><a href="#_logging_2">6.35. Logging</a></li>
+<li><a href="#_logging_3">6.35. Logging</a></li>
 <li><a href="#_logstash">6.36. Logstash</a></li>
 <li><a href="#_mail">6.37. Mail</a></li>
 <li><a href="#_management">6.38. Management</a>
@@ -883,6 +889,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_microprofile_health">6.40.3. Microprofile-Health</a></li>
 <li><a href="#_microprofile_jwt_rbac_auth_fraction">6.40.4. MicroProfile JWT RBAC Auth Fraction</a></li>
 <li><a href="#_microprofile_metrics_fraction">6.40.5. Microprofile Metrics Fraction</a></li>
+<li><a href="#_microprofile_rest_client">6.40.6. Microprofile Rest Client</a></li>
 </ul>
 </li>
 <li><a href="#_modcluster">6.41. Modcluster</a></li>
@@ -2051,6 +2058,175 @@ In many IDEs, execute a test class by right-clicking it and selecting <code>Run<
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_logging"><a class="anchor" href="#_logging"></a>3.8. Logging</h3>
+<div class="sect3">
+<h4 id="enabling-logging_{context}"><a class="anchor" href="#enabling-logging_{context}"></a>3.8.1. Enabling logging</h4>
+<div class="paragraph">
+<p>To enable logging, add the Logging fraction to the POM file of your application.
+This automatically enables logging to the console on the <code>INFO</code> level and higher.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>A Maven-based application</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Find the <code>&lt;dependencies&gt;</code> section in the <code>pom.xml</code> file of your application.
+Add to it the following coordinates:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>logging<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you want to log messages of a level other than <code>INFO</code>, launch the application while specifying the <code>swarm.logging</code> system property:</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ mvn swarm:run -Dswarm.logging=FINE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://wildfly-swarm.github.io/wildfly-swarm-javadocs/2018.2.0-SNAPSHOT/apidocs/org/wildfly/swarm/config/logging/Level.html"><code>org.wildfly.swarm.config.logging.Level</code></a> class for the list of available levels.</p>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logging-to-a-file_{context}"><a class="anchor" href="#logging-to-a-file_{context}"></a>3.8.2. Logging to a file</h4>
+<div class="paragraph">
+<p>In addition to the console logging, you can save the logs of your application in a file.
+Typically, deployments use rotating logs to save disk space.</p>
+</div>
+<div class="paragraph">
+<p>In WildFly Swarm, logging is configured using system properties.
+Even though it is possible to use the <code>-Dproperty=value</code> syntax when launching your application, it is strongly recommended to configure file logging using the YAML profile files.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>A Maven-based application with the logging fraction enabled. For more information, see <a href="#enabling-logging_{context}">Enabling logging</a>.</p>
+</li>
+<li>
+<p>A writable directory on your file system.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Open a YAML profile file of your choice.
+If you do not know which one to use, open <code>project-defaults.yml</code> in the root directory of the WAR archive with your application.
+In the YAML file, add the following section:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">logging</span>:</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Configure a formatter (optional). Under <code>logging</code>, add a new formatter with a pattern of your choice.
+In this example, it is called <code>LOG_FORMATTER</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">pattern-formatters</span>:
+  <span class="key">LOG_FORMATTER</span>:
+    <span class="key">pattern</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">%p [%c] %s%e%n</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Configure a file handler to use with the loggers.
+This example shows the configuration of a periodic rotating file handler.
+Under <code>logging</code>, add a <code>periodic-rotating-file-handlers</code> section with a new handler.</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">periodic-rotating-file-handlers</span>:
+  <span class="key">FILE</span>:
+    <span class="key">file</span>:
+      <span class="key">path</span>: <span class="string"><span class="content">target/MY_APP.log</span></span>
+    <span class="key">suffix</span>: <span class="string"><span class="content">.yyyy-MM-dd</span></span>
+    <span class="key">named-formatter</span>: <span class="string"><span class="content">LOG_FORMATTER</span></span>
+    <span class="key">level</span>: <span class="string"><span class="content">INFO</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, a new handler named <code>FILE</code> is created, logging events of the <code>INFO</code> level and higher.
+The file stores logs in the <code>target</code> directory, and each log file is named <code>MY_APP.log</code> with the suffix <code>.yyyy-MM-dd</code>.
+WildFly Swarm automatically parses the log rotation period from the suffix, so ensure you use a format compatible with the <code>java.text.SimpleDateFormat</code> class.</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Configure the root logger.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The root logger is by default configured to use the <code>CONSOLE</code> handler only.
+Under <code>logging</code>, add a <code>root-logger</code> section with the handlers you wish to use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">root-logger</span>:
+  <span class="key">handlers</span>:
+  - <span class="string"><span class="content">CONSOLE</span></span>
+  - <span class="string"><span class="content">FILE</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, the <code>FILE</code> handler from the previous step is used, along with the default console handler.</p>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Below, you can see the complete logging configuration section:</p>
+</div>
+<div class="listingblock">
+<div class="title">The logging section in a YAML configuration profile</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">logging</span>:
+    <span class="key">pattern-formatters</span>:
+      <span class="key">LOG_FORMATTER</span>:
+        <span class="key">pattern</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CUSTOM LOG FORMAT %p [%c] %s%e%n</span><span class="delimiter">&quot;</span></span>
+    <span class="key">periodic-rotating-file-handlers</span>:
+      <span class="key">FILE</span>:
+        <span class="key">file</span>:
+          <span class="key">path</span>: <span class="string"><span class="content">path/to/your/file.log</span></span>
+        <span class="key">suffix</span>: <span class="string"><span class="content">.yyyy-MM-dd</span></span>
+        <span class="key">named-formatter</span>: <span class="string"><span class="content">LOG_FORMATTER</span></span>
+    <span class="key">root-logger</span>:
+      <span class="key">handlers</span>:
+      - <span class="string"><span class="content">CONSOLE</span></span>
+      - <span class="string"><span class="content">FILE</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2473,7 +2649,7 @@ fraction will be dragged along implicitly into their application.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_logging"><a class="anchor" href="#_logging"></a>Logging</h5>
+<h5 id="_logging_2"><a class="anchor" href="#_logging_2"></a>Logging</h5>
 <div class="paragraph">
 <p>Each fraction should use the <code>jboss-logging</code> framework along with
 the appropriate plugins to enable localization.</p>
@@ -12703,7 +12879,7 @@ to JSR-220.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_logging_2"><a class="anchor" href="#_logging_2"></a>6.35. Logging</h3>
+<h3 id="_logging_3"><a class="anchor" href="#_logging_3"></a>6.35. Logging</h3>
 <div class="paragraph">
 <p>Provides facilities to configure logging categories, levels and handlers.</p>
 </div>
@@ -16915,6 +17091,18 @@ Exposing application metrics currently only works if you chose <code>war</code> 
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_microprofile_rest_client"><a class="anchor" href="#_microprofile_rest_client"></a>6.40.6. Microprofile Rest Client</h4>
+<div class="listingblock">
+<div class="title">Maven Coordinates</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>microprofile-restclient<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_modcluster"><a class="anchor" href="#_modcluster"></a>6.41. Modcluster</h3>
@@ -18513,10 +18701,6 @@ and other security APIs.</p>
 <dt class="hdlist1">swarm.teiid.allow-env-function</dt>
 <dd>
 <p>Allow the execution of ENV function. (default false)</p>
-</dd>
-<dt class="hdlist1">swarm.teiid.async-thread-pool</dt>
-<dd>
-<p>Thread Pool to be used with Asynchronous operations in Teiid</p>
 </dd>
 <dt class="hdlist1">swarm.teiid.async-thread-pool-max-thread-count</dt>
 <dd>
@@ -20990,7 +21174,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2018.2.0-SNAPSHOT<br>
-Last updated 2018-02-05 08:44:43 MST
+Last updated 2018-02-08 02:32:30 MST
 </div>
 </div>
 </body>
