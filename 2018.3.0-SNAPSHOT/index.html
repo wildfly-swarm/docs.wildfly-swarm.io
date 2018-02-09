@@ -2063,8 +2063,8 @@ In many IDEs, execute a test class by right-clicking it and selecting <code>Run<
 <div class="sect3">
 <h4 id="enabling-logging_{context}"><a class="anchor" href="#enabling-logging_{context}"></a>3.8.1. Enabling logging</h4>
 <div class="paragraph">
-<p>To enable logging, add the Logging fraction to the POM file of your application.
-This automatically enables logging to the console on the <code>INFO</code> level and higher.</p>
+<p>Each WildFly Swarm fraction is dependent on the Logging fraction, which means that if you use any WildFly Swarm fraction in your application, logging is automatically enabled on the <code>INFO</code> level and higher.
+If you want to enable logging explicitly, add the Logging fraction to the POM file of your application.</p>
 </div>
 <div class="ulist">
 <div class="title">Prerequisites</div>
@@ -2079,7 +2079,7 @@ This automatically enables logging to the console on the <code>INFO</code> level
 <ol class="arabic">
 <li>
 <p>Find the <code>&lt;dependencies&gt;</code> section in the <code>pom.xml</code> file of your application.
-Add to it the following coordinates:</p>
+Verify it contains the following coordinates. If it does not, add them.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
@@ -2133,7 +2133,7 @@ Even though it is possible to use the <code>-Dproperty=value</code> syntax when 
 <ol class="arabic">
 <li>
 <p>Open a YAML profile file of your choice.
-If you do not know which one to use, open <code>project-defaults.yml</code> in the root directory of the WAR archive with your application.
+If you do not know which one to use, open <code>project-defaults.yml</code> in the <code>src/main/resources</code> directory in your application sources.
 In the YAML file, add the following section:</p>
 <div class="listingblock">
 <div class="content">
@@ -2143,13 +2143,33 @@ In the YAML file, add the following section:</p>
 </div>
 </li>
 <li>
-<p>Configure a formatter (optional). Under <code>logging</code>, add a new formatter with a pattern of your choice.
+<p>Configure a formatter (optional).
+The following formatters are configured by default:</p>
+<div class="openblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">PATTERN</dt>
+<dd>
+<p>Useful for logging into a file.</p>
+</dd>
+<dt class="hdlist1">COLOR_PATTERN</dt>
+<dd>
+<p>Color output. Useful for logging to the console.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>To configure a custom formatter, add a new formatter with a pattern of your choice in the <code>logging</code> section.
 In this example, it is called <code>LOG_FORMATTER</code>:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">pattern-formatters</span>:
   <span class="key">LOG_FORMATTER</span>:
     <span class="key">pattern</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">%p [%c] %s%e%n</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
 </div>
 </div>
 </li>
@@ -2164,7 +2184,7 @@ Under <code>logging</code>, add a <code>periodic-rotating-file-handlers</code> s
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">periodic-rotating-file-handlers</span>:
   <span class="key">FILE</span>:
     <span class="key">file</span>:
-      <span class="key">path</span>: <span class="string"><span class="content">target/MY_APP.log</span></span>
+      <span class="key">path</span>: <span class="string"><span class="content">target/MY_APP_NAME.log</span></span>
     <span class="key">suffix</span>: <span class="string"><span class="content">.yyyy-MM-dd</span></span>
     <span class="key">named-formatter</span>: <span class="string"><span class="content">LOG_FORMATTER</span></span>
     <span class="key">level</span>: <span class="string"><span class="content">INFO</span></span></code></pre>
@@ -2172,7 +2192,7 @@ Under <code>logging</code>, add a <code>periodic-rotating-file-handlers</code> s
 </div>
 <div class="paragraph">
 <p>Here, a new handler named <code>FILE</code> is created, logging events of the <code>INFO</code> level and higher.
-The file stores logs in the <code>target</code> directory, and each log file is named <code>MY_APP.log</code> with the suffix <code>.yyyy-MM-dd</code>.
+It logs in the <code>target</code> directory, and each log file is named <code>MY_APP_NAME.log</code> with the suffix <code>.yyyy-MM-dd</code>.
 WildFly Swarm automatically parses the log rotation period from the suffix, so ensure you use a format compatible with the <code>java.text.SimpleDateFormat</code> class.</p>
 </div>
 </div>
@@ -21174,7 +21194,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2018.3.0-SNAPSHOT<br>
-Last updated 2018-02-09 04:49:29 MST
+Last updated 2018-02-09 14:22:51 MST
 </div>
 </div>
 </body>
