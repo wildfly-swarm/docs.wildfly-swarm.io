@@ -2440,12 +2440,12 @@ absolute root of the fraction java package, such as <code>org.wildfly.swarm.unde
 components may be used.  Within these classes, you can use typical CDI mechanisms
 such as <code>@Inject</code>, <code>@Produces</code>, and <code>Instance&lt;&gt;</code> in order to accomplish whatever
 is required for your fraction.  Typically these components would, at the minimum,
-inject their own fraction. They should each be marked as <code>@ApplicationScoped</code>.</p>
+inject their own fraction.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
-<span class="directive">public</span> <span class="type">class</span> <span class="class">MyComponents</span> <span class="directive">implements</span> Whatever {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MyComponent</span> <span class="directive">implements</span> Whatever {
 
   <span class="annotation">@Inject</span>
   <span class="directive">private</span> MyFraction myFraction;
@@ -2454,43 +2454,27 @@ inject their own fraction. They should each be marked as <code>@ApplicationScope
 </div>
 </div>
 <div class="sect5">
-<h6 id="_code_archivepreparer_code"><a class="anchor" href="#_code_archivepreparer_code"></a><code>ArchivePreparer</code></h6>
+<h6 id="_code_deploymentprocessor_code"><a class="anchor" href="#_code_deploymentprocessor_code"></a><code>DeploymentProcessor</code></h6>
 <div class="paragraph">
-<p>If your fraction needs an opportunity to alter or otherwise prepare all deployed
-archives, you may implement the <code>org.wildfly.swarm.spi.api.ArchivePreparer</code> interface.</p>
+<p>If your fraction needs an opportunity to process the deployment, e.g. to alter or otherwise prepare the deployed archive or to process Jandex metadata of the deployed
+archive, you may implement the <code>org.wildfly.swarm.spi.api.DeploymentProcessor</code> interface. The implementation class should be marked as <code>@DeploymentScoped</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
-<span class="directive">public</span> <span class="type">class</span> <span class="class">MyArchivePreparer</span> <span class="directive">implements</span> ArchivePreparer {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@DeploymentScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MyDeploymentProcessor</span> <span class="directive">implements</span> DeploymentProcessor {
 
   <span class="annotation">@Inject</span>
   <span class="directive">private</span> MyFraction myFraction;
 
-  <span class="directive">public</span> <span class="type">void</span> prepareArchive(Archive&lt;?&gt; archive) {
-    archive.as( WARArchive.class ).setContextRoot( myFraction.getContextRoot() );
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_code_archivemetadataprocessor_code"><a class="anchor" href="#_code_archivemetadataprocessor_code"></a><code>ArchiveMetadataProcessor</code></h6>
-<div class="paragraph">
-<p>If your fraction needs an opportunity to process the Jandex metadata of all deployed
-archives, you may implement the <code>org.wildfly.swarm.spi.api.ArchiveMetadataProcessor</code>
-interface.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
-<span class="directive">public</span> <span class="type">class</span> <span class="class">MyArchiveMetadataProcessor</span> <span class="directive">implements</span> ArchiveMetadataProcessor {
+  <span class="annotation">@Inject</span>
+  <span class="directive">private</span> Archive archive;
 
   <span class="annotation">@Inject</span>
-  <span class="directive">private</span> MyFraction myFraction;
+  <span class="directive">private</span> IndexView index;
 
-  <span class="directive">public</span> <span class="type">void</span> processArchive(Archive&lt;?&gt; archive, Index index) {
-    <span class="comment">// ...</span>
+  <span class="directive">public</span> <span class="type">void</span> process() {
+     archive.as(WARArchive.class).setContextRoot(myFraction.getContextRoot());
   }
 }</code></pre>
 </div>
@@ -21194,7 +21178,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2018.3.0-SNAPSHOT<br>
-Last updated 2018-02-15 04:27:34 MST
+Last updated 2018-02-19 08:41:39 MST
 </div>
 </div>
 </body>
