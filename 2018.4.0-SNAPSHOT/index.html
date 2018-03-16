@@ -3421,6 +3421,20 @@ You can customize an environment-specific setting or experiment with configurati
 <pre class="CodeRay highlight"><code data-lang="shell">$ java -Dswarm.bind.address=127.0.0.1 -jar myapp-swarm.jar</code></pre>
 </div>
 </div>
+<h6 id="_specifying_jdbc_drivers_for_hollow_jars" class="discrete">Specifying JDBC drivers for hollow JARs</h6>
+<div class="paragraph">
+<p>When executing a hollow JAR, you can specify a JDBC Driver JAR using the <code>swarm.classpath</code> property.
+This way, you do not need to package the driver in the hollow JAR.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -Dswarm.classpath=./h2-1.4.196.jar -jar microprofile-jpa-hollow-swarm.jar example-jpa-jaxrs-cdi.war</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>swarm.classpath</code> property accepts one or more paths to JAR files separated by <code>;</code>.
+The specified JAR files are added to the classpath of the application.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="configuring-an-application-using-yaml"><a class="anchor" href="#configuring-an-application-using-yaml"></a>5.2.2. Configuring an application using YAML</h4>
@@ -21317,7 +21331,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2018.4.0-SNAPSHOT<br>
-Last updated 2018-03-15 12:17:00 MST
+Last updated 2018-03-16 08:11:26 MST
 </div>
 </div>
 </body>
