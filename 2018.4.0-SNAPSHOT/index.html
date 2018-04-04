@@ -609,7 +609,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#packaging_types">2. Packaging Types</a>
 <ul class="sectlevel2">
 <li><a href="#uberjar">2.1. Uberjar</a></li>
-<li><a href="#hollow-jar">2.2. Hollow JAR</a></li>
+<li><a href="#hollow-jar">2.2. Hollow JAR</a>
+<ul class="sectlevel3">
+<li><a href="#_pre_built_hollow_jars">2.2.1. Pre-Built Hollow JARs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1062,6 +1066,39 @@ executing the hollow JAR:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>$ java -jar myapp-hollow-swarm.jar myapp.war</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pre_built_hollow_jars"><a class="anchor" href="#_pre_built_hollow_jars"></a>2.2.1. Pre-Built Hollow JARs</h4>
+<div class="paragraph">
+<p>WildFly Swarm ships the following pre-built hollow JARs:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">full</dt>
+<dd>
+<p>The main Java EE related capabilities</p>
+</dd>
+<dt class="hdlist1">web</dt>
+<dd>
+<p>A smaller functional scope, focused on web technologies</p>
+</dd>
+<dt class="hdlist1">microprofile</dt>
+<dd>
+<p>Functionality defined by all Eclipse MicroProfile specifications</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The hollow JARs are available under the following coordinates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm.servers<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>[full|web|microprofile]<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -21565,7 +21602,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2018.4.0-SNAPSHOT<br>
-Last updated 2018-04-03 08:58:44 MST
+Last updated 2018-04-04 05:17:24 MST
 </div>
 </div>
 </body>
