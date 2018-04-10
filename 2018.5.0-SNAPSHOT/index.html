@@ -1100,6 +1100,41 @@ executing the hollow JAR:</p>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a id="hollow-jar-limitations"></a>Using hollow JARs has certain limitations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To enable WildFly Swarm to autodetect a JDBC driver, you must add the JAR with the driver to the <code>swarm.classpath</code> system property, for example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ java -Dswarm.classpath=./h2-1.4.196.jar -jar my-hollow-swarm.jar myApp.war</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>YAML configuration files in your application are not automatically applied.
+You must specify them manually, for example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ java -jar my-hollow-swarm.jar myApp.war -s ./project-defaults.yml</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -1712,6 +1747,9 @@ In addition to that, put <code>true</code> in the <code>hollow</code> property o
 </li>
 <li>
 <p><a href="#creating-an-uberjar">Creating an Uberjar</a></p>
+</li>
+<li>
+<p><a href="#hollow-jar-limitations">Limitations of using hollow JARs</a></p>
 </li>
 </ul>
 </div>
@@ -21602,7 +21640,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2018.5.0-SNAPSHOT<br>
-Last updated 2018-04-10 07:34:15 MST
+Last updated 2018-04-10 14:59:51 MST
 </div>
 </div>
 </body>
