@@ -675,8 +675,9 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#configuring-a-wildfly-swarm-application">5.2. Configuring a WildFly Swarm application</a>
 <ul class="sectlevel3">
-<li><a href="#configuring-an-application-using-properties">5.2.1. Configuring an application using properties</a></li>
+<li><a href="#configuring-an-application-using-system-properties">5.2.1. Configuring an application using system properties</a></li>
 <li><a href="#configuring-an-application-using-yaml">5.2.2. Configuring an application using YAML</a></li>
+<li><a href="#configuring-an-application-using-environment-variables">5.2.3. Configuring an application using environment variables</a></li>
 </ul>
 </li>
 <li><a href="#_network">5.3. Network</a>
@@ -3635,16 +3636,16 @@ Any properties loaded from the <code>&lt;propertiesFile&gt;</code> override iden
 <h3 id="configuring-a-wildfly-swarm-application"><a class="anchor" href="#configuring-a-wildfly-swarm-application"></a>5.2. Configuring a WildFly Swarm application</h3>
 <div class="paragraph">
 <p>You can configure numerous options with applications built with WildFly Swarm.
-For all options, reasonable defaults are already applied, so you do not have to change any options unless you explicitly want to.</p>
+For most options, reasonable defaults are already applied, so you do not have to change any options unless you explicitly want to.</p>
 </div>
 <div class="paragraph">
 <p>This reference is a complete list of all configurable items, grouped by the fraction that introduces them.
 Only the items related to the fractions that your application uses are relevant to you.</p>
 </div>
 <div class="sect3">
-<h4 id="configuring-an-application-using-properties"><a class="anchor" href="#configuring-an-application-using-properties"></a>5.2.1. Configuring an application using properties</h4>
+<h4 id="configuring-an-application-using-system-properties"><a class="anchor" href="#configuring-an-application-using-system-properties"></a>5.2.1. Configuring an application using system properties</h4>
 <div class="paragraph">
-<p>Here, configuration items are presented using dotted notation, and are suitable for use as Java property names, which your application consumes through explicit setting in the Maven plugin configuration, or through the command line when your application is being executed.</p>
+<p>Configuration properties are presented using dotted notation, and are suitable for use as Java system property names, which your application consumes through explicit setting in the Maven plugin configuration, or through the command line when your application is being executed.</p>
 </div>
 <div class="paragraph">
 <p>Any property that has the <em>KEY</em> parameter in its name indicates that you must supply a key or identifier in that segment of the name.</p>
@@ -3660,7 +3661,7 @@ Only the items related to the fractions that your application uses are relevant 
 </div>
 </div>
 </div>
-<h5 id="_maven_plugin_properties" class="discrete">Maven plugin properties</h5>
+<h5 id="_setting_system_properties_using_maven_plugin" class="discrete">Setting system properties using Maven plugin</h5>
 <div class="paragraph">
 <p>If you want to set explicit configuration values as defaults through the Maven plugin, add a <code>&lt;properties&gt;</code> section to the <code>&lt;configuration&gt;</code> block of the plugin in the <code>pom.xml</code> file in your application.</p>
 </div>
@@ -3704,10 +3705,12 @@ Instead, use the <a href="#configuring-an-application-using-yaml">YAML method</a
 </tr>
 </table>
 </div>
-<h5 id="_setting_properties_using_the_command_line" class="discrete">Setting properties using the Command Line</h5>
+<h5 id="_setting_system_properties_using_the_command_line" class="discrete">Setting system properties using the command line</h5>
 <div class="paragraph">
-<p>Setting properties using the Maven plugin is useful for temporarily changing a configuration item for a single execution of your application.
-You can customize an environment-specific setting or experiment with configuration items before setting them in a YAML configuration file.</p>
+<p>Setting properties using the Maven plugin is useful for temporarily changing a configuration item for a single execution of your application.</p>
+</div>
+<div class="paragraph">
+<p>You can customize an environment-specific setting or experiment with configuration items before setting them in a YAML configuration file.</p>
 </div>
 <div class="paragraph">
 <p>To use a property on the command line, pass it as a command-line parameter to the Java binary:</p>
@@ -3845,6 +3848,137 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="configuring-an-application-using-environment-variables"><a class="anchor" href="#configuring-an-application-using-environment-variables"></a>5.2.3. Configuring an application using environment variables</h4>
+<div class="paragraph">
+<p>Use environment variables to configure your application in various deployments&#8212;&#8203;especially in a containerized environment, such as Docker.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 6. Environment variables configuration</div>
+<div class="content">
+<div class="paragraph">
+<p>A property documented as <code>swarm.undertow.servers.KEY.default-host</code> translates to the following environment variable (substituting the <code>KEY</code> segment with the <code>default</code> identifier):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">export SWARM.UNDERTOW.SERVERS.DEFAULT.DEFAULT_DASH_HOST=&lt;myhost&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Unlike other configuration options, properties defined as environment variables in Linux-based containers do not allow defining non-alphanumeric characters like <em>dot</em> (.), <em>dash/hyphen</em> (-) or any other characters not in the <code>[A-Za-z0-9_]</code> range.
+Many configuration properties in WildFly Swarm contain these characters, so you must follow these rules when defining the environment variables in the following environments:</p>
+</div>
+<div class="ulist">
+<div class="title">Linux-based container rules</div>
+<ul>
+<li>
+<p>It is a naming convention that all environment properties are defined using uppercase letters.
+For example, define the <code>serveraddress</code> property as <code>SERVERADDRESS</code>.</p>
+</li>
+<li>
+<p>All the <em>dot</em> (.) characters must be replaced with <em>underscore</em> (_).
+For example, define the <code>swarm.bind.address=127.0.0.1</code> property as <code>SWARM_BIND_ADDRESS=127.0.0.1</code>.</p>
+</li>
+<li>
+<p>All <em>dash/hyphen</em> (-) characters must be replaced with the <code><em>DASH</em></code> string.
+For example, define the <code>swarm.data-sources.foo.url=&lt;url&gt;</code> property as <code>SWARM_DATA_DASH_SOURCES_FOO_URL=&lt;url&gt;</code>.</p>
+</li>
+<li>
+<p>If the property name contains underscores, all <em>underscore</em> (_) characters must be replaced with the <code>_UNDERSCORE_</code> string.
+For example, define the <code>swarm.data_sources.foo.url=&lt;url&gt;</code> property as <code>SWARM_DATA_UNDERSCORE_SOURCES_FOO_URL=&lt;url&gt;</code>.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7. An example data source configuration</div>
+<div class="content">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dswarm.datasources.data-sources.devwf.connection-url=
+jdbc:postgresql://localhost:5432/sampledb</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SWARM_DATASOURCES_DATA_DASH_SOURCES_DEVWF_CONNECTION_DASH_URL=
+'jdbc:postgresql://localhost:5432/sampledb'</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dswarm.datasources.data-sources.devwf.driver-name=postgresql</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SWARM_DATASOURCES_DATA_DASH_SOURCES_DEVWF_DRIVER_DASH_NAME='postgresql'</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dswarm.datasources.data-sources.devwf.jndiname=java:/jboss/datasources/devwf</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SWARM_DATASOURCES_DATA_DASH_SOURCES_DEVWF_JNDI_DASH_NAME='java:/jboss/datasources/devwf'</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dswarm.datasources.data-sources.devwf.user-name=postgres</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SWARM_DATASOURCES_DATA_DASH_SOURCES_DEVWF_USER_DASH_NAME='postgres'</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dswarm.datasources.data-sources.devwf.password=admin</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SWARM_DATASOURCES_DATA_DASH_SOURCES_DEVWF_PASSWORD='admin'</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_network"><a class="anchor" href="#_network"></a>5.3. Network</h3>
@@ -3863,7 +3997,7 @@ This includes both publicly-routed interfaces, and the localhost (<code>127.0.0.
 <p>In addition to that, when you include the <code>management</code> fraction in an application, an interface named <code>management</code> is also provisioned, and it is bound only to localhost.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 6. Additional interface configuration</div>
+<div class="title">Example 8. Additional interface configuration</div>
 <div class="content">
 <div class="paragraph">
 <p>The following interface is called <code>backnet</code>, and is bound to the <code>192.168.4.5</code> address.</p>
@@ -3909,7 +4043,7 @@ Use regular socket-bindings for inbound connections, while outbound-socket-bindi
 You can bind the sockets of an entire group to a given default interface, or you can offset all members of the group by a particular number of ports.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. Socket-binding group</div>
+<div class="title">Example 9. Socket-binding group</div>
 <div class="content">
 <div class="paragraph">
 <p>The ports of the <code>standard-sockets</code> default group are offset by 10:</p>
@@ -3927,7 +4061,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8. Socket binding</div>
+<div class="title">Example 10. Socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>Socket-bindings may be created or adjusted within a <code>socket-binding-group</code>:</p>
@@ -3945,7 +4079,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 9. Outbound socket binding</div>
+<div class="title">Example 11. Outbound socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>To create a named outbound socket binding for connection to remote endpoints, define <code>outbound-socket-bindings</code> in a <code>socket-binding-group</code>:</p>
@@ -8651,6 +8785,10 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 <dt class="hdlist1">swarm.hystrix.command.default.fallback.enabled</dt>
 <dd>
 <p>Determines whether a call to HystrixCommand.getFallback() will be attempted when failure or rejection occurs</p>
+</dd>
+<dt class="hdlist1">swarm.hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests</dt>
+<dd>
+<p>The maximum number of requests allowed to a HystrixCommand.getFallback() method when you are using ExecutionIsolationStrategy.SEMAPHORE</p>
 </dd>
 <dt class="hdlist1">swarm.hystrix.command.default.metrics.healthSnapshot.intervalInMilliseconds</dt>
 <dd>
@@ -17384,21 +17522,15 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <div class="sect3">
 <h4 id="_microprofile_fault_tolerance_fraction"><a class="anchor" href="#_microprofile_fault_tolerance_fraction"></a>6.41.2. Microprofile Fault Tolerance Fraction</h4>
 <div class="paragraph">
-<p>This fraction implements the <a href="https://github.com/eclipse/microprofile-fault-tolerance" target="_blank" rel="noopener">Eclipse Microprofile Fault tolerance API</a>.</p>
+<p>This fraction implements the <a href="https://github.com/eclipse/microprofile-fault-tolerance" target="_blank" rel="noopener">Eclipse Microprofile Fault tolerance API</a>.
+The implementation depends on the <a href="#_hystrix">Hystrix fraction</a>, which is added transitively into your application.
+Use <a href="#configuring-a-wildfly-swarm-application">standard configuration mechanisms</a> to configure Hystrix properties in your application.</p>
 </div>
+<div class="sect4">
+<h5 id="_bulkhead_fallback_rejection"><a class="anchor" href="#_bulkhead_fallback_rejection"></a>Bulkhead fallback rejection</h5>
 <div class="paragraph">
-<p>To use this in your project you need the following in your pom.xml</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml">   <span class="tag">&lt;dependency&gt;</span>
-      <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
-      <span class="tag">&lt;artifactId&gt;</span>microprofile-fault-tolerance<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;/dependency&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>There is no need to include the MicroProfile Fault Tolerance API dependency, as it comes with the fraction.</p>
+<p>If you use the semaphore-style <code>@Bulkhead</code> pattern with a <code>@Fallback</code> logic to limit the number of concurrent requests, the invocation may still result in a <code>BulkheadException</code> if the maximum concurrent limit for the <code>HystrixCommand.getFallback()</code> method is reached.
+To avoid that, set the <code>swarm.hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests</code> property to increase the limit.</p>
 </div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
@@ -17407,6 +17539,16 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
   <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>microprofile-fault-tolerance<span class="tag">&lt;/artifactId&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="dlist">
+<div class="title">Configuration</div>
+<dl>
+<dt class="hdlist1">swarm.micro-profile-faulttolerance.synchronousCircuitBreaker</dt>
+<dd>
+<p>Enable/disable synchronous circuit breaker functionality. If disabled, <code>CircuitBreaker#successThreshold()</code> of value greater than 1 is not supported. Moreover, circuit breaker does not necessarily transition from <code>CLOSED</code> to <code>OPEN</code> immediately when a fault tolerance operation completes. However, applications are encouraged to disable this feature on high-volume circuits.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -21640,7 +21782,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2018.5.0-SNAPSHOT<br>
-Last updated 2018-04-11 09:56:28 MST
+Last updated 2018-04-12 06:21:40 MST
 </div>
 </div>
 </body>
