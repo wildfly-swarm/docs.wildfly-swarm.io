@@ -17599,6 +17599,14 @@ To avoid that, set the <code>swarm.hystrix.command.default.fallback.isolation.se
 <dd>
 <p>The URI of the JWT token issuer</p>
 </dd>
+<dt class="hdlist1">swarm.microprofile.jwt.token.jwks-refresh-interval</dt>
+<dd>
+<p>The interval at which the JWKS URI should be queried for keys (in minutes).</p>
+</dd>
+<dt class="hdlist1">swarm.microprofile.jwt.token.jwks-uri</dt>
+<dd>
+<p>The JWKS URI from which to load public keys (if 'signer-pub-key' is set, this setting is ignored).</p>
+</dd>
 <dt class="hdlist1">swarm.microprofile.jwt.token.signer-pub-key</dt>
 <dd>
 <p>The public key of the JWT token signer. Can be prefixed 'file:' or 'classpath:' for key assets, otherwise the key contents are expected</p>
@@ -21786,7 +21794,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2018.5.0-SNAPSHOT<br>
-Last updated 2018-04-25 08:31:55 MST
+Last updated 2018-04-25 11:10:31 MST
 </div>
 </div>
 </body>
