@@ -3290,15 +3290,35 @@ If set, the swarm process will suspend on start and open a debugger on this port
 </div>
 <div class="paragraph">
 <p>The format of specifying a fraction can be:
-* <code>group:name:version</code>
-* <code>name:version</code>
-* <code>name</code></p>
+* <code>group:artifact:version</code>
+* <code>artifact:version</code>
+* <code>artifact</code></p>
 </div>
 <div class="paragraph">
 <p>If no group is provided, <code>org.wildfly.swarm</code> is assumed.</p>
 </div>
 <div class="paragraph">
 <p>If no version is provided, the version is taken from the WildFly Swarm BOM for the version of the plugin you are using.</p>
+</div>
+<div class="paragraph">
+<p>If the value starts with the character <code>!</code> a corresponding auto-detected fraction is not installed (unless it&#8217;s a dependency of any other fraction).
+In the following example the Undertow fraction is not installed even if your application references a class from the <code>javax.servlet</code> package:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;executions&gt;</span>
+    <span class="tag">&lt;configuration&gt;</span>
+     <span class="tag">&lt;fractions&gt;</span>
+       <span class="tag">&lt;fraction&gt;</span>!undertow<span class="tag">&lt;/fraction&gt;</span>
+     <span class="tag">&lt;/fractions&gt;</span>
+    <span class="tag">&lt;configuration</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/executions&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -7197,6 +7217,10 @@ for example <code>jaxrs</code>, <code>cdi</code>, <code>datasources</code>, or <
 </div>
 <div class="sect3">
 <h4 id="_ejb_remote"><a class="anchor" href="#_ejb_remote"></a>6.14.1. EJB Remote</h4>
+<div class="paragraph">
+<p>Enables remote EJB and remote naming.
+If the <code>messaging</code> fraction is present, enables remote messaging as well.</p>
+</div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -21794,7 +21818,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2018.5.0-SNAPSHOT<br>
-Last updated 2018-04-27 01:18:45 MST
+Last updated 2018-04-27 09:44:34 MST
 </div>
 </div>
 </body>
