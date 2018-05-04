@@ -3059,9 +3059,14 @@ the appropriate plugins to enable localization.</p>
   <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
   <span class="tag">&lt;executions&gt;</span>
     ...
-    <span class="tag">&lt;configuration&gt;</span>
-      ...
-    <span class="tag">&lt;configuration</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;execution&gt;</span>
+      <span class="tag">&lt;goals&gt;</span>
+        ...
+      <span class="tag">&lt;/goals&gt;</span>
+      <span class="tag">&lt;configuration&gt;</span>
+        ...
+      <span class="tag">&lt;/configuration&gt;</span>
+    <span class="tag">&lt;/execution&gt;</span>
   <span class="tag">&lt;/executions&gt;</span>
 <span class="tag">&lt;/plugin&gt;</span></code></pre>
 </div>
@@ -3311,11 +3316,16 @@ In the following example the Undertow fraction is not installed even if your app
   <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
   <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
   <span class="tag">&lt;executions&gt;</span>
-    <span class="tag">&lt;configuration&gt;</span>
-     <span class="tag">&lt;fractions&gt;</span>
-       <span class="tag">&lt;fraction&gt;</span>!undertow<span class="tag">&lt;/fraction&gt;</span>
-     <span class="tag">&lt;/fractions&gt;</span>
-    <span class="tag">&lt;configuration</span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;execution&gt;</span>
+      <span class="tag">&lt;goals&gt;</span>
+        <span class="tag">&lt;goal&gt;</span>package<span class="tag">&lt;/goal&gt;</span>
+      <span class="tag">&lt;/goals&gt;</span>
+      <span class="tag">&lt;configuration&gt;</span>
+       <span class="tag">&lt;fractions&gt;</span>
+         <span class="tag">&lt;fraction&gt;</span>!undertow<span class="tag">&lt;/fraction&gt;</span>
+       <span class="tag">&lt;/fractions&gt;</span>
+      <span class="tag">&lt;/configuration&gt;</span>
+    <span class="tag">&lt;/execution&gt;</span>
   <span class="tag">&lt;/executions&gt;</span>
 <span class="tag">&lt;/plugin&gt;</span></code></pre>
 </div>
@@ -21826,7 +21836,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2018.6.0-SNAPSHOT<br>
-Last updated 2018-05-02 03:17:21 MST
+Last updated 2018-05-04 07:32:51 MST
 </div>
 </div>
 </body>
