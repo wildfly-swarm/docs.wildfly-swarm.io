@@ -1097,7 +1097,7 @@ executing the hollow JAR:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
-    <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm.servers<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.thorntail.servers<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>[full|web|microprofile]<span class="tag">&lt;/artifactId&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
@@ -7245,6 +7245,33 @@ If the <code>messaging</code> fraction is present, enables remote messaging as w
 </div>
 <div class="sect2">
 <h3 id="_elytron"><a class="anchor" href="#_elytron"></a>6.15. Elytron</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>By default, Elytron generates the audit log to the same directory where the Thorntail application is executed.
+In some environments, for example cloud, you might have to relocate the audit file to a globally writable directory.</p>
+</div>
+<div class="paragraph">
+<p>Include the following section in the <code>project-defaults.yml</code> file in your application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">swarm:
+  elytron:
+    file-audit-logs:
+      local-audit:
+        path: /tmp/audit.log</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -18219,7 +18246,15 @@ application.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
-<dt class="hdlist1">swarm.odata.context</dt>
+<dt class="hdlist1">swarm.teiid.odata.context</dt>
+<dd>
+<p>(not yet documented)</p>
+</dd>
+<dt class="hdlist1">swarm.teiid.odata.role</dt>
+<dd>
+<p>(not yet documented)</p>
+</dd>
+<dt class="hdlist1">swarm.teiid.odata.secured</dt>
 <dd>
 <p>(not yet documented)</p>
 </dd>
@@ -19504,6 +19539,10 @@ and other security APIs.</p>
 <dt class="hdlist1">swarm.teiid.max-threads</dt>
 <dd>
 <p>Process pool maximum thread count. (default 64)</p>
+</dd>
+<dt class="hdlist1">swarm.teiid.odata.secured</dt>
+<dd>
+<p>(not yet documented)</p>
 </dd>
 <dt class="hdlist1">swarm.teiid.odbc.enable</dt>
 <dd>
@@ -21853,7 +21892,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.0.0.Final-SNAPSHOT<br>
-Last updated 2018-05-29 06:58:10 MST
+Last updated 2018-05-31 07:02:14 MST
 </div>
 </div>
 </body>
