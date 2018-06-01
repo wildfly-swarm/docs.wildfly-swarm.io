@@ -892,10 +892,10 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_microprofile">6.41. MicroProfile</a>
 <ul class="sectlevel3">
 <li><a href="#_microprofile_config">6.41.1. MicroProfile Config</a></li>
-<li><a href="#_microprofile_fault_tolerance_fraction">6.41.2. Microprofile Fault Tolerance Fraction</a></li>
+<li><a href="#microprofile-fault-tolerance">6.41.2. MicroProfile Fault Tolerance</a></li>
 <li><a href="#_microprofile_health">6.41.3. MicroProfile Health</a></li>
 <li><a href="#_microprofile_jwt_rbac_auth">6.41.4. MicroProfile JWT RBAC Auth</a></li>
-<li><a href="#_microprofile_metrics_fraction">6.41.5. Microprofile Metrics Fraction</a></li>
+<li><a href="#_microprofile_metrics">6.41.5. MicroProfile Metrics</a></li>
 <li><a href="#_microprofile_openapi">6.41.6. MicroProfile OpenAPI</a></li>
 <li><a href="#_microprofile_opentracing">6.41.7. MicroProfile OpenTracing</a></li>
 <li><a href="#_microprofile_rest_client">6.41.8. MicroProfile Rest Client</a></li>
@@ -1296,7 +1296,7 @@ For more information, see <a href="https://git-scm.com/docs/gittutorial">Git tut
   <span class="annotation">@GET</span>
   <span class="annotation">@Produces</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">text/plain</span><span class="delimiter">&quot;</span></span>)
   <span class="directive">public</span> Response doGet() {
-    <span class="keyword">return</span> Response.ok(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello from WildFly Swarm!</span><span class="delimiter">&quot;</span></span>).build();
+    <span class="keyword">return</span> Response.ok(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello from Thorntail!</span><span class="delimiter">&quot;</span></span>).build();
   }
 }</code></pre>
 </div>
@@ -12205,7 +12205,7 @@ for higher-level fractions.</p>
 <dl>
 <dt class="hdlist1">swarm.deployment.<em>KEY</em>.jaxrs.application-path</dt>
 <dd>
-<p>Set the JAX-RS application path. If set, WildFly Swarm will automatically generate a JAX-RS Application class and use this value as the @ApplicationPath</p>
+<p>Set the JAX-RS application path. If set, Thorntail will automatically generate a JAX-RS Application class and use this value as the @ApplicationPath</p>
 </dd>
 </dl>
 </div>
@@ -17594,9 +17594,9 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 </div>
 </div>
 <div class="sect3">
-<h4 id="_microprofile_fault_tolerance_fraction"><a class="anchor" href="#_microprofile_fault_tolerance_fraction"></a>6.41.2. Microprofile Fault Tolerance Fraction</h4>
+<h4 id="microprofile-fault-tolerance"><a class="anchor" href="#microprofile-fault-tolerance"></a>6.41.2. MicroProfile Fault Tolerance</h4>
 <div class="paragraph">
-<p>This fraction implements the <a href="https://github.com/eclipse/microprofile-fault-tolerance" target="_blank" rel="noopener">Eclipse Microprofile Fault tolerance API</a>.
+<p>This fraction implements the <a href="https://github.com/eclipse/microprofile-fault-tolerance" target="_blank" rel="noopener">Eclipse MicroProfile Fault Tolerance API</a>.
 The implementation depends on the <a href="#_hystrix">Hystrix fraction</a>, which is added transitively into your application.
 Use <a href="#configuring-a-wildfly-swarm-application">standard configuration mechanisms</a> to configure Hystrix properties in your application.</p>
 </div>
@@ -17689,7 +17689,7 @@ To avoid that, set the <code>swarm.hystrix.command.default.fallback.isolation.se
 </div>
 </div>
 <div class="sect3">
-<h4 id="_microprofile_metrics_fraction"><a class="anchor" href="#_microprofile_metrics_fraction"></a>6.41.5. Microprofile Metrics Fraction</h4>
+<h4 id="_microprofile_metrics"><a class="anchor" href="#_microprofile_metrics"></a>6.41.5. MicroProfile Metrics</h4>
 <div class="paragraph">
 <p>This fraction implements the <a href="https://github.com/eclipse/microprofile-metrics/releases/tag/1.0">MicroProfile Metrics 1.0 specification</a>.</p>
 </div>
@@ -17714,7 +17714,7 @@ To avoid that, set the <code>swarm.hystrix.command.default.fallback.isolation.se
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<div class="title">Note</div>
 </td>
 <td class="content">
 Exposing application metrics currently only works if you chose <code>war</code> packaging of your application
@@ -17727,16 +17727,15 @@ Exposing application metrics currently only works if you chose <code>war</code> 
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;project&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.example<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>swarm-demo<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;packaging&gt;</span>war<span class="tag">&lt;/packaging&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+  <span class="tag">&lt;packaging&gt;</span>war<span class="tag">&lt;/packaging&gt;</span> <b class="conum">(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>war packaging</td>
-</tr>
-</table>
+<ol>
+<li>
+<p>war packaging</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
@@ -17774,6 +17773,66 @@ Exposing application metrics currently only works if you chose <code>war</code> 
 </div>
 <div class="sect3">
 <h4 id="_microprofile_rest_client"><a class="anchor" href="#_microprofile_rest_client"></a>6.41.8. MicroProfile Rest Client</h4>
+<div class="sect4">
+<h5 id="_cdi_interceptors_support"><a class="anchor" href="#_cdi_interceptors_support"></a>CDI Interceptors Support</h5>
+<div class="paragraph">
+<p>In general, Rest Client proxies are not created by the CDI container and therefore method invocations do not pass through CDI interceptors.
+In Thorntail, however, you can associate business method interceptors (denoted by the <code>@AroundInvoke</code> annotation) with a Rest Client proxy by using interceptor bindings.
+This feature is non-portable.
+The primary use case is the support of <a href="#microprofile-fault-tolerance">MicroProfile Fault Tolerance</a> annotations, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.eclipse.microprofile.faulttolerance.Retry</span>;
+
+<span class="annotation">@Path</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/v1</span><span class="delimiter">&quot;</span></span>)
+<span class="type">interface</span> <span class="class">MyClient</span> {
+
+    <span class="annotation">@Retry</span>(maxRetries = <span class="integer">3</span>) <span class="comment">// Retry on any exception thrown</span>
+    <span class="annotation">@GET</span>
+    <span class="annotation">@Path</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/hello</span><span class="delimiter">&quot;</span></span>)
+    <span class="predefined-type">String</span> hello();
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The <code>org.eclipse.microprofile.faulttolerance.Asynchronous</code> annotation is currently not supported because the underlying RESTEasy client is not able to handle the <code>java.util.concurrent.Future</code> return types.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_restclientproxy"><a class="anchor" href="#_restclientproxy"></a>RestClientProxy</h5>
+<div class="paragraph">
+<p>In addition to the MicroProfile Rest Client specification, every Rest Client proxy implements <code>org.wildfly.swarm.microprofile.restclient.RestClientProxy</code> interface which allows you to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>obtain the underlying <code>javax.ws.rs.client.Client</code> instance</p>
+</li>
+<li>
+<p>release all associated resources, for example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> hello() {
+   MyClient myClient = RestClientBuilder.newBuilder().build(MyClient.class);
+   myClient.hello();
+   <span class="comment">// Finally release all associated resources</span>
+   ((RestClientProxy) helloClient).close();
+}</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
 <div class="content">
@@ -17781,6 +17840,7 @@ Exposing application metrics currently only works if you chose <code>war</code> 
   <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>microprofile-restclient<span class="tag">&lt;/artifactId&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -18045,7 +18105,7 @@ Exposing application metrics currently only works if you chose <code>war</code> 
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<div class="title">Warning</div>
 </td>
 <td class="content">
 This fraction is deprecated.
@@ -21892,7 +21952,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.0.0.Final-SNAPSHOT<br>
-Last updated 2018-05-31 12:13:40 MST
+Last updated 2018-06-01 02:17:45 MST
 </div>
 </div>
 </body>
