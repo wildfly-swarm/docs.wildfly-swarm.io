@@ -1057,7 +1057,7 @@ be rebuilt more quickly.</p>
 </div>
 <div class="paragraph">
 <p>The names of the hollow JARs that Thorntail produces include the name of
-your application, and the <code>-hollow-swarm.jar</code> suffix. You must package the
+your application, and the <code>-hollow-thorntail.jar</code> suffix. You must package the
 <code>.war</code> file of your application separately in order to benefit from the hollow
 JAR.</p>
 </div>
@@ -1118,7 +1118,7 @@ executing the hollow JAR:</p>
 <p>To enable Thorntail to autodetect a JDBC driver, you must add the JAR with the driver to the <code>swarm.classpath</code> system property, for example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ java -Dswarm.classpath=./h2-1.4.196.jar -jar my-hollow-swarm.jar myApp.war</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ java -Dswarm.classpath=./h2-1.4.196.jar -jar my-hollow-thorntail.jar myApp.war</code></pre>
 </div>
 </div>
 </li>
@@ -1127,7 +1127,7 @@ executing the hollow JAR:</p>
 You must specify them manually, for example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ java -jar my-hollow-swarm.jar myApp.war -s ./project-defaults.yml</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ java -jar my-hollow-thorntail.jar myApp.war -s ./project-defaults.yml</code></pre>
 </div>
 </div>
 </li>
@@ -1324,7 +1324,7 @@ For more information, see <a href="https://git-scm.com/docs/gittutorial">Git tut
 <p>Execute the application using Maven:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ mvn wildfly-swarm:run</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ mvn thorntail:run</code></pre>
 </div>
 </div>
 </li>
@@ -1438,7 +1438,7 @@ even dangerous ones.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-  <span class="tag">&lt;version.wildfly-swarm&gt;</span>2.0.0.Final-SNAPSHOT<span class="tag">&lt;/version.wildfly-swarm&gt;</span>
+  <span class="tag">&lt;version.thorntail&gt;</span>2.0.0.Final-SNAPSHOT<span class="tag">&lt;/version.thorntail&gt;</span>
 <span class="tag">&lt;/properties&gt;</span></code></pre>
 </div>
 </div>
@@ -1453,7 +1453,7 @@ even dangerous ones.</p>
     <span class="tag">&lt;dependency&gt;</span>
       <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
       <span class="tag">&lt;artifactId&gt;</span>bom<span class="tag">&lt;/artifactId&gt;</span>
-      <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
+      <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
       <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
       <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
@@ -1476,7 +1476,7 @@ stable ones, uncomment the <code>&lt;dependency&gt;</code> for <code>bom-unstabl
     <span class="tag">&lt;dependency&gt;</span>
       <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
       <span class="tag">&lt;artifactId&gt;</span>bom<span class="tag">&lt;/artifactId&gt;</span>
-      <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
+      <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
       <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
       <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
@@ -1484,7 +1484,7 @@ stable ones, uncomment the <code>&lt;dependency&gt;</code> for <code>bom-unstabl
     &lt;dependency&gt;
       &lt;groupId&gt;io.thorntail&lt;/groupId&gt;
       &lt;artifactId&gt;bom-unstable&lt;/artifactId&gt;
-      &lt;version&gt;${version.wildfly-swarm}&lt;/version&gt;
+      &lt;version&gt;${version.thorntail}&lt;/version&gt;
       &lt;type&gt;pom&lt;/type&gt;
       &lt;scope&gt;import&lt;/scope&gt;
     &lt;/dependency&gt;
@@ -1588,7 +1588,7 @@ targeting with the BOM import.</p>
   <span class="tag">&lt;plugin&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>thorntail-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
       ...
   <span class="tag">&lt;/plugin&gt;</span>
 <span class="tag">&lt;/plugins&gt;</span></code></pre>
@@ -1622,7 +1622,7 @@ with Thorntail is as an <em>uberjar</em>.</p>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Add the <code>wildfly-swarm-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block,
+<p>Add the <code>thorntail-maven-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block,
 with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.</p>
 <div class="listingblock">
 <div class="content">
@@ -1630,7 +1630,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
   <span class="tag">&lt;plugin&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>thorntail-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;executions&gt;</span>
       <span class="tag">&lt;execution&gt;</span>
         <span class="tag">&lt;id&gt;</span>package<span class="tag">&lt;/id&gt;</span>
@@ -1656,7 +1656,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
 <p>Execute the resulting uberjar:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>$ java -jar ./target/myapp-swarm.jar</code></pre>
+<pre class="CodeRay highlight"><code>$ java -jar ./target/myapp-thorntail.jar</code></pre>
 </div>
 </div>
 </li>
@@ -1688,7 +1688,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Add the <code>wildfly-swarm-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block, with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
+<p>Add the <code>thorntail-maven-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block, with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
 In addition to that, put <code>true</code> in the <code>hollow</code> property of the <code>&lt;configuration&gt;</code> element:</p>
 <div class="openblock">
 <div class="content">
@@ -1698,7 +1698,7 @@ In addition to that, put <code>true</code> in the <code>hollow</code> property o
   <span class="tag">&lt;plugin&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>thorntail-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;executions&gt;</span>
       <span class="tag">&lt;execution&gt;</span>
         <span class="tag">&lt;id&gt;</span>package<span class="tag">&lt;/id&gt;</span>
@@ -1731,11 +1731,11 @@ In addition to that, put <code>true</code> in the <code>hollow</code> property o
 <li>
 <p>Execute the hollow JAR:</p>
 <div class="paragraph">
-<p>Execute the resulting <code>-hollow-swarm.jar</code> file using the Java binary and pass the <code>.war</code> file with your application as the first argument:</p>
+<p>Execute the resulting <code>-hollow-thorntail.jar</code> file using the Java binary and pass the <code>.war</code> file with your application as the first argument:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>$ java -jar ./target/myapp-hollow-swarm.jar ./target/myapp.war</code></pre>
+<pre class="CodeRay highlight"><code>$ java -jar ./target/myapp-hollow-thorntail.jar ./target/myapp.war</code></pre>
 </div>
 </div>
 </li>
@@ -1804,7 +1804,7 @@ By default, Thorntail only auto-detects if you do not specify any fractions expl
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Add the <code>wildfly-swarm-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block,
+<p>Add the <code>thorntail-maven-plugin</code> to your <code>pom.xml</code> in a <code>&lt;plugin&gt;</code> block,
 with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.</p>
 <div class="listingblock">
 <div class="content">
@@ -1812,7 +1812,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
   <span class="tag">&lt;plugin&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>thorntail-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;executions&gt;</span>
       <span class="tag">&lt;execution&gt;</span>
         <span class="tag">&lt;id&gt;</span>package<span class="tag">&lt;/id&gt;</span>
@@ -1838,7 +1838,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
 <p>Execute the resulting uberjar:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>$ java -jar ./target/myapp-swarm.jar</code></pre>
+<pre class="CodeRay highlight"><code>$ java -jar ./target/myapp-thorntail.jar</code></pre>
 </div>
 </div>
 </li>
@@ -1903,7 +1903,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
 <p>Execute the resulting uberjar:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>$ java -jar ./target/myapp-swarm.jar</code></pre>
+<pre class="CodeRay highlight"><code>$ java -jar ./target/myapp-thorntail.jar</code></pre>
 </div>
 </div>
 </li>
@@ -2162,7 +2162,7 @@ testing work well with Thorntail&#x2013;based applications.</p>
     <span class="tag">&lt;dependency&gt;</span>
       <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
       <span class="tag">&lt;artifactId&gt;</span>bom<span class="tag">&lt;/artifactId&gt;</span>
-      <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
+      <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
       <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
       <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
@@ -2172,7 +2172,7 @@ testing work well with Thorntail&#x2013;based applications.</p>
 </div>
 </li>
 <li>
-<p>Reference the <code>org.wildfly.swarm:arquillian</code> artifact in your <code>pom.xml</code> file
+<p>Reference the <code>io.thorntail:arquillian</code> artifact in your <code>pom.xml</code> file
 with the <code>&lt;scope&gt;</code> set to <code>test</code>:</p>
 <div class="listingblock">
 <div class="content">
@@ -2384,7 +2384,7 @@ Verify it contains the following coordinates. If it does not, add them.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>logging<span class="tag">&lt;/artifactId&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
@@ -2396,7 +2396,7 @@ Verify it contains the following coordinates. If it does not, add them.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ mvn swarm:run -Dswarm.logging=FINE</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mvn thorntail:run -Dswarm.logging=FINE</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2572,8 +2572,8 @@ of the Thorntail SPI and fraction-plugin being used:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-  <span class="tag">&lt;version.swarm&gt;</span>2.0.0.Final-SNAPSHOT<span class="tag">&lt;/version.swarm.spi&gt;</span>
-  <span class="tag">&lt;version.swarm.fraction-plugin&gt;</span>34<span class="tag">&lt;/version.swarm.fraction-plugin&gt;</span>
+  <span class="tag">&lt;version.thorntail&gt;</span>2.0.0.Final-SNAPSHOT<span class="tag">&lt;/version.thorntail&gt;</span>
+  <span class="tag">&lt;version.thorntail.fraction-plugin&gt;</span>87<span class="tag">&lt;/version.thorntail.fraction-plugin&gt;</span>
 <span class="tag">&lt;/properties&gt;</span></code></pre>
 </div>
 </div>
@@ -2588,9 +2588,9 @@ to configure the server.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencyManagement&gt;</span>
   <span class="tag">&lt;dependencies&gt;</span>
     <span class="tag">&lt;dependency&gt;</span>
-      <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
       <span class="tag">&lt;artifactId&gt;</span>bom-all<span class="tag">&lt;/artifactId&gt;</span>
-      <span class="tag">&lt;version&gt;</span>${version.swarm}<span class="tag">&lt;/version&gt;</span>
+      <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
       <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
       <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
@@ -2968,7 +2968,7 @@ your <code>pom.xml</code></p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
   <span class="tag">&lt;dependency&gt;</span>
-    <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>undertow<span class="tag">&lt;/artifactId&gt;</span>
   <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span></code></pre>
@@ -3055,9 +3055,9 @@ the appropriate plugins to enable localization.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
-  <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>thorntail-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
   <span class="tag">&lt;executions&gt;</span>
     ...
     <span class="tag">&lt;execution&gt;</span>
@@ -3124,7 +3124,7 @@ The <code>stop</code> goal can only stop applications that were started <em>in t
 <dl>
 <dt class="hdlist1">bundleDependencies</dt>
 <dd>
-<p>If true, dependencies will be included in the <code>-swarm.jar</code> file.
+<p>If true, dependencies will be included in the <code>-thorntail.jar</code> file.
 Otherwise, they will be resolved from <code>$M2_REPO</code> or the network at runtime.</p>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -3301,7 +3301,7 @@ If set, the swarm process will suspend on start and open a debugger on this port
 * <code>artifact</code></p>
 </div>
 <div class="paragraph">
-<p>If no group is provided, <code>org.wildfly.swarm</code> is assumed.</p>
+<p>If no group is provided, <code>io.thorntail</code> is assumed.</p>
 </div>
 <div class="paragraph">
 <p>If no version is provided, the version is taken from the Thorntail BOM for the version of the plugin you are using.</p>
@@ -3313,9 +3313,9 @@ In the following example the Undertow fraction is not installed even if your app
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
-  <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>${version.wildfly-swarm}<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>thorntail-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
   <span class="tag">&lt;executions&gt;</span>
     <span class="tag">&lt;execution&gt;</span>
       <span class="tag">&lt;goals&gt;</span>
@@ -3586,7 +3586,7 @@ In the following example the Undertow fraction is not installed even if your app
 </dd>
 <dt class="hdlist1">useUberJar</dt>
 <dd>
-<p>If true, the <code>-swarm.jar</code> file specified at <code>${project.build.directory}</code> is used.
+<p>If true, the <code>-thorntail.jar</code> file specified at <code>${project.build.directory}</code> is used.
 This JAR is not created automatically, so make sure you execute the <code>package</code> goal first.</p>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -3625,8 +3625,8 @@ This JAR is not created automatically, so make sure you execute the <code>packag
 or running of your application.</p>
 </div>
 <div class="paragraph">
-<p>If you add a <code>&lt;properties&gt;</code> or <code>&lt;propertiesFile&gt;</code> section to the <code>&lt;configuration&gt;</code> of the plugin, the properties are used when executing your application using the <code>mvn wildfly-swarm:run</code> command.
-In addition to that, the same properties are added to your <code><em>myapp</em>-swarm.jar</code> file to affect subsequent executions of the uberjar.
+<p>If you add a <code>&lt;properties&gt;</code> or <code>&lt;propertiesFile&gt;</code> section to the <code>&lt;configuration&gt;</code> of the plugin, the properties are used when executing your application using the <code>mvn thorntail:run</code> command.
+In addition to that, the same properties are added to your <code><em>myapp</em>-thorntail.jar</code> file to affect subsequent executions of the uberjar.
 Any properties loaded from the <code>&lt;propertiesFile&gt;</code> override identically-named properties in the <code>&lt;properties&gt;</code> section.</p>
 </div>
 <div class="paragraph">
@@ -3707,8 +3707,8 @@ Only the items related to the fractions that your application uses are relevant 
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;build&gt;</span>
   <span class="tag">&lt;plugins&gt;</span>
     <span class="tag">&lt;plugin&gt;</span>
-      <span class="tag">&lt;groupId&gt;</span>org.wildfly.swarm<span class="tag">&lt;/groupId&gt;</span>
-      <span class="tag">&lt;artifactId&gt;</span>wildfly-swarm-plugin<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>thorntail-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
       <span class="tag">&lt;version&gt;</span>2.0.0.Final-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
       <span class="tag">&lt;configuration&gt;</span>
         <span class="tag">&lt;properties&gt;</span>
@@ -3748,7 +3748,7 @@ Instead, use the <a href="#configuring-an-application-using-yaml">YAML method</a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="shell">$ java -Dswarm.bind.address=127.0.0.1 -jar myapp-swarm.jar</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">$ java -Dswarm.bind.address=127.0.0.1 -jar myapp-thorntail.jar</code></pre>
 </div>
 </div>
 <h6 id="_specifying_jdbc_drivers_for_hollow_jars" class="discrete">Specifying JDBC drivers for hollow JARs</h6>
@@ -3758,7 +3758,7 @@ This way, you do not need to package the driver in the hollow JAR.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ java -Dswarm.classpath=./h2-1.4.196.jar -jar microprofile-jpa-hollow-swarm.jar example-jpa-jaxrs-cdi.war</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -Dswarm.classpath=./h2-1.4.196.jar -jar microprofile-jpa-hollow-thorntail.jar example-jpa-jaxrs-cdi.war</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3810,7 +3810,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar myapp-swarm.jar -Stesting -Scloud</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar myapp-thorntail.jar -Stesting -Scloud</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3846,7 +3846,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar myapp-swarm.jar -s/home/app/openshift.yml -Scloud -Stesting</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar myapp-thorntail.jar -s/home/app/openshift.yml -Scloud -Stesting</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3873,7 +3873,7 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar myapp-swarm.jar -Scloud -Stesting -s/home/app/openshift.yml</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar myapp-thorntail.jar -Scloud -Stesting -s/home/app/openshift.yml</code></pre>
 </div>
 </div>
 </div>
@@ -21952,7 +21952,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.0.0.Final-SNAPSHOT<br>
-Last updated 2018-06-01 04:37:26 MST
+Last updated 2018-06-01 10:07:22 MST
 </div>
 </div>
 </body>
