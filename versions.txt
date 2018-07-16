@@ -1,5 +1,5 @@
+2.0.1.Final-SNAPSHOT
 2.0.0.Final
-2.0.0.Final-SNAPSHOT
 2018.5.0
 2018.4.1
 2018.3.3
