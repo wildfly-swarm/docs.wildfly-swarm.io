@@ -623,10 +623,10 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_basics">3. Basics</a>
 <ul class="sectlevel2">
 <li><a href="#creating-an-application-from-scratch_thorntail">3.1. Creating an application from scratch</a></li>
-<li><a href="#using-a-bom">3.2. Using a BOM</a>
+<li><a href="#using-a-bom_thorntail">3.2. Using a BOM</a>
 <ul class="sectlevel3">
-<li><a href="#_different_types_of_boms">3.2.1. Different types of BOMs</a></li>
-<li><a href="#_caveats">3.2.2. Caveats</a></li>
+<li><a href="#thorntail-community-bom-types_thorntail">3.2.1. Thorntail community BOM types</a></li>
+<li><a href="#specifying-a-bom-in-your-application_thorntail">3.2.2. Specifying a BOM for in your application</a></li>
 </ul>
 </li>
 <li><a href="#creating-an-uberjar_thorntail">3.3. Creating an uberjar</a></li>
@@ -666,21 +666,21 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#_general">5. General</a>
 <ul class="sectlevel2">
-<li><a href="#maven-plugin">5.1. Maven Plugin</a>
+<li><a href="#using-thorntail-maven-plugin_thorntail">5.1. Using Thorntail Maven Plugin</a>
 <ul class="sectlevel3">
-<li><a href="#_goals">5.1.1. Goals</a></li>
-<li><a href="#maven-plugin-configuration">5.1.2. Configuration Options</a></li>
-<li><a href="#maven-plugin-properties">5.1.3. Configuration Properties</a></li>
+<li><a href="#thorntail-maven-plugin-general-usage_thorntail">5.1.1. Thorntail Maven plugin general usage</a></li>
+<li><a href="#thorntail-maven-plugin-goals_thorntail">5.1.2. Thorntail Maven plugin goals</a></li>
+<li><a href="#thorntail-maven-plugin-configuration-options_thorntail">5.1.3. Thorntail Maven plugin configuration options</a></li>
+<li><a href="#thorntail-maven-plugin-configuration-properties_thorntail">5.1.4. Thorntail Maven plugin configuration properties</a></li>
 </ul>
 </li>
-<li><a href="#configuring-a-wildfly-swarm-application">5.2. Configuring a Thorntail application</a>
+<li><a href="#configuring-a-thorntail-application_thorntail">5.2. Configuring a Thorntail application</a>
 <ul class="sectlevel3">
-<li><a href="#configuring-an-application-using-system-properties">5.2.1. Configuring an application using system properties</a></li>
-<li><a href="#configuring-an-application-using-yaml">5.2.2. Configuring an application using YAML</a></li>
-<li><a href="#configuring-an-application-using-environment-variables">5.2.3. Configuring an application using environment variables</a></li>
+<li><a href="#configuring-a-thorntail-application-using-system-properties_thorntail">5.2.1. System properties</a></li>
+<li><a href="#configuring-a-thorntail-application-using-yaml-files_thorntail">5.2.2. YAML files</a></li>
 </ul>
 </li>
-<li><a href="#configuring-network_thorntail">5.3. Configuring network</a>
+<li><a href="#network-configuration_thorntail">5.3. Network configuration</a>
 <ul class="sectlevel3">
 <li><a href="#_interfaces">5.3.1. Interfaces</a></li>
 <li><a href="#_sockets">5.3.2. Sockets</a></li>
@@ -1007,7 +1007,7 @@ Some fractions provide only access to APIs, such as JAX-RS or CDI; other fractio
 The functionality the fraction provides is then packaged with your application (see <a href="#creating-an-uberjar_thorntail">Creating an uberjar</a>).</p>
 </div>
 <div class="paragraph">
-<p>To enable easier consumption of Thorntail fractions, a bill of materials (BOM) is available. For more information, see <a href="#using-a-bom">Using a BOM</a>.</p>
+<p>To enable easier consumption of Thorntail fractions, a bill of materials (BOM) is available. For more information, see <a href="#using-a-bom_thorntail">Using a BOM</a>.</p>
 </div>
 </div>
 </div>
@@ -1348,34 +1348,26 @@ For more information, see <a href="https://git-scm.com/docs/gittutorial">Git tut
 </div>
 </div>
 <div class="sect2">
-<h3 id="using-a-bom"><a class="anchor" href="#using-a-bom"></a>3.2. Using a BOM</h3>
+<h3 id="using-a-bom_thorntail"><a class="anchor" href="#using-a-bom_thorntail"></a>3.2. Using a BOM</h3>
 <div class="paragraph">
-<p>To explicitly specify the Thorntail
-fractions your application uses, instead of relying
-on auto-detection, Thorntail includes a set of
-BOMs (bill of materials) which you can use instead of
-having to track and update Maven artifact versions
-in several places.</p>
+<p>To explicitly specify the Thorntail fractions your application uses, instead of relying on auto-detection, Thorntail includes a set of BOMs (bill of materials) which you can use instead of having to track and update Maven artifact versions in several places.</p>
 </div>
 <div class="sect3">
-<h4 id="_different_types_of_boms"><a class="anchor" href="#_different_types_of_boms"></a>3.2.1. Different types of BOMs</h4>
+<h4 id="thorntail-community-bom-types_thorntail"><a class="anchor" href="#thorntail-community-bom-types_thorntail"></a>3.2.1. Thorntail community BOM types</h4>
 <div class="paragraph">
-<p>Thorntail is described as <em>just enough app-server,</em>
-which means it comprises of multiple pieces.  Your application
-includes only the pieces it needs.</p>
+<p>Thorntail is described as <em>just enough app-server,</em> which means it comprises of multiple pieces.  Your application includes only the pieces it needs.</p>
 </div>
 <div class="paragraph">
-<p>Over time, some of these pieces reach the <em>stable</em> status,
-while some are classified as <em>unstable</em> or <em>experimental.</em>
-To help separate the stable pieces from the less stable ones,
-the following Maven BOMs can be used:</p>
+<p>Over time, some of these pieces reach the <em>stable</em> status, while some are classified as <em>unstable</em> or <em>experimental.</em></p>
+</div>
+<div class="paragraph">
+<p>When using Thorntail, you can specify the following Maven BOMs:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">bom-all</dt>
 <dd>
-<p>All fractions: stable, unstable, experimental, and
-even deprecated.</p>
+<p>All fractions: stable, unstable, experimental, and even deprecated.</p>
 </dd>
 <dt class="hdlist1">bom-deprecated</dt>
 <dd>
@@ -1383,20 +1375,52 @@ even deprecated.</p>
 </dd>
 <dt class="hdlist1">bom-experimental</dt>
 <dd>
-<p>Fractions that are considered experimental, which
-means they can disappear or radically change between releases.</p>
+<p>Fractions that are considered experimental, which means they can disappear or radically change between releases.</p>
 </dd>
 <dt class="hdlist1">bom-unstable</dt>
 <dd>
-<p>Fractions that do not change as often as the experimental ones.
-However, unstable fractions can still change their behavior or contain bugs,
-even dangerous ones.</p>
+<p>Fractions that do not change as often as the experimental ones.  However, unstable fractions can still change their behavior or contain bugs, even dangerous ones.</p>
 </dd>
 <dt class="hdlist1">bom-stable or bom</dt>
 <dd>
 <p>Fractions recommended for daily use.</p>
 </dd>
 </dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="specifying-a-bom-in-your-application_thorntail"><a class="anchor" href="#specifying-a-bom-in-your-application_thorntail"></a>3.2.2. Specifying a BOM for in your application</h4>
+<div class="paragraph">
+<p>Importing a specific BOM in the <code>pom.xml</code> file in your application allows you to track all your application dependencies in one place.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>One shortcoming of importing a Maven BOM import is that it does not handle the configuration on the level of <code>&lt;pluginManagement&gt;</code>. When you use the Thorntail Maven Plugin, you must specify the version of the plugin to use.</p>
+</div>
+<div class="paragraph">
+<p>Thanks to the property you use in your <code>pom.xml</code> file, you can easily ensure that your plugin usage matches the release of Thorntail that you are targeting with the BOM import.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugins&gt;</span>
+  <span class="tag">&lt;plugin&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>thorntail-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
+      ...
+  <span class="tag">&lt;/plugin&gt;</span>
+<span class="tag">&lt;/plugins&gt;</span></code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <div class="title">Prerequisites</div>
@@ -1414,8 +1438,7 @@ even dangerous ones.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Tracking the current version of Thorntail through a property in your
-<code>pom.xml</code> is recommended.</p>
+<p>Tracking the current version of Thorntail through a property in your <code>pom.xml</code> is recommended.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1425,8 +1448,7 @@ even dangerous ones.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Import BOMs in the <code>&lt;dependencyManagement&gt;</code> section. Specify the
-<code>&lt;type&gt;pom&lt;/type&gt;</code> and <code>&lt;scope&gt;import&lt;/scope&gt;</code>.</p>
+<p>Import BOMs in the <code>&lt;dependencyManagement&gt;</code> section. Specify the <code>&lt;type&gt;pom&lt;/type&gt;</code> and <code>&lt;scope&gt;import&lt;/scope&gt;</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1444,12 +1466,10 @@ even dangerous ones.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In the example above, the <code>bom</code> artifact is imported to ensure that
-only stable fractions are available.</p>
+<p>In the example above, the <code>bom</code> artifact is imported to ensure that only stable fractions are available.</p>
 </div>
 <div class="paragraph">
-<p>If you want to experiment with some unstable fractions in addition to the
-stable ones, uncomment the <code>&lt;dependency&gt;</code> for <code>bom-unstable</code>:</p>
+<p>If you want to experiment with some unstable fractions in addition to the stable ones, uncomment the <code>&lt;dependency&gt;</code> for <code>bom-unstable</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1476,25 +1496,18 @@ stable ones, uncomment the <code>&lt;dependency&gt;</code> for <code>bom-unstabl
 </div>
 </div>
 <div class="paragraph">
-<p>Remember, each flavor of <code>bom</code>, with the exception of <code>bom-all</code>
-contains only the type of fractions indicated.  This allows mixing
-and matching the combination of fraction stability that you want
-with fine granularity. If you want both stable and unstable, you
-would need to include both <code>bom-stable</code> (or <code>bom</code>) and <code>bom-unstable</code>.</p>
+<p>Remember, each flavor of <code>bom</code>, with the exception of <code>bom-all</code> contains only the type of fractions indicated.  This allows mixing and matching the combination of fraction stability that you want with fine granularity. If you want both stable and unstable, you would need to include both <code>bom-stable</code> (or <code>bom</code>) and <code>bom-unstable</code>.</p>
 </div>
 <div class="paragraph">
-<p>By including the BOMs of your choice in the <code>&lt;dependencyManagement&gt;</code> section,
-you have:</p>
+<p>By including the BOMs of your choice in the <code>&lt;dependencyManagement&gt;</code> section, you have:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Provided version-management for any Thorntail artifacts you
-subsequently <strong>choose</strong> to use.</p>
+<p>Provided version-management for any Thorntail artifacts you subsequently <strong>choose</strong> to use.</p>
 </li>
 <li>
-<p>Provided support to your IDE for auto-completing known artifacts
-when you edit your the <code>pom.xml</code> file of your application.</p>
+<p>Provided support to your IDE for auto-completing known artifacts when you edit your the <code>pom.xml</code> file of your application.</p>
 </li>
 </ul>
 </div>
@@ -1506,13 +1519,10 @@ when you edit your the <code>pom.xml</code> file of your application.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Even though you imported the Thorntail BOMs in the <code>&lt;dependencyManagement&gt;</code>
-section, your application still has no dependencies on Thorntail
-artifacts.</p>
+<p>Even though you imported the Thorntail BOMs in the <code>&lt;dependencyManagement&gt;</code> section, your application still has no dependencies on Thorntail artifacts.</p>
 </div>
 <div class="paragraph">
-<p>To include Thorntail artifact dependencies based on the capabilities your
-application, enter the relevant artifacts as <code>&lt;dependency&gt;</code> elements:</p>
+<p>To include Thorntail artifact dependencies based on the capabilities your application, enter the relevant artifacts as <code>&lt;dependency&gt;</code> elements:</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1521,8 +1531,7 @@ application, enter the relevant artifacts as <code>&lt;dependency&gt;</code> ele
 <div class="title">Note</div>
 </td>
 <td class="content">
-You do not have to specify the version of the artifacts because the BOM
-imported in <code>&lt;dependencyManagement&gt;</code> handles that.
+You do not have to specify the version of the artifacts because the BOM imported in <code>&lt;dependencyManagement&gt;</code> handles that.
 </td>
 </tr>
 </table>
@@ -1542,47 +1551,12 @@ imported in <code>&lt;dependencyManagement&gt;</code> handles that.
 </div>
 </div>
 <div class="paragraph">
-<p>In the example above, we include explicit dependencies on the <code>jaxrs</code> and
-<code>datasources</code> fractions, which will provide transitive inclusion of others,
-for example <code>undertow</code>.</p>
+<p>In the example above, we include explicit dependencies on the <code>jaxrs</code> and <code>datasources</code> fractions, which will provide transitive inclusion of others, for example <code>undertow</code>.</p>
 </div>
 </div>
 </div>
 </li>
 </ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_caveats"><a class="anchor" href="#_caveats"></a>3.2.2. Caveats</h4>
-<div class="paragraph">
-<p>One shortcoming of importing a Maven BOM import is that it does not
-handle the configuration on the level of <code>&lt;pluginManagement&gt;</code>. When you use the
-Thorntail Maven Plugin, you must specify the version of the plugin to use.</p>
-</div>
-<div class="paragraph">
-<p>Thanks to the property you use in your <code>pom.xml</code> file, you can easily ensure
-that your plugin usage matches the release of Thorntail that you are
-targeting with the BOM import.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugins&gt;</span>
-  <span class="tag">&lt;plugin&gt;</span>
-    <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
-    <span class="tag">&lt;artifactId&gt;</span>thorntail-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>${version.thorntail}<span class="tag">&lt;/version&gt;</span>
-      ...
-  <span class="tag">&lt;/plugin&gt;</span>
-<span class="tag">&lt;/plugins&gt;</span></code></pre>
-</div>
-</div>
-<div class="ulist">
-<div class="title">Related Information</div>
-<ul>
-<li>
-<p><a href="#creating-an-uberjar_thorntail">Creating an uberjar</a></p>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -1689,7 +1663,7 @@ In addition to that, put <code>true</code> in the <code>hollow</code> property o
 </div>
 </div>
 <div class="paragraph">
-<p>You can also execute the Maven binary with the system property <code>-Dswarm.hollow=true</code> instead. For more information, see the <a href="#maven-plugin-configuration">Maven plugin configuration reference</a>.</p>
+<p>You can also execute the Maven binary with the system property <code>-Dswarm.hollow=true</code> instead. For more information, see the <a href="#thorntail-maven-plugin-configuration-options_thorntail">Maven plugin configuration reference</a>.</p>
 </div>
 </div>
 </div>
@@ -1737,7 +1711,7 @@ If you enable the Thorntail Maven plugin in your application, Thorntail detects 
 <div class="title">Note</div>
 </td>
 <td class="content">
-By default, Thorntail only auto-detects if you do not specify any fractions explicitly. This behavior is controlled by the <code>fractionDetectMode</code> property. For more information, see the <a href="#maven-plugin-configuration">Maven plugin configuration reference</a>.
+By default, Thorntail only auto-detects if you do not specify any fractions explicitly. This behavior is controlled by the <code>fractionDetectMode</code> property. For more information, see the <a href="#thorntail-maven-plugin-configuration-options_thorntail">Maven plugin configuration reference</a>.
 </td>
 </tr>
 </table>
@@ -1841,7 +1815,7 @@ with an <code>&lt;execution&gt;</code> specifying the <code>package</code> goal.
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Add the BOM to your <code>pom.xml</code>. For more information, see <a href="#using-a-bom">Using a BOM</a>.</p>
+<p>Add the BOM to your <code>pom.xml</code>. For more information, see <a href="#using-a-bom_thorntail">Using a BOM</a>.</p>
 </li>
 <li>
 <p>Add the Thorntail Maven plugin to your <code>pom.xml</code>. For more information, see <a href="#creating-an-uberjar_thorntail">Creating an uberjar</a>.</p>
@@ -2122,7 +2096,7 @@ testing work well with Thorntail&#x2013;based applications.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Include the Thorntail BOM as described in <a href="#using-a-bom">Using a BOM</a>:</p>
+<p>Include the Thorntail BOM as described in <a href="#using-a-bom_thorntail">Using a BOM</a>:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencyManagement&gt;</span>
@@ -3004,12 +2978,13 @@ the appropriate plugins to enable localization.</p>
 <h2 id="_general"><a class="anchor" href="#_general"></a>5. General</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="maven-plugin"><a class="anchor" href="#maven-plugin"></a>5.1. Maven Plugin</h3>
+<h3 id="using-thorntail-maven-plugin_thorntail"><a class="anchor" href="#using-thorntail-maven-plugin_thorntail"></a>5.1. Using Thorntail Maven Plugin</h3>
 <div class="paragraph">
 <p>Thorntail provides a Maven plugin to accomplish most of the work of building <a href="#uberjar_thorntail">uberjar</a> packages.</p>
 </div>
+<div class="sect3">
+<h4 id="thorntail-maven-plugin-general-usage_thorntail"><a class="anchor" href="#thorntail-maven-plugin-general-usage_thorntail"></a>5.1.1. Thorntail Maven plugin general usage</h4>
 <div class="paragraph">
-<div class="title">General Usage</div>
 <p>The Thorntail Maven plugin is used like any other Maven plugin, that is through editing the <code>pom.xml</code> file in your application and adding a <code>&lt;plugin&gt;</code> section:</p>
 </div>
 <div class="listingblock">
@@ -3032,8 +3007,9 @@ the appropriate plugins to enable localization.</p>
 <span class="tag">&lt;/plugin&gt;</span></code></pre>
 </div>
 </div>
+</div>
 <div class="sect3">
-<h4 id="_goals"><a class="anchor" href="#_goals"></a>5.1.1. Goals</h4>
+<h4 id="thorntail-maven-plugin-goals_thorntail"><a class="anchor" href="#thorntail-maven-plugin-goals_thorntail"></a>5.1.2. Thorntail Maven plugin goals</h4>
 <div class="paragraph">
 <p>The Thorntail Maven plugin provides several goals:</p>
 </div>
@@ -3076,9 +3052,9 @@ The <code>stop</code> goal can only stop applications that were started <em>in t
 </div>
 </div>
 <div class="sect3">
-<h4 id="maven-plugin-configuration"><a class="anchor" href="#maven-plugin-configuration"></a>5.1.2. Configuration Options</h4>
+<h4 id="thorntail-maven-plugin-configuration-options_thorntail"><a class="anchor" href="#thorntail-maven-plugin-configuration-options_thorntail"></a>5.1.3. Thorntail Maven plugin configuration options</h4>
 <div class="paragraph">
-<p>The plugin accepts the following options:</p>
+<p>The Thorntail Maven plugin accepts the following configuration options:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -3434,7 +3410,7 @@ In the following example the Undertow fraction is not installed even if your app
 </dd>
 <dt class="hdlist1">properties</dt>
 <dd>
-<p>See <a href="#maven-plugin-properties">Configuration Properties</a>.</p>
+<p>See <a href="#thorntail-maven-plugin-configuration-properties_thorntail">Thorntail Maven plugin configuration properties</a>.</p>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -3462,7 +3438,7 @@ In the following example the Undertow fraction is not installed even if your app
 </dd>
 <dt class="hdlist1">propertiesFile</dt>
 <dd>
-<p>See <a href="#maven-plugin-properties">Configuration Properties</a>.</p>
+<p>See <a href="#thorntail-maven-plugin-configuration-properties_thorntail">Thorntail Maven plugin configuration properties</a>.</p>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -3579,10 +3555,9 @@ This JAR is not created automatically, so make sure you execute the <code>packag
 </div>
 </div>
 <div class="sect3">
-<h4 id="maven-plugin-properties"><a class="anchor" href="#maven-plugin-properties"></a>5.1.3. Configuration Properties</h4>
+<h4 id="thorntail-maven-plugin-configuration-properties_thorntail"><a class="anchor" href="#thorntail-maven-plugin-configuration-properties_thorntail"></a>5.1.4. Thorntail Maven plugin configuration properties</h4>
 <div class="paragraph">
-<p>Properties can be used to configure execution and affect the packaging
-or running of your application.</p>
+<p>Properties can be used to configure the execution and affect the packaging or running of your application.</p>
 </div>
 <div class="paragraph">
 <p>If you add a <code>&lt;properties&gt;</code> or <code>&lt;propertiesFile&gt;</code> section to the <code>&lt;configuration&gt;</code> of the plugin, the properties are used when executing your application using the <code>mvn thorntail:run</code> command.
@@ -3624,7 +3599,7 @@ Any properties loaded from the <code>&lt;propertiesFile&gt;</code> override iden
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuring-a-wildfly-swarm-application"><a class="anchor" href="#configuring-a-wildfly-swarm-application"></a>5.2. Configuring a Thorntail application</h3>
+<h3 id="configuring-a-thorntail-application_thorntail"><a class="anchor" href="#configuring-a-thorntail-application_thorntail"></a>5.2. Configuring a Thorntail application</h3>
 <div class="paragraph">
 <p>You can configure numerous options with applications built with Thorntail.
 For most options, reasonable defaults are already applied, so you do not have to change any options unless you explicitly want to.</p>
@@ -3634,34 +3609,65 @@ For most options, reasonable defaults are already applied, so you do not have to
 Only the items related to the fractions that your application uses are relevant to you.</p>
 </div>
 <div class="sect3">
-<h4 id="configuring-an-application-using-system-properties"><a class="anchor" href="#configuring-an-application-using-system-properties"></a>5.2.1. Configuring an application using system properties</h4>
+<h4 id="configuring-a-thorntail-application-using-system-properties_thorntail"><a class="anchor" href="#configuring-a-thorntail-application-using-system-properties_thorntail"></a>5.2.1. System properties</h4>
+<div class="paragraph">
+<p>Using system properties for configuring your application is advantageous for experimenting, debugging, and other short-term activities.</p>
+</div>
+<div class="sect4">
+<h5 id="application-configuration-using-system-properties_thorntail"><a class="anchor" href="#application-configuration-using-system-properties_thorntail"></a>Application configuration using system properties</h5>
 <div class="paragraph">
 <p>Configuration properties are presented using dotted notation, and are suitable for use as Java system property names, which your application consumes through explicit setting in the Maven plugin configuration, or through the command line when your application is being executed.</p>
 </div>
 <div class="paragraph">
 <p>Any property that has the <em>KEY</em> parameter in its name indicates that you must supply a key or identifier in that segment of the name.</p>
 </div>
-<div class="exampleblock">
-<div class="title">Example 1. Using configuration items with the KEY parameter</div>
-<div class="content">
+<h6 id="_configuration_of_items_with_the_key_parameter" class="discrete">Configuration of items with the KEY parameter</h6>
 <div class="paragraph">
-<p>The configuration item documented as <code>swarm.undertow.servers.KEY.default-host</code> indicates that the configuration applies to a particular named server.</p>
+<p>A configuration item documented as <code>swarm.undertow.servers.KEY.default-host</code> indicates that the configuration applies to a particular named server.</p>
 </div>
 <div class="paragraph">
 <p>In practical usage, the property would be, for example, <code>swarm.undertow.servers.default.default-host</code> for a server known as <code>default</code>.</p>
 </div>
 </div>
+<div class="sect4">
+<h5 id="setting-system-properties-using-the-maven-plugin_thorntail"><a class="anchor" href="#setting-system-properties-using-the-maven-plugin_thorntail"></a>Setting system properties using the Maven plugin</h5>
+<div class="paragraph">
+<p>Setting properties using the Maven plugin is useful for temporarily changing a configuration item for a single execution of your Thorntail application.</p>
 </div>
-<h5 id="_setting_system_properties_using_maven_plugin" class="discrete">Setting system properties using Maven plugin</h5>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Even though the configuration in the POM file of your application is persistent, it is not recommended to use it for long-term configuration of your application.
+Instead, use the <a href="#configuring-a-thorntail-application-using-yaml-files_thorntail">YAML configuration files</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>If you want to set explicit configuration values as defaults through the Maven plugin, add a <code>&lt;properties&gt;</code> section to the <code>&lt;configuration&gt;</code> block of the plugin in the <code>pom.xml</code> file in your application.</p>
 </div>
-<div class="exampleblock">
-<div class="title">Example 2. Setting a configuration item through the Maven Plugin</div>
-<div class="content">
-<div class="paragraph">
-<p>An example Maven plugin configuration for the <code>swarm.bind.address</code> item:</p>
+<h6 id="_prerequisites_10" class="discrete">Prerequisites</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>Your Thorntail-based application with a POM file</p>
+</li>
+</ul>
 </div>
+<h6 id="_procedure_10" class="discrete">Procedure</h6>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the POM file of your application, locate the configuration you want to modify.</p>
+</li>
+<li>
+<p>Insert a block with configuration of the <code>io.thorntail:thorntail-maven-plugin</code> artifact, for example:</p>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;build&gt;</span>
@@ -3681,24 +3687,19 @@ Only the items related to the fractions that your application uses are relevant 
 <span class="tag">&lt;/build&gt;</span></code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-It is not recommended to set properties using the Maven plugin to control the configuration in the long term.
-Instead, use the <a href="#configuring-an-application-using-yaml">YAML method</a>.
-</td>
-</tr>
-</table>
-</div>
-<h5 id="_setting_system_properties_using_the_command_line" class="discrete">Setting system properties using the command line</h5>
 <div class="paragraph">
-<p>Setting properties using the Maven plugin is useful for temporarily changing a configuration item for a single execution of your application.</p>
+<p>In the example above, the <code>swarm.bind.address</code> property is set to <code>127.0.0.1</code> and the <code>java.net.preferIPv4Stack</code> property is set to <code>true</code>.</p>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="setting-system-properties-using-the-command-line_thorntail"><a class="anchor" href="#setting-system-properties-using-the-command-line_thorntail"></a>Setting system properties using the command line</h5>
+<div class="paragraph">
+<p>Setting properties using the Maven plugin is useful for temporarily changing a configuration item for a single execution of your Thorntail application.</p>
 </div>
 <div class="paragraph">
 <p>You can customize an environment-specific setting or experiment with configuration items before setting them in a YAML configuration file.</p>
@@ -3706,41 +3707,90 @@ Instead, use the <a href="#configuring-an-application-using-yaml">YAML method</a
 <div class="paragraph">
 <p>To use a property on the command line, pass it as a command-line parameter to the Java binary:</p>
 </div>
+<h6 id="_prerequisites_11" class="discrete">Prerequisites</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>A JAR file with your application</p>
+</li>
+</ul>
+</div>
+<h6 id="_procedure_11" class="discrete">Procedure</h6>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In a terminal application, navigate to the directory with your application JAR file.</p>
+</li>
+<li>
+<p>Execute your application JAR file using the Java binary and specify the property and its value:</p>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="shell">$ java -Dswarm.bind.address=127.0.0.1 -jar myapp-thorntail.jar</code></pre>
 </div>
 </div>
-<h6 id="_specifying_jdbc_drivers_for_hollow_jars" class="discrete">Specifying JDBC drivers for hollow JARs</h6>
+<div class="paragraph">
+<p>In this example, you assing the value <code>127.0.0.1</code> to the property called <code>swarm.bind.address</code>.</p>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="specifying-jdbc-drivers-for-hollow-jars_thorntail"><a class="anchor" href="#specifying-jdbc-drivers-for-hollow-jars_thorntail"></a>Specifying JDBC drivers for hollow JARs</h5>
 <div class="paragraph">
 <p>When executing a hollow JAR, you can specify a JDBC Driver JAR using the <code>swarm.classpath</code> property.
 This way, you do not need to package the driver in the hollow JAR.</p>
 </div>
+<div class="paragraph">
+<p>The <code>swarm.classpath</code> property accepts one or more paths to JAR files separated by <code>;</code> (a semicolon).
+The specified JAR files are added to the classpath of the application.</p>
+</div>
+<h6 id="_prerequisites_12" class="discrete">Prerequisites</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>A JAR file with your application</p>
+</li>
+</ul>
+</div>
+<h6 id="_procedure_12" class="discrete">Procedure</h6>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In a terminal application, navigate to the directory with your application JAR file.</p>
+</li>
+<li>
+<p>Execute your application JAR file using the Java binary and specify the JDBC driver:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">$ java -Dswarm.classpath=./h2-1.4.196.jar -jar microprofile-jpa-hollow-thorntail.jar example-jpa-jaxrs-cdi.war</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>The <code>swarm.classpath</code> property accepts one or more paths to JAR files separated by <code>;</code>.
-The specified JAR files are added to the classpath of the application.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="configuring-an-application-using-yaml"><a class="anchor" href="#configuring-an-application-using-yaml"></a>5.2.2. Configuring an application using YAML</h4>
+<h4 id="configuring-a-thorntail-application-using-yaml-files_thorntail"><a class="anchor" href="#configuring-a-thorntail-application-using-yaml-files_thorntail"></a>5.2.2. YAML files</h4>
 <div class="paragraph">
 <p>YAML is the preferred method for long-term configuration of your application.
 In addition to that, the YAML strategy provides grouping of environment-specific configurations, which you can selectively enable when executing the application.</p>
 </div>
-<h5 id="_the_general_yaml_format" class="discrete">The General YAML format</h5>
+<div class="sect4">
+<h5 id="the-general-yaml-file-format_thorntail"><a class="anchor" href="#the-general-yaml-file-format_thorntail"></a>The general YAML file format</h5>
 <div class="paragraph">
-<p>The configuration names correspond to the YAML configuration structure.</p>
+<p>The Thorntail configuration item names correspond to the YAML configuration structure.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 3. YAML configuration</div>
+<div class="title">Example 1. YAML configuration</div>
 <div class="content">
 <div class="paragraph">
-<p>For example, the item documented as <code>swarm.undertow.servers.KEY.default-host</code> translates to the following YAML structure, substituting the <code>KEY</code> segment with the <code>default</code> identifier:</p>
+<p>For example, a configuration item documented as <code>swarm.undertow.servers.KEY.default-host</code> translates to the following YAML structure, substituting the <code>KEY</code> segment with the <code>default</code> identifier:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3753,17 +3803,24 @@ In addition to that, the YAML strategy provides grouping of environment-specific
 </div>
 </div>
 </div>
-<h5 id="_default_yaml_files" class="discrete">Default YAML Files</h5>
+</div>
+<div class="sect4">
+<h5 id="default-thorntail-yaml-files_thorntail"><a class="anchor" href="#default-thorntail-yaml-files_thorntail"></a>Default Thorntail YAML Files</h5>
+<div class="paragraph">
+<p>By default, Thorntail looks up permanent configuration in files with specific names to put on the classpath.</p>
+</div>
+<h6 id="_project_defaults_yml" class="discrete">project-defaults.yml</h6>
 <div class="paragraph">
 <p>If the original <code>.war</code> file with your application contains a file named <code>project-defaults.yml</code>, that file represents the defaults applied over the absolute defaults that Thorntail provides.</p>
 </div>
+<h6 id="_other_default_file_names" class="discrete">Other default file names</h6>
 <div class="paragraph">
 <p>In addition to the <code>project-defaults.yml</code> file, you can provide specific configuration files using the <code>-S &lt;name&gt;</code> command-line option.
 The specified files are loaded, in the order you provided them, before <code>project-defaults.yml</code>.
 A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code>project-&lt;name&gt;.yml</code> file on your classpath.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4. Specifying configuration files on the command line</div>
+<div class="title">Example 2. Specifying configuration files on the command line</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the following application execution:</p>
@@ -3791,15 +3848,17 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 </div>
 </div>
-<h5 id="_non_default_yaml_files" class="discrete">Non-default YAML Files</h5>
+</div>
+<div class="sect4">
+<h5 id="non-default-thorntail-yaml-configuration-files_thorntail"><a class="anchor" href="#non-default-thorntail-yaml-configuration-files_thorntail"></a>Non-default Thorntail YAML configuration files</h5>
 <div class="paragraph">
-<p>If you want to reference a YAML file that exists outside of your application, use the <code>-s &lt;path&gt;</code> command-line option.</p>
+<p>In addition to default configuration files for your Thorntail-based application, you can specify YAML files outside of your application. Use the <code>-s &lt;path&gt;</code> command-line option to load the desired file.</p>
 </div>
 <div class="paragraph">
 <p>Both the <code>-s &lt;path&gt;</code> and <code>-S &lt;name&gt;</code> command-line options can be used at the same time, but files specified using the <code>-s &lt;path&gt;</code> option take precedence over YAML files contained in your application.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 5. Specifying configuration files inside and outside of the application</div>
+<div class="title">Example 3. Specifying configuration files inside and outside of the application</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the following application execution:</p>
@@ -3838,141 +3897,19 @@ A name provided in the <code>-S &lt;name&gt;</code> argument specifies the <code
 </div>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="configuring-an-application-using-environment-variables"><a class="anchor" href="#configuring-an-application-using-environment-variables"></a>5.2.3. Configuring an application using environment variables</h4>
-<div class="paragraph">
-<p>Use environment variables to configure your application in various deployments&#8212;&#8203;especially in a containerized environment, such as Docker.</p>
-</div>
-<div class="exampleblock">
-<div class="title">Example 6. Environment variables configuration</div>
-<div class="content">
-<div class="paragraph">
-<p>A property documented as <code>swarm.undertow.servers.KEY.default-host</code> translates to the following environment variable (substituting the <code>KEY</code> segment with the <code>default</code> identifier):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">export SWARM.UNDERTOW.SERVERS.DEFAULT.DEFAULT_DASH_HOST=&lt;myhost&gt;</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Unlike other configuration options, properties defined as environment variables in Linux-based containers do not allow defining non-alphanumeric characters like <em>dot</em> (.), <em>dash/hyphen</em> (-) or any other characters not in the <code>[A-Za-z0-9_]</code> range.
-Many configuration properties in Thorntail contain these characters, so you must follow these rules when defining the environment variables in the following environments:</p>
-</div>
+<h6 id="_related_information_2" class="discrete">Related information</h6>
 <div class="ulist">
-<div class="title">Linux-based container rules</div>
 <ul>
 <li>
-<p>It is a naming convention that all environment properties are defined using uppercase letters.
-For example, define the <code>serveraddress</code> property as <code>SERVERADDRESS</code>.</p>
-</li>
-<li>
-<p>All the <em>dot</em> (.) characters must be replaced with <em>underscore</em> (_).
-For example, define the <code>swarm.bind.address=127.0.0.1</code> property as <code>SWARM_BIND_ADDRESS=127.0.0.1</code>.</p>
-</li>
-<li>
-<p>All <em>dash/hyphen</em> (-) characters must be replaced with the <code><em>DASH</em></code> string.
-For example, define the <code>swarm.data-sources.foo.url=&lt;url&gt;</code> property as <code>SWARM_DATA_DASH_SOURCES_FOO_URL=&lt;url&gt;</code>.</p>
-</li>
-<li>
-<p>If the property name contains underscores, all <em>underscore</em> (_) characters must be replaced with the <code>_UNDERSCORE_</code> string.
-For example, define the <code>swarm.data_sources.foo.url=&lt;url&gt;</code> property as <code>SWARM_DATA_UNDERSCORE_SOURCES_FOO_URL=&lt;url&gt;</code>.</p>
+<p><a href="#default-thorntail-yaml-files_thorntail">Default Thorntail YAML Files</a></p>
 </li>
 </ul>
-</div>
-<div class="exampleblock">
-<div class="title">Example 7. An example data source configuration</div>
-<div class="content">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dswarm.datasources.data-sources.devwf.connection-url=
-jdbc:postgresql://localhost:5432/sampledb</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SWARM_DATASOURCES_DATA_DASH_SOURCES_DEVWF_CONNECTION_DASH_URL=
-'jdbc:postgresql://localhost:5432/sampledb'</code></p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dswarm.datasources.data-sources.devwf.driver-name=postgresql</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SWARM_DATASOURCES_DATA_DASH_SOURCES_DEVWF_DRIVER_DASH_NAME='postgresql'</code></p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dswarm.datasources.data-sources.devwf.jndiname=java:/jboss/datasources/devwf</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SWARM_DATASOURCES_DATA_DASH_SOURCES_DEVWF_JNDI_DASH_NAME='java:/jboss/datasources/devwf'</code></p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dswarm.datasources.data-sources.devwf.user-name=postgres</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SWARM_DATASOURCES_DATA_DASH_SOURCES_DEVWF_USER_DASH_NAME='postgres'</code></p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">System property</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-Dswarm.datasources.data-sources.devwf.password=admin</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Env. variable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SWARM_DATASOURCES_DATA_DASH_SOURCES_DEVWF_PASSWORD='admin'</code></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuring-network_thorntail"><a class="anchor" href="#configuring-network_thorntail"></a>5.3. Configuring network</h3>
+<h3 id="network-configuration_thorntail"><a class="anchor" href="#network-configuration_thorntail"></a>5.3. Network configuration</h3>
 <div class="paragraph">
 <p>For network configuration, create or adjust <em>interfaces,</em> <em>socket-bindings,</em> and <em>outbound-socket-bindings.</em>
 The networking configuration is stored under the <code>network</code> &#8594; <code>swarm</code> key.</p>
@@ -3988,7 +3925,7 @@ This includes both publicly-routed interfaces, and the localhost (<code>127.0.0.
 <p>In addition to that, when you include the <code>management</code> fraction in an application, an interface named <code>management</code> is also provisioned, and it is bound only to localhost.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8. Additional interface configuration</div>
+<div class="title">Example 4. Additional interface configuration</div>
 <div class="content">
 <div class="paragraph">
 <p>The following interface is called <code>backnet</code>, and is bound to the <code>192.168.4.5</code> address.</p>
@@ -4034,7 +3971,7 @@ Use regular socket-bindings for inbound connections, while outbound-socket-bindi
 You can bind the sockets of an entire group to a given default interface, or you can offset all members of the group by a particular number of ports.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 9. Socket-binding group</div>
+<div class="title">Example 5. Socket-binding group</div>
 <div class="content">
 <div class="paragraph">
 <p>The ports of the <code>standard-sockets</code> default group are offset by 10:</p>
@@ -4052,7 +3989,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 10. Socket binding</div>
+<div class="title">Example 6. Socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>Socket-bindings may be created or adjusted within a <code>socket-binding-group</code>:</p>
@@ -4070,7 +4007,7 @@ You can bind the sockets of an entire group to a given default interface, or you
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 11. Outbound socket binding</div>
+<div class="title">Example 7. Outbound socket binding</div>
 <div class="content">
 <div class="paragraph">
 <p>To create a named outbound socket binding for connection to remote endpoints, define <code>outbound-socket-bindings</code> in a <code>socket-binding-group</code>:</p>
@@ -17555,7 +17492,7 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <div class="paragraph">
 <p>This fraction implements the <a href="https://github.com/eclipse/microprofile-fault-tolerance" target="_blank" rel="noopener">Eclipse MicroProfile Fault Tolerance API</a>.
 The implementation depends on the <a href="#_hystrix">Hystrix fraction</a>, which is added transitively into your application.
-Use <a href="#configuring-a-wildfly-swarm-application">standard configuration mechanisms</a> to configure Hystrix properties in your application.</p>
+Use <a href="#configuring-a-thorntail-application_thorntail">standard configuration mechanisms</a> to configure Hystrix properties in your application.</p>
 </div>
 <div class="sect4">
 <h5 id="_bulkhead_fallback_rejection"><a class="anchor" href="#_bulkhead_fallback_rejection"></a>Bulkhead fallback rejection</h5>
@@ -21921,7 +21858,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1.Final-SNAPSHOT<br>
-Last updated 2018-07-18 23:14:26 MST
+Last updated 2018-07-19 13:15:21 MST
 </div>
 </div>
 </body>
