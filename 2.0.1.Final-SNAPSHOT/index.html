@@ -17640,13 +17640,26 @@ square brackets, such as <code>swarm.logging.loggers.[com.mycorp.logger].level</
 <div class="paragraph">
 <p>This fraction implements the <a href="https://github.com/eclipse/microprofile-fault-tolerance" target="_blank" rel="noopener">Eclipse MicroProfile Fault Tolerance API</a>.
 The implementation depends on the <a href="#_hystrix">Hystrix fraction</a>, which is added transitively into your application.
-Use <a href="#configuring-a-thorntail-application_thorntail">standard configuration mechanisms</a> to configure Hystrix properties in your application.</p>
+Use <a href="#configuring-a-thorntail-application_thorntail">standard configuration mechanisms</a> to configure <a href="https://github.com/Netflix/Hystrix/wiki/Configuration">Hystrix properties</a> in your application.</p>
 </div>
 <div class="sect4">
 <h5 id="_bulkhead_fallback_rejection"><a class="anchor" href="#_bulkhead_fallback_rejection"></a>Bulkhead fallback rejection</h5>
 <div class="paragraph">
-<p>If you use the semaphore-style <code>@Bulkhead</code> pattern with a <code>@Fallback</code> logic to limit the number of concurrent requests, the invocation may still result in a <code>BulkheadException</code> if the maximum concurrent limit for the <code>HystrixCommand.getFallback()</code> method is reached.
+<p>If you use the <code>@Bulkhead</code> pattern together with some <code>@Fallback</code> logic to limit the number of concurrent requests, an invocation may still result in an exception.</p>
+</div>
+<div class="sect5">
+<h6 id="_semaphore_isolation"><a class="anchor" href="#_semaphore_isolation"></a>Semaphore Isolation</h6>
+<div class="paragraph">
+<p>For semaphore-style <code>@Bulkhead</code> a <code>BulkheadException</code> may be thrown if the maximum concurrent limit is reached.
 To avoid that, set the <code>swarm.hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests</code> property to increase the limit.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_thread_isolation"><a class="anchor" href="#_thread_isolation"></a>Thread Isolation</h6>
+<div class="paragraph">
+<p>For <code>@Bulkhead</code> used together with <code>@Asynchronous</code> a <code>RejectedExecutionException</code> may be thrown if the maximum concurrent limit is reached.
+To avoid that, set the <code>swarm.hystrix.threadpool.default.maximumSize</code> property to increase the limit.
+Also don&#8217;t forget to set the <code>swarm.hystrix.threadpool.default.allowMaximumSizeToDivergeFromCoreSize</code> property to <code>true</code>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Maven Coordinates</div>
@@ -17665,6 +17678,7 @@ To avoid that, set the <code>swarm.hystrix.command.default.fallback.isolation.se
 <p>Enable/disable synchronous circuit breaker functionality. If disabled, <code>CircuitBreaker#successThreshold()</code> of value greater than 1 is not supported. Moreover, circuit breaker does not necessarily transition from <code>CLOSED</code> to <code>OPEN</code> immediately when a fault tolerance operation completes. However, applications are encouraged to disable this feature on high-volume circuits.</p>
 </dd>
 </dl>
+</div>
 </div>
 </div>
 </div>
@@ -20114,6 +20128,10 @@ and other security APIs.</p>
 <div class="dlist">
 <div class="title">Configuration</div>
 <dl>
+<dt class="hdlist1">swarm.topology.consul.ttl</dt>
+<dd>
+<p>TTL for the consul health check for each service. Default 3s</p>
+</dd>
 <dt class="hdlist1">swarm.topology.consul.url</dt>
 <dd>
 <p>URL of the Consul server</p>
@@ -22006,7 +22024,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1.Final-SNAPSHOT<br>
-Last updated 2018-08-13 11:49:30 MST
+Last updated 2018-08-13 14:18:53 MST
 </div>
 </div>
 </body>
