@@ -3541,7 +3541,7 @@ In the following example the Undertow fraction is not installed even if your app
 </dd>
 <dt class="hdlist1">useUberJar</dt>
 <dd>
-<p>If true, the <code>-thorntail.jar</code> file specified at <code>${project.build.directory}</code> is used.
+<p>If specified, the <code>-thorntail.jar</code> file located in <code>${project.build.directory}</code> is used.
 This JAR is not created automatically, so make sure you execute the <code>package</code> goal first.</p>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -3552,14 +3552,12 @@ This JAR is not created automatically, so make sure you execute the <code>packag
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Property</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>wildfly-swarm.useUberJar</code></p>
+<p><code>swarm.useUberJar</code></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>false</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Used by</p></td>
@@ -3569,6 +3567,19 @@ This JAR is not created automatically, so make sure you execute the <code>packag
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Before version 2.3.0.Final, this property was called <code>wildfly-swarm.useUberJar</code>, and only setting it to <code>true</code> enabled this behavior: <code>-Dwildfly-swarm.useUberJar=true</code>.
+You can continue using the old name, but consider using the new variant, which does not require setting a value: <code>-Dswarm.useUberJar</code>.
+</td>
+</tr>
+</table>
+</div>
 </dd>
 </dl>
 </div>
@@ -12076,6 +12087,10 @@ for higher-level fractions.</p>
 <dd>
 <p>Whether to enable propagation of B3 headers in the configured Tracer. By default this is false.</p>
 </dd>
+<dt class="hdlist1">swarm.jaeger.password</dt>
+<dd>
+<p>Password to send as part of "Basic" authentication to the endpoint</p>
+</dd>
 <dt class="hdlist1">swarm.jaeger.remote-reporter-http-endpoint</dt>
 <dd>
 <p>Remote Reporter HTTP endpoint for Jaeger collector, such as <a href="http://jaeger-collector.istio-system:14268/api/traces" class="bare">http://jaeger-collector.istio-system:14268/api/traces</a></p>
@@ -12107,6 +12122,10 @@ for higher-level fractions.</p>
 <dt class="hdlist1">swarm.jaeger.service-name</dt>
 <dd>
 <p>The service name. Required (via this parameter, system property or env var). Ex.: <code>order-manager</code></p>
+</dd>
+<dt class="hdlist1">swarm.jaeger.user</dt>
+<dd>
+<p>Username to send as part of "Basic" authentication to the endpoint</p>
 </dd>
 </dl>
 </div>
@@ -22052,7 +22071,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2018-09-10 08:09:40 MST
+Last updated 2018-09-24 10:27:37 MST
 </div>
 </div>
 </body>
