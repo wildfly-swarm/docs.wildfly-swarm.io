@@ -647,6 +647,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#logging-to-a-file_thorntail">3.9.2. Logging to a file</a></li>
 </ul>
 </li>
+<li><a href="#distributed-tracing_thorntail">3.10. Distributed tracing</a>
+<ul class="sectlevel3">
+<li><a href="#what-is-distributed-tracing_thorntail">3.10.1. What is distributed tracing</a></li>
+<li><a href="#tracing-a-single-service_thorntail">3.10.2. Tracing a single service</a></li>
+<li><a href="#tracing-a-complex-service_thorntail">3.10.3. Tracing a complex service</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_advanced">4. Advanced</a>
@@ -2501,6 +2508,374 @@ Under <code>logging</code>, add a <code>root-logger</code> section with the hand
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="distributed-tracing_thorntail"><a class="anchor" href="#distributed-tracing_thorntail"></a>3.10. Distributed tracing</h3>
+<div class="paragraph">
+<p>Thorntail provides ways of simplifying the debugging of your application in a distributed environment.</p>
+</div>
+<div class="sect3">
+<h4 id="what-is-distributed-tracing_thorntail"><a class="anchor" href="#what-is-distributed-tracing_thorntail"></a>3.10.1. What is distributed tracing</h4>
+<div class="paragraph">
+<p>In the microservices architecture, where multiple services serve a single user request, debugging might be hard.
+One technique that makes debugging easier is called <em>distributed tracing</em>.
+Distributed tracing is collecting information about service invocations, correlating it to find all invocations related to a single user request, and visualizing the data in a form that helps you understand the hierarchy of invocations and makes finding problems easier.</p>
+</div>
+<div class="paragraph">
+<p>Thorntail provides a fraction for MicroProfile OpenTracing, an API for distributed tracing, built on JAX-RS and OpenTracing.
+Another fraction is provided to configure Jaeger, a popular tracer.
+Inside the application, you need nothing except these fractions.
+Outside of the application, a tracer typically runs.</p>
+</div>
+<div class="ulist">
+<div class="title">Additional Resources</div>
+<ul>
+<li>
+<p><a href="https://github.com/eclipse/microprofile-opentracing" target="_blank" rel="noopener">MicroProfile OpenTracing</a> on GitHub</p>
+</li>
+<li>
+<p>The <a href="http://opentracing.io/" target="_blank" rel="noopener">OpenTracing homepage</a></p>
+</li>
+<li>
+<p>The <a href="https://www.jaegertracing.io/" target="_blank" rel="noopener">Jaeger homepage</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tracing-a-single-service_thorntail"><a class="anchor" href="#tracing-a-single-service_thorntail"></a>3.10.2. Tracing a single service</h4>
+<div class="paragraph">
+<p>In this example, you can see how to trace a stand-alone "hello world" service.
+This service does not make any external invocations, so the results are not particularly interesting, but it is useful for building more complex examples.</p>
+</div>
+<div class="paragraph">
+<p>For the purpose of demonstration, we only configure the Jaeger client to send information about all requests to the tracing server.
+In a production environment, you can configure more elaborate types of sampling.</p>
+</div>
+<div class="paragraph">
+<p>In this example, Jaeger runs locally using Docker.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>The Jaeger tracer running in a Docker container on <code>localhost</code>.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Launch the container using the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash"># docker run -it --rm -p 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wait until the <code>Connected to peer</code> message is displayed in the console.</p>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Include the <code>jaxrs</code>, <code>microprofile-opentracing</code> and <code>jaeger</code> fractions in the <code>pom.xml</code> file of your application:</p>
+<div class="openblock">
+<div class="title">pom.xml</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>jaxrs<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>microprofile-opentracing<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>jaeger<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Configure the Jaeger tracer in the <code>project-defaults.yml</code> file of your application:</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">project-defaults.yml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">jaeger</span>:
+    <span class="key">service-name</span>: <span class="string"><span class="content">greeter</span></span>
+    <span class="key">sampler-type</span>: <span class="string"><span class="content">const</span></span>
+    <span class="key">sampler-parameter</span>: <span class="string"><span class="content">1</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All traces sent from this Thorntail application to the tracer server will be identified by the name specified in <code>service-name</code>.
+The name needs to be unique across the entire network of services.</p>
+</div>
+<div class="paragraph">
+<p>This example expects the Jaeger server to be running on <code>localhost</code> so that you do not have to configure its location.
+In a production environment, you must configure the <code>jaeger</code> fraction to specify where traces shall be sent.
+For example, in an Istio environment with Jaeger installed, the configuration might look like this:</p>
+</div>
+<div class="listingblock">
+<div class="title">project-istio.yml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">swarm</span>:
+  <span class="key">jaeger</span>:
+    <span class="key">service-name</span>: <span class="string"><span class="content">greeter</span></span>
+    <span class="key">sampler-type</span>: <span class="string"><span class="content">const</span></span>
+    <span class="key">sampler-parameter</span>: <span class="string"><span class="content">1</span></span>
+    <span class="key">enable-b3-header-propagation</span>: <span class="string"><span class="content">true</span></span>
+    <span class="key">remote-reporter-http-endpoint</span>: <span class="string"><span class="content">'http://jaeger-collector.istio-system:14268/api/traces'</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Create a JAX-RS resource, for example:</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">MySimpleResource.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@GET</span>
+<span class="directive">public</span> <span class="predefined-type">String</span> get() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello from traced endpoint</span><span class="delimiter">&quot;</span></span>;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All JAX-RS resources are automatically traced.
+You can customize this behavior using the <code>@Traced</code> annotation from MicroProfile OpenTracing.</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Launch your application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ mvn thorntail:run</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Invoke the traced endpoint several times:</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ curl http://localhost:8080/simple
+Hello from traced endpoint</code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>See the traces in Jaeger UI:</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Open the Jaeger UI at <a href="http://localhost:16686/" target="_blank" rel="noopener">http://localhost:16686/</a>, select <code>greeter</code> under <em>Service</em> and click <em>Find Traces</em>.
+You can see all the requests you performed and basic information about them.</p>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="ulist">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>For more information about configuring Jaeger sampling, see the <a href="https://www.jaegertracing.io/docs/latest/sampling/" target="_blank" rel="noopener">Jaeger documentation</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tracing-a-complex-service_thorntail"><a class="anchor" href="#tracing-a-complex-service_thorntail"></a>3.10.3. Tracing a complex service</h4>
+<div class="paragraph">
+<p>In this example, you can see how to trace a more complex service that performs an external service invocation.
+To keep the example easy to use, the application actually calls itself, but in a way that is equivalent to calling services outside of the application.</p>
+</div>
+<div class="paragraph">
+<p>In this example, Jaeger runs locally using Docker.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>A <a href="#tracing-a-single-service_thorntail">simple service tracing</a> configured.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>If the Jaeger tracer is running, restart it:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Open the console where the container with Jaeger is running and stop it by pressing <code>Ctrl + C</code>.</p>
+</li>
+<li>
+<p>Relaunch the container by running:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash"># docker run -it --rm -p 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Use JAX-RS Client to invoke an external service, for example:</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">MyComplexResource.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Inject</span>
+<span class="directive">private</span> MyService service;
+
+<span class="annotation">@GET</span>
+<span class="directive">public</span> <span class="predefined-type">String</span> get() {
+    <span class="keyword">return</span> service.call();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">MyService.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Traced</span>
+<span class="directive">public</span> <span class="predefined-type">String</span> call() {
+    Client client = ClientTracingRegistrar.configure(ClientBuilder.newBuilder()).build();
+    <span class="keyword">try</span> {
+        <span class="predefined-type">String</span> response = client.target(<span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080</span><span class="delimiter">&quot;</span></span>)
+                .path(<span class="string"><span class="delimiter">&quot;</span><span class="content">/simple</span><span class="delimiter">&quot;</span></span>)
+                .request()
+                .get(<span class="predefined-type">String</span>.class);
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Called an external service successfully, it responded: </span><span class="delimiter">&quot;</span></span> + response;
+    } <span class="keyword">finally</span> {
+        client.close();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, you can see that not only JAX-RS resource methods can be traced.
+This is a regular method in a CDI bean.
+Unlike JAX-RS resources, which are traced automatically, other methods need the explicit <code>@Traced</code> annotation.</p>
+</div>
+<div class="paragraph">
+<p>The most important part is this usage of MicroProfile OpenTracing API:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">Client client = ClientTracingRegistrar.configure(ClientBuilder.newBuilder()).build();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This snippet shows how MicroProfile OpenTracing integrates with JAX-RS Client to ensure the trace is propagated across services.
+Without the integration, it would be impossible to correlate the invocations as part of a single user request.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently, MicroProfile OpenTracing does not integrate with MicroProfile RestClient, so you need to use a pure JAX-RS Client.
+This limitation will be removed in the future, see <a href="https://github.com/eclipse/microprofile-opentracing/issues/82" target="_blank" rel="noopener">MicroProfile OpenTracing issue #82</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Launch your application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ mvn thorntail:run</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Invoke the traced endpoint several times:</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ curl http://localhost:8080/complex
+Called an external service successfully, it responded: Hello from traced endpoint</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice how the <em>complex</em> service calls the <em>simple</em> service, which you configured in the simple service example.
+Both of these services are traced, so we can see the invocation of the <em>simple</em> service as a part of the <em>complex</em> invocation.</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>See the traces in Jaeger UI.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Reload the Jaeger UI at <a href="http://localhost:16686/" target="_blank" rel="noopener">http://localhost:16686/</a>, select <code>greeter</code> under <em>Service</em> and click <em>Find Traces</em>.
+You can see all the requests you performed and basic information about them.</p>
+</div>
+<div class="paragraph">
+<p>Click on one of the traces to show detailed information about that particular request:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>At the top level, you can see the JAX-RS resource method <code>MyComplexResource.get</code>.</p>
+</li>
+<li>
+<p>Under it, you can see the invocation of <code>MyService.call</code> method.</p>
+</li>
+<li>
+<p>Under that, you can see that this method performed a <code>GET</code> request to another service.</p>
+</li>
+<li>
+<p>Under the <code>GET</code> request, you can see the JAX-RS resource method <code>MySimpleResource.get</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For all these invocations, you can see how long they took and when they occurred as part of the entire request processing.</p>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3040,7 +3415,7 @@ the appropriate plugins to enable localization.</p>
 </dd>
 <dt class="hdlist1">run</dt>
 <dd>
-<p>Executes your application in the Maven process. The application is stopped if the Maven build is interrupted, for example when you press Ctrl + C.</p>
+<p>Executes your application in the Maven process. The application is stopped if the Maven build is interrupted, for example when you press <code>Ctrl + C</code>.</p>
 </dd>
 </dl>
 </div>
@@ -22071,7 +22446,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2018-09-26 02:46:17 MST
+Last updated 2018-09-27 02:45:45 MST
 </div>
 </div>
 </body>
