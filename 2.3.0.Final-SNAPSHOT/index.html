@@ -654,6 +654,12 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#tracing-a-complex-service_thorntail">3.10.3. Tracing a complex service</a></li>
 </ul>
 </li>
+<li><a href="#metrics_thorntail">3.11. Metrics</a>
+<ul class="sectlevel3">
+<li><a href="#what-are-metrics_thorntail">3.11.1. What are metrics</a></li>
+<li><a href="#exposing-metrics_thorntail">3.11.2. Exposing metrics</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_advanced">4. Advanced</a>
@@ -2873,6 +2879,231 @@ You can see all the requests you performed and basic information about them.</p>
 </div>
 </li>
 </ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="metrics_thorntail"><a class="anchor" href="#metrics_thorntail"></a>3.11. Metrics</h3>
+<div class="paragraph">
+<p>Thorntail provides ways of exposing application metrics in order to track performance and service availability.</p>
+</div>
+<div class="sect3">
+<h4 id="what-are-metrics_thorntail"><a class="anchor" href="#what-are-metrics_thorntail"></a>3.11.1. What are metrics</h4>
+<div class="paragraph">
+<p>In the microservices architecture, where multiple services are invoked in order to serve a single user request, diagnosing performance issues or reacting to service outages might be hard.
+To make solving problems easier, applications must expose machine-readable data about their behavior, such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How many requests are currently being processed.</p>
+</li>
+<li>
+<p>How many connections to the database are currently in use.</p>
+</li>
+<li>
+<p>How long service invocations take.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These kinds of data are referred to as <em>metrics</em>.
+Collecting metrics, visualizing them, setting alerts, discovering trends, etc. are very important to keep a service healthy.</p>
+</div>
+<div class="paragraph">
+<p>Thorntail provides a fraction for MicroProfile Metrics, an easy-to-use API for exposing metrics.
+Among other formats, it supports exporting data in the native format of Prometheus, a popular monitoring solution.
+Inside the application, you need nothing except this fraction.
+Outside of the application, Prometheus typically runs.</p>
+</div>
+<div class="ulist">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>The <a href="https://github.com/eclipse/microprofile-metrics" target="_blank" rel="noopener">MicroProfile Metrics GitHub page</a>.</p>
+</li>
+<li>
+<p>The <a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus homepage</a></p>
+</li>
+<li>
+<p>A popular solution to visualize metrics stored in Prometheus is Grafana.
+For more information, see the <a href="https://grafana.com/" target="_blank" rel="noopener">Grafana homepage</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exposing-metrics_thorntail"><a class="anchor" href="#exposing-metrics_thorntail"></a>3.11.2. Exposing metrics</h4>
+<div class="paragraph">
+<p>In this example, you:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configure your application to expose metrics.</p>
+</li>
+<li>
+<p>Collect and view the data using Prometheus.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that Prometheus actively connects to a monitored application to collect data; the application does not actively send metrics to a server.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>Prometheus configured to collect metrics from the application:</p>
+<div class="openblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get the default Prometheus configuration using the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash"># docker run -it --rm --entrypoint /bin/sh prom/prometheus -c 'cat /etc/prometheus/prometheus.yml'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Store the output in the <code>prometheus.yml</code> file in the directory with your application.</p>
+</div>
+</li>
+<li>
+<p>Append the following snippet to the <code>prometheus.yml</code> file to make Prometheus automatically collect metrics from your application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml">  - <span class="string"><span class="content">job_name: 'thorntail'</span></span>
+    <span class="key">static_configs</span>:
+    - <span class="string"><span class="content">targets: ['localhost:8080']</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default behavior of Thorntail-based applications is to expose metrics at the <code>/metrics</code> endpoint.
+This is what the MicroProfile Metrics specification requires, and also what Prometheus expects.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>The Prometheus server running on <code>localhost</code> using Docker:</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash"># docker run -it --rm --network host -p 9090:9090 -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wait until the <code>Server is ready to receive web requests</code> message is displayed in the console.</p>
+</div>
+<div class="paragraph">
+<p>Notice the <code>--network host</code> option so that Prometheus can connect to your application.</p>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Include the <code>microprofile-metrics</code> fraction in your <code>pom.xml</code>.</p>
+<div class="listingblock">
+<div class="title">pom.xml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.thorntail<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>microprofile-metrics<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Annotate methods or classes with the metrics annotations, for example:</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@GET</span>
+<span class="annotation">@Counted</span>(monotonic = <span class="predefined-constant">true</span>, name = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-count</span><span class="delimiter">&quot;</span></span>, absolute = <span class="predefined-constant">true</span>)
+<span class="annotation">@Timed</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-time</span><span class="delimiter">&quot;</span></span>, absolute = <span class="predefined-constant">true</span>)
+<span class="directive">public</span> <span class="predefined-type">String</span> get() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello from counted and timed endpoint</span><span class="delimiter">&quot;</span></span>;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, the <code>@Counted(monotonic = true)</code> annotation is used to keep track of how many times this method was invoked.
+The <code>@Timed</code> annotation is used to keep track of how long the invocations took.</p>
+</div>
+<div class="paragraph">
+<p>In this example, a JAX-RS resource method was annotated directly, but you can annotate any CDI bean in your application as well.</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Launch your application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ mvn thorntail:run</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Invoke the traced endpoint several times:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ curl http://localhost:8080/
+Hello from counted and timed endpoint</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Wait at least 15 seconds for the collection to happen, and see the metrics in Prometheus UI:</p>
+<div class="openblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the Prometheus UI at <a href="http://localhost:9090/" target="_blank" rel="noopener">http://localhost:9090/</a> and type <code>hello</code> into the <em>Expression</em> box.</p>
+</li>
+<li>
+<p>From the suggestions, select for example <code>application:hello_count</code> and click <em>Execute</em>.</p>
+</li>
+<li>
+<p>In the table that is displayed, you can see how many times the resource method was invoked.</p>
+</li>
+<li>
+<p>Alternatively, select <code>application:hello_time_mean_seconds</code> to see the mean time of all the invocations.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Note that all metrics you created are prefixed with <code>application:</code>.
+There are other metrics, automatically exposed by Thorntail as the MicroProfile Metrics specification requires.
+Those metrics are prefixed with <code>base:</code> and <code>vendor:</code> and expose information about the JVM in which the application runs.</p>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="ulist">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>For additional types of metrics, see the <a href="https://github.com/eclipse/microprofile-metrics" target="_blank" rel="noopener">MicroProfile Metrics documentation</a>.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -22446,7 +22677,7 @@ and JSR-52.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.0.Final-SNAPSHOT<br>
-Last updated 2018-09-27 05:14:27 MST
+Last updated 2018-09-27 09:30:05 MST
 </div>
 </div>
 </body>
